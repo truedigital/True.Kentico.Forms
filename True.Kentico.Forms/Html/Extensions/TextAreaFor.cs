@@ -7,9 +7,9 @@ using True.Kentico.Forms.Html.ExtraAttributes;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
-	public static partial class Html5HelperExtensions
+	public static partial class KenticoFormHelperExtensions
 	{
-		public static IHtmlString TextAreaFor<TModel, TProperty>(this Html5<TModel> html, Expression<Func<TModel, TProperty>> expression)
+		public static IHtmlString TextAreaFor<TModel, TProperty>(this KenticoForm<TModel> html, Expression<Func<TModel, TProperty>> expression)
 		{
 			var item = (MemberExpression)expression.Body;
 			var id = item.Member.Name;

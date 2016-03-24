@@ -7,9 +7,9 @@ using True.Kentico.Forms.Html.ExtraAttributes;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
-    public static partial class Html5HelperExtensions
+    public static partial class KenticoFormHelperExtensions
     {
-        public static IHtmlString MultipleChoiceFor<TModel, TProperty>(this Html5<TModel> html, Expression<Func<TModel, TProperty>> expression) where TProperty : List<KeyValuePair<int, string>>
+        public static IHtmlString MultipleChoiceFor<TModel, TProperty>(this KenticoForm<TModel> html, Expression<Func<TModel, TProperty>> expression) where TProperty : List<KeyValuePair<int, string>>
         {
             var item = (MemberExpression)expression.Body;
             var id = item.Member.Name;

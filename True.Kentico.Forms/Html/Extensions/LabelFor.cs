@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
-	public static partial class Html5HelperExtensions
+	public static partial class KenticoFormHelperExtensions
 	{
-		public static IHtmlString LabelFor<TModel, TProperty>(this Html5<TModel> html, Expression<Func<TModel, TProperty>> expression)
+		public static IHtmlString LabelFor<TModel, TProperty>(this KenticoForm<TModel> html, Expression<Func<TModel, TProperty>> expression)
 		{
 			//var valueGetter = expression.Compile();
 			//var model = valueGetter(html.Model);

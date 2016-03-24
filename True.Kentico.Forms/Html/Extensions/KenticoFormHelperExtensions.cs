@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
-	public static partial class Html5HelperExtensions
+	public static partial class KenticoFormHelperExtensions
 	{
 		private static T GetAttribute<T>(MemberExpression member)
 		{

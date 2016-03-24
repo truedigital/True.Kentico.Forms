@@ -4,55 +4,55 @@
 @model TrueMVCForms.Models.TestModel
 @{
 	ViewBag.Title = "Index";
-	var Html5 = new Html5<TrueMVCForms.Models.TestModel>(Model);
+	var KenticoForm = new KenticoForm<TrueMVCForms.Models.TestModel>(Model);
 }
 
-@Html5.BeginForm()
+@KenticoForm.BeginForm()
 <div class="form-row">
-	@Html5.LabelFor(m => m.Textbox)
-	@Html5.TextBoxFor(m => m.Textbox)
+	@KenticoForm.LabelFor(m => m.Textbox)
+	@KenticoForm.TextBoxFor(m => m.Textbox)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.Email)
-	@Html5.EmailFor(m => m.Email)
+	@KenticoForm.LabelFor(m => m.Email)
+	@KenticoForm.EmailFor(m => m.Email)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.EmailEqTo)
-	@Html5.EmailFor(m => m.EmailEqTo)
+	@KenticoForm.LabelFor(m => m.EmailEqTo)
+	@KenticoForm.EmailFor(m => m.EmailEqTo)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.Calendar)
-	@Html5.CalendarFor(m => m.Calendar)
+	@KenticoForm.LabelFor(m => m.Calendar)
+	@KenticoForm.CalendarFor(m => m.Calendar)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.TextArea)
-	@Html5.TextAreaFor(m => m.TextArea)
+	@KenticoForm.LabelFor(m => m.TextArea)
+	@KenticoForm.TextAreaFor(m => m.TextArea)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.RichTextEditor)
-	@Html5.RichTextEditorFor(m => m.RichTextEditor)
+	@KenticoForm.LabelFor(m => m.RichTextEditor)
+	@KenticoForm.RichTextEditorFor(m => m.RichTextEditor)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.DropDownList)
-	@Html5.DropDownListFor(m => m.DropDownList)
+	@KenticoForm.LabelFor(m => m.DropDownList)
+	@KenticoForm.DropDownListFor(m => m.DropDownList)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.ListBox)
-	@Html5.ListBoxFor(m => m.ListBox)
+	@KenticoForm.LabelFor(m => m.ListBox)
+	@KenticoForm.ListBoxFor(m => m.ListBox)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.RadioButtons)
-	@Html5.RadioButtonFor(m => m.RadioButtons)
+	@KenticoForm.LabelFor(m => m.RadioButtons)
+	@KenticoForm.RadioButtonFor(m => m.RadioButtons)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.MultipleChoices)
-	@Html5.MultipleChoiceFor(m => m.MultipleChoices)
+	@KenticoForm.LabelFor(m => m.MultipleChoices)
+	@KenticoForm.MultipleChoiceFor(m => m.MultipleChoices)
 </div>
 <div class="form-row">
-	@Html5.LabelFor(m => m.Checkbox)
-	@Html5.CheckboxFor(m => m.Checkbox)
+	@KenticoForm.LabelFor(m => m.Checkbox)
+	@KenticoForm.CheckboxFor(m => m.Checkbox)
 </div>
 <div>
-	@Html5.SubmitButton("Submit")
+	@KenticoForm.SubmitButton("Submit")
 </div>
-@Html5.EndForm()
+@KenticoForm.EndForm()

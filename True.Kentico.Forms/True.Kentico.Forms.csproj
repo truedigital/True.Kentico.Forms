@@ -128,7 +128,7 @@
     <Compile Include="Html\Extensions\DropDownListFor.cs" />
     <Compile Include="Html\Extensions\EditorFor.cs" />
     <Compile Include="Html\Extensions\EmailFor.cs" />
-    <Compile Include="Html\Extensions\Html5HelperExtensions.cs" />
+    <Compile Include="Html\Extensions\KenticoFormHelperExtensions.cs" />
     <Compile Include="Html\Extensions\LabelFor.cs" />
     <Compile Include="Html\Extensions\ListBoxFor.cs" />
     <Compile Include="Html\Extensions\MultipleChoiceFor.cs" />
@@ -139,7 +139,7 @@
     <Compile Include="Html\Extensions\TextBoxFor.cs" />
     <Compile Include="Html\Extensions\ValidationMessageFor.cs" />
     <Compile Include="Html\ExtraAttributes\HelpText.cs" />
-    <Compile Include="Html\Html5.cs" />
+    <Compile Include="Html\KenticoForm.cs" />
     <Compile Include="Html\MultiLevelTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\Validation\FormValidator.cs" />
