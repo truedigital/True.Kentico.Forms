@@ -5,4 +5,10 @@
 /True.Kentico.Forms/bin/Debug
 /True.Kentico.Forms/bin
 /True.Kentico.Forms/obj/Debug
-/Web/bin
+/True.Kentico.Forms.Web/bin
+/True.Kentico.Forms.Web/bin/Debug
+/True.Kentico.Forms.Web/obj/Debug
+*.suo
+*.user
+*.pdb
+*.cache
