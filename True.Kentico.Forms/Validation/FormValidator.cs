@@ -1,0 +1,35 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using True.KenticoForms.Forms;
+
+namespace True.KenticoForms.Validation
+{
+    public class FormValidator
+    {
+        public Dictionary<string, string> Errors { get; }
+
+        public FormValidator()
+        {
+            Errors = new Dictionary<string, string>();
+        }
+
+        public bool Validate(Form form)
+        {
+            Errors.Clear();
+
+            foreach (var control in form.Controls)
+            {
+                var isValid = control.Validate();
+
+                if (isValid == false)
+                {
+                    //do something appropriate here to get the error messages
+                    var errors = control.Validation.Select(v => v.ValidationErrorMessage).Aggregate((s0, s1) => s0 + ", " + s1);
+                    Errors.Add(control.SubmittedValue, errors);
+                }
+            }
+
+            return !Errors.Any();
+        }
+    }
+}

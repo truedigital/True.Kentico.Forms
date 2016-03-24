@@ -1,0 +1,57 @@
+﻿using CMS.OnlineForms;
+using True.KenticoForms.ControlFactory;
+using True.KenticoForms.Forms;
+
+namespace True.KenticoForms
+{
+    public class FormFactory : IFormFactory
+    {
+        private readonly IControlFactory _controlFactory;
+
+        public FormFactory(IControlFactory controlFactory)
+        {
+            _controlFactory = controlFactory;
+        }
+
+        public IForm Create(BizFormInfo info)
+        {
+            if (info == null)
+                return new Form();
+
+            var autoresponder = new Autoresponder
+            {
+                Sender = info.FormConfirmationSendFromEmail,
+                Subject = info.FormConfirmationEmailSubject,
+                Template = info.FormConfirmationTemplate
+            };
+
+            var notification = new Notification
+            {
+                Sender = info.FormSendFromEmail,
+                Recipients = info.FormSendToEmail,
+                Subject = info.FormEmailSubject,
+                Template = info.FormEmailTemplate,
+                AttachUploadedDocuments = info.FormEmailAttachUploadedDocs
+            };
+            
+            var form = new Form
+            {
+                Name = info.FormName,
+                SubmitText = !string.IsNullOrEmpty(info.FormSubmitButtonText) ? info.FormSubmitButtonText : "Save",
+                Autoresponder = autoresponder,
+                Notification = notification
+            };
+
+            foreach (var controlInfo in info.Form.GetFields(true, false))
+            {
+                var control = _controlFactory.Create(controlInfo);
+                if (control == null)
+                    continue;
+
+                form.Controls.Add(control);
+            }
+
+            return form;
+        }
+    }
+}

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{70BB3BC5-A946-471A-B0FB-A9FC0DE5FC3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>True.Kentico.Forms</RootNamespace>
+    <AssemblyName>True.Kentico.Forms</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CMS.Base">
+      <HintPath>..\Libs\CMS.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.DataEngine">
+      <HintPath>..\Libs\CMS.DataEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.FormEngine">
+      <HintPath>..\Libs\CMS.FormEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Helpers">
+      <HintPath>..\Libs\CMS.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.OnlineForms">
+      <HintPath>..\Libs\CMS.OnlineForms.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.SiteProvider">
+      <HintPath>..\Libs\CMS.SiteProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlFactory\ControlFactory.cs" />
+    <Compile Include="ControlFactory\IControlFactory.cs" />
+    <Compile Include="ControlFactory\MultiValueTypedControlFactory.cs" />
+    <Compile Include="ControlFactory\TypedControlFactory.cs" />
+    <Compile Include="ControlValidationFactory\ControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\ControlValidationTypeProvider.cs" />
+    <Compile Include="ControlValidationFactory\DateFromControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\DateToControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\EmailControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\IControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\IControlValidationTypeProvider.cs" />
+    <Compile Include="ControlValidationFactory\MaximumLengthControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\MaximumValueControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\MinimumLengthControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\MinimumValueControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\RegularExpressionControlValidationFactory.cs" />
+    <Compile Include="ControlValidationFactory\ValidationType.cs" />
+    <Compile Include="ControlValidationFactory\XmlRules.cs" />
+    <Compile Include="ControlValidationFactory\XmlRulesParser.cs" />
+    <Compile Include="FormFactory.cs" />
+    <Compile Include="Forms\Autoresponder.cs" />
+    <Compile Include="Forms\Control.cs" />
+    <Compile Include="Forms\ControlType.cs" />
+    <Compile Include="Forms\ControlValidation.cs" />
+    <Compile Include="Forms\Form.cs" />
+    <Compile Include="Forms\FormModelBinder.cs" />
+    <Compile Include="Forms\FormRepository.cs" />
+    <Compile Include="Forms\IAutoresponder.cs" />
+    <Compile Include="Forms\IControl.cs" />
+    <Compile Include="Forms\IControlValidation.cs" />
+    <Compile Include="Forms\IForm.cs" />
+    <Compile Include="Forms\INotification.cs" />
+    <Compile Include="Forms\Notification.cs" />
+    <Compile Include="IFormFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\FormValidator.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
