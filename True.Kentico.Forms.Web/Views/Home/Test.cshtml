@@ -1,0 +1,58 @@
+﻿@using True.Kentico.Forms.Html
+@using True.Kentico.Forms.Html.Extensions
+
+@model TrueMVCForms.Models.TestModel
+@{
+	ViewBag.Title = "Index";
+	var KenticoForm = new KenticoForm<TrueMVCForms.Models.TestModel>(Model);
+}
+
+@KenticoForm.BeginForm()
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.Textbox)
+	@KenticoForm.TextBoxFor(m => m.Textbox)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.Email)
+	@KenticoForm.EmailFor(m => m.Email)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.EmailEqTo)
+	@KenticoForm.EmailFor(m => m.EmailEqTo)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.Calendar)
+	@KenticoForm.CalendarFor(m => m.Calendar)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.TextArea)
+	@KenticoForm.TextAreaFor(m => m.TextArea)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.RichTextEditor)
+	@KenticoForm.RichTextEditorFor(m => m.RichTextEditor)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.DropDownList)
+	@KenticoForm.DropDownListFor(m => m.DropDownList)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.ListBox)
+	@KenticoForm.ListBoxFor(m => m.ListBox)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.RadioButtons)
+	@KenticoForm.RadioButtonFor(m => m.RadioButtons)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.MultipleChoices)
+	@KenticoForm.MultipleChoiceFor(m => m.MultipleChoices)
+</div>
+<div class="form-row">
+	@KenticoForm.LabelFor(m => m.Checkbox)
+	@KenticoForm.CheckboxFor(m => m.Checkbox)
+</div>
+<div>
+	@KenticoForm.SubmitButton("Submit")
+</div>
+@KenticoForm.EndForm()
