@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using True.Kentico.Forms.Forms;
 using True.Kentico.Forms.Forms.FormParts;
 using True.Kentico.Forms.Web.Models;
 
@@ -11,7 +12,7 @@ namespace True.Kentico.Forms.Web.Controllers
         {
             return View();
         }
-        
+
         public ActionResult Test()
         {
             var model = new TestModel
@@ -42,7 +43,24 @@ namespace True.Kentico.Forms.Web.Controllers
 
         public ActionResult KenticoForm()
         {
-            var model = new Form();
+            var controls = new List<IControl>
+            {
+                new Control
+                {
+                    IsRequired = true,Label = "Enter your email",Type = ControlType.Email
+                },
+                new Control
+                {
+                    IsRequired = true, Label = "Text", Type = ControlType.TextBox
+                }
+            };
+
+            var model = new Form
+            {
+                Name = "my form",
+                Controls = controls
+            };
+
             return View(model);
         }
     }

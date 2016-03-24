@@ -1,2 +1,40 @@
-﻿@model 
+﻿@using True.Kentico.Forms.Forms.FormParts
+@using True.Kentico.Forms.Html
+@using True.Kentico.Forms.Html.Extensions
 
+@model Form
+@{
+    ViewBag.Title = "Index";
+    var KenticoForm = new KenticoForm<Form>(Model);
+}
+
+@*using (Ajax.BeginForm("Submit", "Form", null, new AjaxOptions
+        {
+            HttpMethod = "POST",
+            UpdateTargetId = "form-result"
+        },
+        new
+        {
+    @class = "form form--newsletter-signup"
+        }))
+        {*@
+
+@KenticoForm.BeginForm()
+<div id="form-result">
+    <input type="hidden" name="form-name" value="@Model.Name" />
+    <input type="hidden" name="submit-text" value="@Model.SubmitText" />
+
+    @*@KenticoForm.TestHeading()
+    @KenticoForm.TestInput()*@
+
+    @KenticoForm.RenderFormControls(Model.Controls)
+
+    @*@foreach (var control in Model.Controls)
+    {
+        KenticoForm.RenderFormControl(control);
+    }*@
+
+    @KenticoForm.SubmitButton("Submit")
+
+</div>
+@KenticoForm.EndForm()    

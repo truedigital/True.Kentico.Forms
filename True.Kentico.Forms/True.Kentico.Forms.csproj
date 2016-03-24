@@ -135,6 +135,7 @@
     <Compile Include="Html\Extensions\RadioButtonsFor.cs" />
     <Compile Include="Html\Extensions\RichTextEditorFor.cs" />
     <Compile Include="Html\Extensions\SubmitButton.cs" />
+    <Compile Include="Html\Extensions\RenderFormControls.cs" />
     <Compile Include="Html\Extensions\TextAreaFor.cs" />
     <Compile Include="Html\Extensions\TextBoxFor.cs" />
     <Compile Include="Html\Extensions\ValidationMessageFor.cs" />
