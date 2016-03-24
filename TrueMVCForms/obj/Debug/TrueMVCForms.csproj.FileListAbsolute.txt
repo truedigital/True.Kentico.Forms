@@ -1,0 +1,84 @@
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\csc.exe
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\Microsoft.CodeAnalysis.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\Microsoft.CSharp.Core.targets
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\Microsoft.VisualBasic.Core.targets
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\System.Collections.Immutable.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\System.Reflection.Metadata.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\vbc.exe
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\VBCSCompiler.exe
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\roslyn\VBCSCompiler.exe.config
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\TrueMVCForms.dll.config
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\TrueMVCForms.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\TrueMVCForms.pdb
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\Antlr3.Runtime.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\Microsoft.Web.Infrastructure.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\Newtonsoft.Json.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.Helpers.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.Mvc.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.Optimization.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.Razor.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.WebPages.Deployment.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.WebPages.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.WebPages.Razor.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\WebGrease.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.Helpers.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.Mvc.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.Optimization.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.Razor.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.WebPages.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.WebPages.Deployment.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\System.Web.WebPages.Razor.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\Antlr3.Runtime.pdb
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\Newtonsoft.Json.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\obj\Debug\TrueMVCForms.csprojResolveAssemblyReference.cache
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\obj\Debug\TrueMVCForms.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\obj\Debug\TrueMVCForms.pdb
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\True.Html5Helper.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\TrueMVCForms\bin\True.Html5Helper.pdb
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\csc.exe
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\System.Collections.Immutable.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\System.Reflection.Metadata.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\vbc.exe
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\VBCSCompiler.exe
+C:\git\TrueMvcForms\TrueMVCForms\bin\roslyn\VBCSCompiler.exe.config
+C:\git\TrueMvcForms\TrueMVCForms\bin\TrueMVCForms.dll.config
+C:\git\TrueMvcForms\TrueMVCForms\bin\TrueMVCForms.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\TrueMVCForms.pdb
+C:\git\TrueMvcForms\TrueMVCForms\bin\Antlr3.Runtime.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\Microsoft.Web.Infrastructure.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\Newtonsoft.Json.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Helpers.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Mvc.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Optimization.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Razor.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.WebPages.Deployment.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.WebPages.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.WebPages.Razor.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\True.Html5Helper.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\WebGrease.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\True.Html5Helper.pdb
+C:\git\TrueMvcForms\TrueMVCForms\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Helpers.xml
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Mvc.xml
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Optimization.xml
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Razor.xml
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.WebPages.xml
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.WebPages.Deployment.xml
+C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.WebPages.Razor.xml
+C:\git\TrueMvcForms\TrueMVCForms\bin\Antlr3.Runtime.pdb
+C:\git\TrueMvcForms\TrueMVCForms\bin\Newtonsoft.Json.xml
+C:\git\TrueMvcForms\TrueMVCForms\obj\Debug\TrueMVCForms.csprojResolveAssemblyReference.cache
+C:\git\TrueMvcForms\TrueMVCForms\obj\Debug\TrueMVCForms.dll
+C:\git\TrueMvcForms\TrueMVCForms\obj\Debug\TrueMVCForms.pdb

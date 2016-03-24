@@ -1,0 +1,58 @@
+﻿@using True.Html5Helper.Extensions
+@using True.Html5Helper
+
+@model TrueMVCForms.Models.TestModel
+@{
+	ViewBag.Title = "Index";
+	var Html5 = new Html5<TrueMVCForms.Models.TestModel>(Model);
+}
+
+@Html5.BeginForm()
+<div class="form-row">
+	@Html5.LabelFor(m => m.Textbox)
+	@Html5.TextBoxFor(m => m.Textbox)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.Email)
+	@Html5.EmailFor(m => m.Email)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.EmailEqTo)
+	@Html5.EmailFor(m => m.EmailEqTo)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.Calendar)
+	@Html5.CalendarFor(m => m.Calendar)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.TextArea)
+	@Html5.TextAreaFor(m => m.TextArea)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.RichTextEditor)
+	@Html5.RichTextEditorFor(m => m.RichTextEditor)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.DropDownList)
+	@Html5.DropDownListFor(m => m.DropDownList)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.ListBox)
+	@Html5.ListBoxFor(m => m.ListBox)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.RadioButtons)
+	@Html5.RadioButtonFor(m => m.RadioButtons)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.MultipleChoices)
+	@Html5.MultipleChoiceFor(m => m.MultipleChoices)
+</div>
+<div class="form-row">
+	@Html5.LabelFor(m => m.Checkbox)
+	@Html5.CheckboxFor(m => m.Checkbox)
+</div>
+<div>
+	@Html5.SubmitButton("Submit")
+</div>
+@Html5.EndForm()

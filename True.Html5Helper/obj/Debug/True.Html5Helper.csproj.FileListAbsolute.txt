@@ -1,0 +1,36 @@
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\True.Html5Helper.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\True.Html5Helper.pdb
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\Microsoft.Web.Infrastructure.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.Helpers.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.Mvc.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.Razor.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.WebPages.Deployment.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.WebPages.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.WebPages.Razor.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.Helpers.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.Mvc.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.Razor.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.WebPages.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.WebPages.Deployment.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\bin\Debug\System.Web.WebPages.Razor.xml
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\obj\Debug\True.Html5Helper.dll
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\obj\Debug\True.Html5Helper.pdb
+e:\documents\visual studio 2015\Projects\TrueMVCForms\True.Html5Helper\obj\Debug\True.Html5Helper.csprojResolveAssemblyReference.cache
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\True.Html5Helper.dll
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\True.Html5Helper.pdb
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.Helpers.dll
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.Mvc.dll
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.Razor.dll
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.WebPages.dll
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.WebPages.Razor.dll
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.Helpers.xml
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.Mvc.xml
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.Razor.xml
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.WebPages.xml
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\git\TrueMvcForms\True.Html5Helper\bin\Debug\System.Web.WebPages.Razor.xml
+C:\git\TrueMvcForms\True.Html5Helper\obj\Debug\True.Html5Helper.csprojResolveAssemblyReference.cache
+C:\git\TrueMvcForms\True.Html5Helper\obj\Debug\True.Html5Helper.dll
+C:\git\TrueMvcForms\True.Html5Helper\obj\Debug\True.Html5Helper.pdb
