@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace TrueMVCForms
+namespace True.Kentico.Forms.Web
 {
 	public class RouteConfig
 	{

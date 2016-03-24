@@ -2,7 +2,7 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace TrueMVCForms
+namespace True.Kentico.Forms.Web
 {
 	public class MvcApplication : System.Web.HttpApplication
 	{

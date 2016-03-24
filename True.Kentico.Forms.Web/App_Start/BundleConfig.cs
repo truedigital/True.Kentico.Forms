@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace TrueMVCForms
+namespace True.Kentico.Forms.Web
 {
 	public class BundleConfig
 	{

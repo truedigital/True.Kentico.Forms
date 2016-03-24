@@ -1,10 +1,11 @@
 ﻿@using True.Kentico.Forms.Html
 @using True.Kentico.Forms.Html.Extensions
+@using True.Kentico.Forms.Web.Models
 
-@model TrueMVCForms.Models.TestModel
+@model TestModel
 @{
 	ViewBag.Title = "Index";
-	var KenticoForm = new KenticoForm<TrueMVCForms.Models.TestModel>(Model);
+	var KenticoForm = new KenticoForm<TestModel>(Model);
 }
 
 @KenticoForm.BeginForm()

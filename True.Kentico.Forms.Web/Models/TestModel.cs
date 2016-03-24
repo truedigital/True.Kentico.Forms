@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using True.Kentico.Forms.Html.ExtraAttributes;
 
-namespace TrueMVCForms.Models
+namespace True.Kentico.Forms.Web.Models
 {
 	public class TestModel
 	{

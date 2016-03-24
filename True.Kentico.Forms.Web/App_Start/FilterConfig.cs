@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace TrueMVCForms
+namespace True.Kentico.Forms.Web
 {
 	public class FilterConfig
 	{
