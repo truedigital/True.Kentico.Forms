@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using True.Html5Helper.ExtraAttributes;
+using True.Kentico.Forms.Html.ExtraAttributes;
 
 namespace TrueMVCForms.Models
 {

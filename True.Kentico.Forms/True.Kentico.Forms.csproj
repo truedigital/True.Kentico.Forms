@@ -48,11 +48,38 @@
     <Reference Include="CMS.SiteProvider">
       <HintPath>..\Libs\CMS.SiteProvider.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,42 +88,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlFactory\ControlFactory.cs" />
-    <Compile Include="ControlFactory\IControlFactory.cs" />
-    <Compile Include="ControlFactory\MultiValueTypedControlFactory.cs" />
-    <Compile Include="ControlFactory\TypedControlFactory.cs" />
-    <Compile Include="ControlValidationFactory\ControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\ControlValidationTypeProvider.cs" />
-    <Compile Include="ControlValidationFactory\DateFromControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\DateToControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\EmailControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\IControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\IControlValidationTypeProvider.cs" />
-    <Compile Include="ControlValidationFactory\MaximumLengthControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\MaximumValueControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\MinimumLengthControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\MinimumValueControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\RegularExpressionControlValidationFactory.cs" />
-    <Compile Include="ControlValidationFactory\ValidationType.cs" />
-    <Compile Include="ControlValidationFactory\XmlRules.cs" />
-    <Compile Include="ControlValidationFactory\XmlRulesParser.cs" />
-    <Compile Include="FormFactory.cs" />
-    <Compile Include="Forms\Autoresponder.cs" />
-    <Compile Include="Forms\Control.cs" />
-    <Compile Include="Forms\ControlType.cs" />
-    <Compile Include="Forms\ControlValidation.cs" />
-    <Compile Include="Forms\Form.cs" />
-    <Compile Include="Forms\FormModelBinder.cs" />
-    <Compile Include="Forms\FormRepository.cs" />
-    <Compile Include="Forms\IAutoresponder.cs" />
-    <Compile Include="Forms\IControl.cs" />
-    <Compile Include="Forms\IControlValidation.cs" />
-    <Compile Include="Forms\IForm.cs" />
-    <Compile Include="Forms\INotification.cs" />
-    <Compile Include="Forms\Notification.cs" />
-    <Compile Include="IFormFactory.cs" />
+    <Compile Include="Forms\ControlFactory\ControlFactory.cs" />
+    <Compile Include="Forms\ControlFactory\IControlFactory.cs" />
+    <Compile Include="Forms\ControlFactory\MultiValueTypedControlFactory.cs" />
+    <Compile Include="Forms\ControlFactory\TypedControlFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\ControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\ControlValidationTypeProvider.cs" />
+    <Compile Include="Forms\ControlValidationFactory\DateFromControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\DateToControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\EmailControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\IControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\IControlValidationTypeProvider.cs" />
+    <Compile Include="Forms\ControlValidationFactory\MaximumLengthControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\MaximumValueControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\MinimumLengthControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\MinimumValueControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\RegularExpressionControlValidationFactory.cs" />
+    <Compile Include="Forms\ControlValidationFactory\ValidationType.cs" />
+    <Compile Include="Forms\ControlValidationFactory\XmlRules.cs" />
+    <Compile Include="Forms\ControlValidationFactory\XmlRulesParser.cs" />
+    <Compile Include="Forms\FormFactory.cs" />
+    <Compile Include="Forms\FormParts\Autoresponder.cs" />
+    <Compile Include="Forms\FormParts\Control.cs" />
+    <Compile Include="Forms\FormParts\ControlType.cs" />
+    <Compile Include="Forms\FormParts\ControlValidation.cs" />
+    <Compile Include="Forms\FormParts\Form.cs" />
+    <Compile Include="Forms\FormParts\FormModelBinder.cs" />
+    <Compile Include="Forms\FormParts\FormRepository.cs" />
+    <Compile Include="Forms\FormParts\IAutoresponder.cs" />
+    <Compile Include="Forms\FormParts\IControl.cs" />
+    <Compile Include="Forms\FormParts\IControlValidation.cs" />
+    <Compile Include="Forms\FormParts\IForm.cs" />
+    <Compile Include="Forms\FormParts\INotification.cs" />
+    <Compile Include="Forms\FormParts\Notification.cs" />
+    <Compile Include="Forms\IFormFactory.cs" />
+    <Compile Include="Html\Extensions\BeginForm.cs" />
+    <Compile Include="Html\Extensions\CalendarFor.cs" />
+    <Compile Include="Html\Extensions\CheckboxFor.cs" />
+    <Compile Include="Html\Extensions\DropDownListFor.cs" />
+    <Compile Include="Html\Extensions\EditorFor.cs" />
+    <Compile Include="Html\Extensions\EmailFor.cs" />
+    <Compile Include="Html\Extensions\Html5HelperExtensions.cs" />
+    <Compile Include="Html\Extensions\LabelFor.cs" />
+    <Compile Include="Html\Extensions\ListBoxFor.cs" />
+    <Compile Include="Html\Extensions\MultipleChoiceFor.cs" />
+    <Compile Include="Html\Extensions\RadioButtonsFor.cs" />
+    <Compile Include="Html\Extensions\RichTextEditorFor.cs" />
+    <Compile Include="Html\Extensions\SubmitButton.cs" />
+    <Compile Include="Html\Extensions\TextAreaFor.cs" />
+    <Compile Include="Html\Extensions\TextBoxFor.cs" />
+    <Compile Include="Html\Extensions\ValidationMessageFor.cs" />
+    <Compile Include="Html\ExtraAttributes\HelpText.cs" />
+    <Compile Include="Html\Html5.cs" />
+    <Compile Include="Html\MultiLevelTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Validation\FormValidator.cs" />
+    <Compile Include="Forms\Validation\FormValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Html\Documents\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

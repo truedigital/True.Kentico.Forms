@@ -66,9 +66,15 @@ C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Razor.dll
 C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.WebPages.Deployment.dll
 C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.WebPages.dll
 C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.WebPages.Razor.dll
-C:\git\TrueMvcForms\TrueMVCForms\bin\True.Html5Helper.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\True.Kentico.Forms.dll
 C:\git\TrueMvcForms\TrueMVCForms\bin\WebGrease.dll
-C:\git\TrueMvcForms\TrueMVCForms\bin\True.Html5Helper.pdb
+C:\git\TrueMvcForms\TrueMVCForms\bin\CMS.OnlineForms.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\CMS.FormEngine.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\CMS.DataEngine.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\CMS.SiteProvider.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\CMS.Helpers.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\CMS.Base.dll
+C:\git\TrueMvcForms\TrueMVCForms\bin\True.Kentico.Forms.pdb
 C:\git\TrueMvcForms\TrueMVCForms\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Helpers.xml
 C:\git\TrueMvcForms\TrueMVCForms\bin\System.Web.Mvc.xml

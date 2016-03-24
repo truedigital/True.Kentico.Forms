@@ -176,9 +176,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\True.Html5Helper\True.Html5Helper.csproj">
-      <Project>{8f52c761-0e08-4189-a954-97d0ac48c479}</Project>
-      <Name>True.Html5Helper</Name>
+    <ProjectReference Include="..\True.Kentico.Forms\True.Kentico.Forms.csproj">
+      <Project>{70BB3BC5-A946-471A-B0FB-A9FC0DE5FC3C}</Project>
+      <Name>True.Kentico.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
