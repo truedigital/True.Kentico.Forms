@@ -104,7 +104,7 @@ namespace True.Kentico.Forms.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult FormResult(IForm form)
+        public ActionResult FormResult(Form form)
         {
             return new EmptyResult();
         }
