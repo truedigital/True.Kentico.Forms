@@ -10,6 +10,7 @@ namespace True.Kentico.Forms.Forms.ControlValidationFactory
             return new ControlValidation
             {
                 ValidationRule = "email",
+                ValidationType = ValidationType.Email,
                 ValidationErrorMessage = string.IsNullOrEmpty(info.ErrorMessage) ? "Please provide your email address" : info.ErrorMessage
             };
         }

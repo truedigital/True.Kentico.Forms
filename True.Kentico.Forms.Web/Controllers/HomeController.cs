@@ -47,11 +47,11 @@ namespace True.Kentico.Forms.Web.Controllers
             {
                 new Control
                 {
-                    IsRequired = true,Label = "Enter your email",Type = ControlType.Email
+                    IsRequired = true,Label = "Enter your email",Type = ControlType.Email, Name = "Email address"
                 },
                 new Control
                 {
-                    IsRequired = true, Label = "Text", Type = ControlType.TextBox
+                    IsRequired = true, Label = "Enter some text", Type = ControlType.TextBox, Name = "Message"
                 }
             };
 

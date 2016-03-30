@@ -1,6 +1,6 @@
 namespace True.Kentico.Forms.Forms.ControlValidationFactory
 {
-    internal enum ValidationType
+    public enum ValidationType
     {
         Unknown,
         Email,

@@ -122,6 +122,7 @@
     <Compile Include="Forms\FormParts\INotification.cs" />
     <Compile Include="Forms\FormParts\Notification.cs" />
     <Compile Include="Forms\IFormFactory.cs" />
+    <Compile Include="Html\HtmlControlFactory\HtmlControlFactory.cs" />
     <Compile Include="Html\Extensions\BeginForm.cs" />
     <Compile Include="Html\Extensions\CalendarFor.cs" />
     <Compile Include="Html\Extensions\CheckboxFor.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Html\Extensions\TextBoxFor.cs" />
     <Compile Include="Html\Extensions\ValidationMessageFor.cs" />
     <Compile Include="Html\ExtraAttributes\HelpText.cs" />
+    <Compile Include="Html\HtmlControlFactory\IHtmlControlFactory.cs" />
     <Compile Include="Html\KenticoForm.cs" />
     <Compile Include="Html\MultiLevelTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

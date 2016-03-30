@@ -1,7 +1,10 @@
+using True.Kentico.Forms.Forms.ControlValidationFactory;
+
 namespace True.Kentico.Forms.Forms.FormParts
 {
     public class ControlValidation : IControlValidation
     {
+        public ValidationType ValidationType { get; set; }
         public string ValidationRule { get; set; }
         public string ValidationErrorMessage { get; set; }
         public bool HasValue { get; set; }

@@ -19,7 +19,7 @@ namespace True.Kentico.Forms.Html.Extensions
             // var dispAttr = GetAttribute<DisplayAttribute>(item);
             var displayName = property.Label;
 
-            var reqAttr = property.IsRequired;
+            // var reqAttr = property.IsRequired;
             // todo var minLengthAttr = property.Validation.Something();
             // todo var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
 
@@ -31,10 +31,12 @@ namespace True.Kentico.Forms.Html.Extensions
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "text");
 
+            // KenticoFormValidationFactory.Create(property.ValidationKeys);
+
             // todo if (minLengthAttr != null)
             //    input.Attributes.Add("minlength", minLengthAttr.Length.ToString());
 
-            if (reqAttr != null)
+            if (property.IsRequired)
             {
                 input.Attributes.Add("required", null);
                 input.Attributes.Add("data-msg-required", $"{displayName} is required");
