@@ -14,13 +14,9 @@ namespace True.Kentico.Forms.Html.Extensions
     {
         public static IHtmlString EmailFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control) where TControl : IControl
         {
-            // var item = (MemberExpression)expression.Body;
             var id = control.Name;
-
-            // var dispAttr = GetAttribute<DisplayAttribute>(item);
-            var displayName = control.Label;// != null ? dispAttr.Name : item.Member.Name;
-
-            // var reqAttr = control.IsRequired;
+            var displayName = control.Label;
+            
             // todo var helpTextAttr = "Something";
             // todo var equalTo = GetAttribute<CompareAttribute>(item);
 
@@ -36,8 +32,6 @@ namespace True.Kentico.Forms.Html.Extensions
             {
                 input.Attributes.Add("equalTo", $"#{equalTo.OtherProperty}");
             }*/
-
-            // KenticoFormValidationHelper.RenderValidationAttributes(control.Validation);
 
             if (control.IsRequired)
             {
