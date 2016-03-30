@@ -37,6 +37,16 @@ namespace True.Kentico.Forms.Html.Extensions
                         "</div>"
                         ));
                 }
+
+                if (control.Type == ControlType.MultipleChoice)
+                {
+                    result.AppendLine(string.Concat(
+                        "<div class=\"form-row\">",
+                        model.LabelFor(control).ToHtmlString(),
+                        model.MultipleChoiceFor(control).ToHtmlString(),
+                        "</div>"
+                        ));
+                }
                 // todo other types ... also, this should use strategy-factory
             }
 

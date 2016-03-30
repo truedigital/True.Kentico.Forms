@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms;
 using True.Kentico.Forms.Forms.ControlValidationFactory;
@@ -61,6 +62,16 @@ namespace True.Kentico.Forms.Web.Controllers
                     {
                         new ControlValidation { HasValue = true, ValidationType = ValidationType.Email, ValidationRule = "email", ValidationErrorMessage = "Please put a valid email address"}
                     }
+                },
+                new Control
+                {
+                    IsRequired = false, Label = "How often do you shop for fashion items online", Type = ControlType.MultipleChoice, Name = "Shop",
+                    DefaultValue = "Daily\r\nWeekly\r\nFornightly\r\nMonthly"
+                },
+                new Control
+                {
+                    IsRequired = false, Label = "Did you go to the fashion show", Type = ControlType.DropDownList, Name = "Show",
+                    DefaultValue = "Please choose\r\nYes\r\nNo"
                 }
             };
 
