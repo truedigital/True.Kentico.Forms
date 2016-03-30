@@ -57,6 +57,16 @@ namespace True.Kentico.Forms.Html.Extensions
                         ));
                 }
 
+                if (control.Type == ControlType.CheckBox)
+                {
+                    result.AppendLine(string.Concat(
+                        "<div class=\"form-row\">",
+                        /*model.LabelFor(control).ToHtmlString(),*/
+                        model.CheckboxFor(control).ToHtmlString(),
+                        "</div>"
+                        ));
+                }
+
                 // todo other types
                 // todo this should use strategy-factory
             }

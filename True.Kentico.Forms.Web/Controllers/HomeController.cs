@@ -72,6 +72,10 @@ namespace True.Kentico.Forms.Web.Controllers
                 {
                     IsRequired = false, Label = "Did you go to the fashion show", Type = ControlType.DropDownList, Name = "Show",
                     DefaultValue = "Please choose\r\nYes\r\nNo"
+                },
+                new Control
+                {
+                    IsRequired = false, Label = "Opt in", Type = ControlType.CheckBox, Name = "Optin"
                 }
             };
 
