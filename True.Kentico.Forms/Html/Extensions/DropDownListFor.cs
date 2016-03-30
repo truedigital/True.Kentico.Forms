@@ -14,11 +14,9 @@ namespace True.Kentico.Forms.Html.Extensions
         public static IHtmlString DropDownListFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control) where TControl : IControl
         {
             var id = control.Name;
-
-            //var dispAttr = GetAttribute<DisplayAttribute>(item);
+            
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
-
-            //var reqAttr = GetAttribute<RequiredAttribute>(item);
+            
             //var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
 
             var div = new MultiLevelTag("div");
