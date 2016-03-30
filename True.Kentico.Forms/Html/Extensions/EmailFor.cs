@@ -41,7 +41,7 @@ namespace True.Kentico.Forms.Html.Extensions
 
             input.Attributes.Add("data-msg-email", $"{displayName} is invalid");
 
-            input.Attributes.Add("data-msg-equalto", $"Does not match");
+            input.Attributes.Add("data-msg-equalto", "Does not match");
 
             div.Add(input);
 
