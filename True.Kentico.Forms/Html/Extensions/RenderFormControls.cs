@@ -23,14 +23,18 @@ namespace True.Kentico.Forms.Html.Extensions
             return MvcHtmlString.Create(result.ToString());
         }
 
-        public static IHtmlString RenderFormControls<TModel, TProperty>(this KenticoForm<TModel> model, TProperty expression) where TProperty : IList<IControl>
+        public static IHtmlString RenderFormControls<TModel, TControls>(this KenticoForm<TModel> model, TControls controls) where TControls : IList<IControl>
         {
             var result = new StringBuilder();
-            
-            foreach (var control in expression)
+
+            foreach (var control in controls)
             {
-                // this should render its control type
-                result.AppendLine($"<input type=\"email\" value=\"{control.Label}\" />");
+                if (control.Type == ControlType.Email)
+                    result.AppendLine(model.EmailFor(control).ToHtmlString());
+                if (control.Type == ControlType.TextBox)
+                    result.AppendLine(model.TextBoxFor(control).ToHtmlString());
+
+                // todo other types ... also, this should use strategy-factory
             }
 
             return MvcHtmlString.Create(result.ToString());
