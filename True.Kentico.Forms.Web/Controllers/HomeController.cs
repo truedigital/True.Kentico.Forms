@@ -102,5 +102,11 @@ namespace True.Kentico.Forms.Web.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult FormResult(IForm form)
+        {
+            return new EmptyResult();
+        }
     }
 }

@@ -8,14 +8,14 @@
     var KenticoForm = new KenticoForm<Form>(Model);
 }
 
-@KenticoForm.BeginForm()
+@KenticoForm.BeginForm("/home/formresult")
 <div id="form-result">
     <input type="hidden" name="form-name" value="@Model.Name" />
     <input type="hidden" name="submit-text" value="@Model.SubmitText" />
 
     @KenticoForm.RenderFormControls(Model.Controls)
     
-    @KenticoForm.SubmitButton("Submit")
+    @KenticoForm.SubmitButton(Model.SubmitText)
 
 </div>
 @KenticoForm.EndForm()

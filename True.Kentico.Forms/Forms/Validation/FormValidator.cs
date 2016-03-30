@@ -19,7 +19,7 @@ namespace True.Kentico.Forms.Forms.Validation
 
             foreach (var control in form.Controls)
             {
-                var isValid = control.Validate();
+                var isValid = control.IsValid();
 
                 if (isValid == false)
                 {

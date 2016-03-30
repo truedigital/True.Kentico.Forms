@@ -14,9 +14,7 @@ namespace True.Kentico.Forms.Forms.FormParts
 
         bool HasMultipleDefaultValues { get; set; }
         IEnumerable<string> DefaultValues { get; }
-
-        string ValidationKeys { get; }
-
-        bool Validate();
+        
+        bool IsValid();
     }
 }

@@ -21,28 +21,11 @@ namespace True.Kentico.Forms.Forms.FormParts
 
         public string DefaultValue { get; set; }
         public bool HasMultipleDefaultValues { get; set; }
-        public IEnumerable<string> DefaultValues => DefaultValue == null ? Enumerable.Empty<string>() : DefaultValue.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries); 
-
-        public string ValidationKeys
-        {
-            get
-            {
-                if (Validation == null)
-                    return null;
-
-                var data = Validation
-                    .Select(s => s.HasValue
-                        ? string.Format("data-validation-{0}-error=\"{1}\" data-validation-{0}-value=\"{2}\"", s.ValidationRule, s.ValidationErrorMessage, s.ValidationValue)
-                        : string.Format("data-validation-{0}-error=\"{1}\"", s.ValidationRule, s.ValidationErrorMessage));
-
-                return string.Join(" ", data);
-
-            }
-        }
+        public IEnumerable<string> DefaultValues => DefaultValue?.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries) ?? Enumerable.Empty<string>();
         
-        public bool Validate()
+        public bool IsValid()
         {
-            if (string.IsNullOrWhiteSpace(SubmittedValue))
+            if (IsRequired && string.IsNullOrWhiteSpace(SubmittedValue))
                 return false;
 
             var isValid = true;
