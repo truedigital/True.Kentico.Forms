@@ -15,8 +15,8 @@ namespace True.Kentico.Forms.Html.Extensions
         public static IHtmlString EmailFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control) where TControl : IControl
         {
             var id = control.Name;
-            var displayName = control.Label;
-            
+            var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
+
             // todo var helpTextAttr = "Something";
             // todo var equalTo = GetAttribute<CompareAttribute>(item);
 

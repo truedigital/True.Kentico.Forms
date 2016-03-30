@@ -17,7 +17,6 @@ namespace True.Kentico.Forms.Html.Extensions
 
             foreach (var control in controls)
             {
-                // todo make this nicer
                 if (control.Type == ControlType.Email)
                 {
                     result.AppendLine(string.Concat(
@@ -47,7 +46,19 @@ namespace True.Kentico.Forms.Html.Extensions
                         "</div>"
                         ));
                 }
-                // todo other types ... also, this should use strategy-factory
+
+                if (control.Type == ControlType.DropDownList)
+                {
+                    result.AppendLine(string.Concat(
+                        "<div class=\"form-row\">",
+                        model.LabelFor(control).ToHtmlString(),
+                        model.DropDownListFor(control).ToHtmlString(),
+                        "</div>"
+                        ));
+                }
+
+                // todo other types
+                // todo this should use strategy-factory
             }
 
             return MvcHtmlString.Create(result.ToString());

@@ -19,7 +19,7 @@ namespace True.Kentico.Forms.Html.Extensions
             var div = new MultiLevelTag("div");
             div.AddCssClass("form-inner");
 
-            var items = /*(List<KeyValuePair<int, string>>)GetValue(*/control.DefaultValues/*, html.Model)*/;
+            var items = control.DefaultValues;
 
             var count = 1;
             foreach (var innerItem in items)

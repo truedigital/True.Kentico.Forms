@@ -16,7 +16,6 @@ namespace True.Kentico.Forms.Html.Extensions
             var tb = new MultiLevelTag("label") { InnerHtml = $"{control.Label}:" };
             tb.Attributes.Add("for", id);
             tb.Attributes.Add("class", $"form-label{required}");
-
             return MvcHtmlString.Create(tb.ToString());
         }
 

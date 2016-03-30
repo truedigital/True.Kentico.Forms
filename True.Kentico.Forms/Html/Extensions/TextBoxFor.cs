@@ -11,13 +11,13 @@ namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
-        public static IHtmlString TextBoxFor<TModel, TProperty>(this KenticoForm<TModel> html, TProperty property) where TProperty : IControl
+        public static IHtmlString TextBoxFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control) where TControl : IControl
         {
             //var item = (MemberExpression)expression.Body;
-            var id = property.Name;
+            var id = control.Name;
 
             // var dispAttr = GetAttribute<DisplayAttribute>(item);
-            var displayName = property.Label;
+            var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
 
             // var reqAttr = property.IsRequired;
             // todo var minLengthAttr = property.Validation.Something();
@@ -36,7 +36,7 @@ namespace True.Kentico.Forms.Html.Extensions
             // todo if (minLengthAttr != null)
             //    input.Attributes.Add("minlength", minLengthAttr.Length.ToString());
 
-            if (property.IsRequired)
+            if (control.IsRequired)
             {
                 input.Attributes.Add("required", null);
                 input.Attributes.Add("data-msg-required", $"{displayName} is required");
