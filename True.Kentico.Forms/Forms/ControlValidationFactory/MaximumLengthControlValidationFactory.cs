@@ -14,7 +14,7 @@ namespace True.Kentico.Forms.Forms.ControlValidationFactory
             {
                 HasValue = true,
                 ValidationValue = rule.Rule.Properties.T,
-                ValidationRule = "maximum-length",
+                ValidationRule = "maxlength",
                 ValidationErrorMessage = string.IsNullOrEmpty(info.ErrorMessage) ? "Length is greater than maximum" : info.ErrorMessage
             };
         }

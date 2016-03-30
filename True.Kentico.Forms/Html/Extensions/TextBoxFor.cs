@@ -39,6 +39,7 @@ namespace True.Kentico.Forms.Html.Extensions
 
             foreach (var validation in control.Validation)
             {
+                input.Attributes.Add($"data-rule-{validation.ValidationRule}", validation.ValidationValue);
                 input.Attributes.Add($"data-msg-{validation.ValidationRule}", validation.ValidationErrorMessage);
             }
 

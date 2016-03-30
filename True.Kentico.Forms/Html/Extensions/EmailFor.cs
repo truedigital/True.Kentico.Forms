@@ -27,12 +27,7 @@ namespace True.Kentico.Forms.Html.Extensions
             input.Attributes.Add("id", id);
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "email");
-
-            /* todo if (equalTo != null)
-            {
-                input.Attributes.Add("equalTo", $"#{equalTo.OtherProperty}");
-            }*/
-
+            
             if (control.IsRequired)
             {
                 input.Attributes.Add("required", null);
@@ -41,11 +36,10 @@ namespace True.Kentico.Forms.Html.Extensions
 
             foreach (var validation in control.Validation)
             {
+                input.Attributes.Add($"data-rule-{validation.ValidationRule}", validation.ValidationValue);
                 input.Attributes.Add($"data-msg-{validation.ValidationRule}", validation.ValidationErrorMessage);
             }
-
-            // input.Attributes.Add("data-msg-equalto", "Does not match");
-
+            
             div.Add(input);
 
             /* todo help text if (helpTextAttr != null)

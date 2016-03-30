@@ -49,18 +49,27 @@ namespace True.Kentico.Forms.Web.Controllers
             {
                 new Control
                 {
-                    IsRequired = true, Label = "First name", Type = ControlType.TextBox, Name = "FirstName"
+                    IsRequired = true, Label = "First name", Type = ControlType.TextBox, Name = "FirstName",
+                    Validation = new List<IControlValidation>
+                    {
+                        new ControlValidation { HasValue = true, ValidationRule = "minlength", ValidationValue = "3", ValidationErrorMessage = "too short"},
+                        new ControlValidation { HasValue = true, ValidationRule = "maxlength", ValidationValue = "5", ValidationErrorMessage = "too long"}
+                    }
                 },
                 new Control
                 {
-                    IsRequired = true, Label = "Surname", Type = ControlType.TextBox, Name = "Surname"
+                    IsRequired = true, Label = "Surname", Type = ControlType.TextBox, Name = "Surname",
+                    Validation = new List<IControlValidation>
+                    {
+                        new ControlValidation { HasValue = true, ValidationRule = "maxlength", ValidationValue = "9", ValidationErrorMessage = "too long"}
+                    }
                 },
                 new Control
                 {
                     IsRequired = true, Label = "Email address", Type = ControlType.Email, Name = "EmailAddress",
                     Validation = new List<IControlValidation>
                     {
-                        new ControlValidation { HasValue = true, ValidationType = ValidationType.Email, ValidationRule = "email", ValidationErrorMessage = "Please put a valid email address"}
+                        new ControlValidation { HasValue = true, ValidationRule = "email", ValidationErrorMessage = "not valid email"}
                     }
                 },
                 new Control

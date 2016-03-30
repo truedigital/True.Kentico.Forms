@@ -14,7 +14,7 @@ namespace True.Kentico.Forms.Forms.ControlValidationFactory
             {
                 HasValue = true,
                 ValidationValue = rule.Rule.Properties.T,
-                ValidationRule = "minimum-length",
+                ValidationRule = "minlength",
                 ValidationErrorMessage = string.IsNullOrEmpty(info.ErrorMessage) ? "Length is less than minimum" : info.ErrorMessage
             };
         }
