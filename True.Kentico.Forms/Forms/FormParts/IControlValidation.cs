@@ -4,7 +4,6 @@ namespace True.Kentico.Forms.Forms.FormParts
 {
     public interface IControlValidation
     {
-        ValidationType ValidationType { get; set; }
         string ValidationRule { get; set; }
         string ValidationErrorMessage { get; set; }
         bool HasValue { get; set; }
