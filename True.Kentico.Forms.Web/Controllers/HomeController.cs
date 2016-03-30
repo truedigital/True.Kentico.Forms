@@ -65,8 +65,13 @@ namespace True.Kentico.Forms.Web.Controllers
                 },
                 new Control
                 {
-                    IsRequired = false, Label = "How often do you shop for fashion items online", Type = ControlType.MultipleChoice, Name = "Shop",
+                    IsRequired = false, Label = "How often do you shop for fashion items online", Type = ControlType.RadioButton, Name = "Shop",
                     DefaultValue = "Daily\r\nWeekly\r\nFornightly\r\nMonthly"
+                },
+                new Control
+                {
+                    IsRequired = false, Label = "Where have you seen things", Type = ControlType.MultipleChoice, Name = "Where",
+                    DefaultValue = "Buses\r\nPosters\r\nFacebook\r\nHeart Radio"
                 },
                 new Control
                 {

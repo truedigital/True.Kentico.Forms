@@ -57,11 +57,21 @@ namespace True.Kentico.Forms.Html.Extensions
                         ));
                 }
 
+                if (control.Type == ControlType.RadioButton)
+                {
+                    result.AppendLine(string.Concat(
+                        "<div class=\"form-row\">",
+                        model.LabelFor(control).ToHtmlString(),
+                        model.RadioButtonFor(control).ToHtmlString(),
+                        "</div>"
+                        ));
+                }
+
                 if (control.Type == ControlType.CheckBox)
                 {
                     result.AppendLine(string.Concat(
                         "<div class=\"form-row\">",
-                        /*model.LabelFor(control).ToHtmlString(),*/
+                        model.LabelFor(control).ToHtmlString(),
                         model.CheckboxFor(control).ToHtmlString(),
                         "</div>"
                         ));
