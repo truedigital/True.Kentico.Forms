@@ -17,19 +17,26 @@ namespace True.Kentico.Forms.Html.Extensions
 
             foreach (var control in controls)
             {
+                // todo make this nicer
                 if (control.Type == ControlType.Email)
                 {
                     result.AppendLine(string.Concat(
                         "<div class=\"form-row\">",
-                        model.LabelFor(control).ToHtmlString(), 
+                        model.LabelFor(control).ToHtmlString(),
                         model.EmailFor(control).ToHtmlString(),
                         "</div>"
                         ));
                 }
 
                 if (control.Type == ControlType.TextBox)
-                    result.AppendLine(model.TextBoxFor(control).ToHtmlString());
-
+                {
+                    result.AppendLine(string.Concat(
+                        "<div class=\"form-row\">",
+                        model.LabelFor(control).ToHtmlString(),
+                        model.TextBoxFor(control).ToHtmlString(),
+                        "</div>"
+                        ));
+                }
                 // todo other types ... also, this should use strategy-factory
             }
 

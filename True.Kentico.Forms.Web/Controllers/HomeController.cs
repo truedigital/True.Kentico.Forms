@@ -48,15 +48,19 @@ namespace True.Kentico.Forms.Web.Controllers
             {
                 new Control
                 {
-                    IsRequired = true, Label = "Enter your email", Type = ControlType.Email, Name = "Email address",
+                    IsRequired = true, Label = "First name", Type = ControlType.TextBox, Name = "FirstName"
+                },
+                new Control
+                {
+                    IsRequired = true, Label = "Surname", Type = ControlType.TextBox, Name = "Surname"
+                },
+                new Control
+                {
+                    IsRequired = true, Label = "Email address", Type = ControlType.Email, Name = "EmailAddress",
                     Validation = new List<IControlValidation>
                     {
                         new ControlValidation { HasValue = true, ValidationType = ValidationType.Email, ValidationRule = "email", ValidationErrorMessage = "Please put a valid email address"}
                     }
-                },
-                new Control
-                {
-                    IsRequired = true, Label = "Enter some text", Type = ControlType.TextBox, Name = "Message"
                 }
             };
 
