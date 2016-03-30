@@ -30,16 +30,16 @@ namespace True.Kentico.Forms.Html.Extensions
             input.Attributes.Add("id", id);
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "text");
-
-            // KenticoFormValidationFactory.Create(property.ValidationKeys);
-
-            // todo if (minLengthAttr != null)
-            //    input.Attributes.Add("minlength", minLengthAttr.Length.ToString());
-
+            
             if (control.IsRequired)
             {
                 input.Attributes.Add("required", null);
                 input.Attributes.Add("data-msg-required", $"{displayName} is required");
+            }
+
+            foreach (var validation in control.Validation)
+            {
+                input.Attributes.Add($"data-msg-{validation.ValidationRule}", validation.ValidationErrorMessage);
             }
 
             div.Add(input);
