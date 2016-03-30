@@ -11,18 +11,6 @@ namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
-        public static IHtmlString RenderFormControls<TModel>(this KenticoForm<TModel> model) where TModel : IForm
-        {
-            var result = new StringBuilder();
-
-            foreach (var control in model.Model.Controls)
-            {
-                result.AppendLine($"<input type=\"email\" value=\"{control.Label}\" />");
-            }
-
-            return MvcHtmlString.Create(result.ToString());
-        }
-
         public static IHtmlString RenderFormControls<TModel, TControls>(this KenticoForm<TModel> model, TControls controls) where TControls : IList<IControl>
         {
             var result = new StringBuilder();
@@ -30,7 +18,15 @@ namespace True.Kentico.Forms.Html.Extensions
             foreach (var control in controls)
             {
                 if (control.Type == ControlType.Email)
-                    result.AppendLine(model.EmailFor(control).ToHtmlString());
+                {
+                    result.AppendLine(string.Concat(
+                        "<div class=\"form-row\">",
+                        model.LabelFor(control).ToHtmlString(), 
+                        model.EmailFor(control).ToHtmlString(),
+                        "</div>"
+                        ));
+                }
+
                 if (control.Type == ControlType.TextBox)
                     result.AppendLine(model.TextBoxFor(control).ToHtmlString());
 
