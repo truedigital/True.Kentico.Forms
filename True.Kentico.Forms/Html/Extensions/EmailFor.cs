@@ -39,9 +39,12 @@ namespace True.Kentico.Forms.Html.Extensions
                 input.Attributes.Add("data-msg-required", $"{displayName} is required");
             }
 
-            input.Attributes.Add("data-msg-email", $"{displayName} is invalid");
+            foreach (var validation in control.Validation)
+            {
+                input.Attributes.Add($"data-msg-{validation.ValidationRule}", validation.ValidationErrorMessage);
+            }
 
-            input.Attributes.Add("data-msg-equalto", "Does not match");
+            // input.Attributes.Add("data-msg-equalto", "Does not match");
 
             div.Add(input);
 
