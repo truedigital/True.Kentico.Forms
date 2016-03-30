@@ -122,6 +122,7 @@
     <Compile Include="Forms\FormParts\INotification.cs" />
     <Compile Include="Forms\FormParts\Notification.cs" />
     <Compile Include="Forms\IFormFactory.cs" />
+    <Compile Include="Html\ExtraAttributes\AddValidation.cs" />
     <Compile Include="Html\HtmlControlFactory\HtmlControlFactory.cs" />
     <Compile Include="Html\Extensions\BeginForm.cs" />
     <Compile Include="Html\Extensions\CalendarFor.cs" />

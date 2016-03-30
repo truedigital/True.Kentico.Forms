@@ -18,8 +18,7 @@ namespace True.Kentico.Forms.Html.Extensions
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
 
             // todo var helpTextAttr = "Something";
-            // todo var equalTo = GetAttribute<CompareAttribute>(item);
-
+            
             var div = new MultiLevelTag("div");
             div.AddCssClass("form-inner");
 
@@ -27,7 +26,7 @@ namespace True.Kentico.Forms.Html.Extensions
             input.Attributes.Add("id", id);
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "email");
-            
+
             if (control.IsRequired)
             {
                 input.Attributes.Add("required", null);
