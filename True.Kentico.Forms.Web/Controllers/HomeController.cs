@@ -89,7 +89,8 @@ namespace True.Kentico.Forms.Web.Controllers
                 },
                 new Control
                 {
-                    IsRequired = false, Label = "Opt in", Type = ControlType.CheckBox, Name = "Optin"
+                    IsRequired = true, Label = "Opt in", Type = ControlType.RadioButton, Name = "Optin",
+                    DefaultValue = "Yes"
                 }
             };
 
