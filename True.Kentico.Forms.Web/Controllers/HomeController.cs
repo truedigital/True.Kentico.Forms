@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms;
+using True.Kentico.Forms.Forms.ControlValidationFactory;
 using True.Kentico.Forms.Forms.FormParts;
 using True.Kentico.Forms.Web.Models;
 
@@ -47,7 +48,11 @@ namespace True.Kentico.Forms.Web.Controllers
             {
                 new Control
                 {
-                    IsRequired = true,Label = "Enter your email",Type = ControlType.Email, Name = "Email address"
+                    IsRequired = true, Label = "Enter your email", Type = ControlType.Email, Name = "Email address",
+                    Validation = new List<IControlValidation>
+                    {
+                        new ControlValidation { HasValue = true, ValidationType = ValidationType.Email, ValidationRule = "email", ValidationErrorMessage = "Please put a valid email address"}
+                    }
                 },
                 new Control
                 {
