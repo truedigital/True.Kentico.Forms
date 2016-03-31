@@ -16,6 +16,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         public IList<IControl> Controls { get; set; }
         public IAutoresponder Autoresponder { get; set; }
         public INotification Notification { get; set; }
+        public ISubmissionOptions SubmissionOptions { get; set; }
 
         public IControl Find(string name)
         {

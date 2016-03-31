@@ -33,13 +33,21 @@ namespace True.Kentico.Forms.Forms
                 Template = info.FormEmailTemplate,
                 AttachUploadedDocuments = info.FormEmailAttachUploadedDocs
             };
-            
+
+            var submissionOptions = new SubmissionOptions
+            {
+                DisplayText = info.FormDisplayText,
+                ClearAfterSave = info.FormClearAfterSave,
+                RedirectUrl = info.FormRedirectToUrl
+            };
+
             var form = new Form
             {
                 Name = info.FormName,
                 SubmitText = !string.IsNullOrEmpty(info.FormSubmitButtonText) ? info.FormSubmitButtonText : "Save",
                 Autoresponder = autoresponder,
-                Notification = notification
+                Notification = notification,
+                SubmissionOptions = submissionOptions
             };
 
             foreach (var controlInfo in info.Form.GetFields(true, false))
