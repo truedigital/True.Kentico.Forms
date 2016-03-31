@@ -85,7 +85,7 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = false, Label = "Did you go to the fashion show", Type = ControlType.DropDownList, Name = "Show",
-                    DefaultValue = "###EMPTY###1\r\nYes\r\nNo"
+                    DefaultValue = " \r\nYes\r\nNo"
                 },
                 new Control
                 {
@@ -97,6 +97,7 @@ namespace True.Kentico.Forms.Web.Controllers
             var model = new Form
             {
                 Name = "my form",
+                SubmitText = "Submit",
                 Controls = controls
             };
 
