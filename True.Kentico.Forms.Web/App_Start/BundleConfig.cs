@@ -15,7 +15,8 @@ namespace True.Kentico.Forms.Web
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
 									"~/Assets/js/vendor/modernizr-*"));
 
-			bundles.Add(new ScriptBundle("~/bundles/js").Include("~/Assets/js/partials/*.js"));
+			bundles.Add(new ScriptBundle("~/bundles/js").Include("~/Assets/js/partials/_form-submit.js",
+                "~/Assets/js/partials/_validation.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css").Include("~/Assets/css/style.css"));
 		}

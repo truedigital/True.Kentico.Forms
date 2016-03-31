@@ -4,15 +4,15 @@
 
 @model Form
 @{
-    ViewBag.Title = "Index";
     var KenticoForm = new KenticoForm<Form>(Model);
 }
 
-@KenticoForm.BeginForm("formresult", "home")
+@KenticoForm.BeginForm("formresult", "home", Model.SubmissionOptions)
 
 <div id="form-result">
-    <input type="hidden" name="form-name" value="@Model.Name" />
-    <input type="hidden" name="submit-text" value="@Model.SubmitText" />
+
+    @Html.HiddenFor(m => m.Name)
+    @Html.HiddenFor(m => m.SubmitText)
 
     @KenticoForm.RenderFormControls(Model.Controls)
 

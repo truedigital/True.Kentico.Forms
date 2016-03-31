@@ -9,6 +9,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         IList<IControl> Controls { get; set; }
         IAutoresponder Autoresponder { get; set; }
         INotification Notification { get; set; }
+        ISubmissionOptions SubmissionOptions { get; set; }
 
         IControl Find(string name);
     }

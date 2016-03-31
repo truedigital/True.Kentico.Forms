@@ -43,7 +43,7 @@ var validation = (function ($) {
             },
             submitHandler: function(form) {
                 $(form).find('[data-submit]').attr('disabled', true).addClass('is-disabled');
-                form.submit();
+                formSubmit.submission(event, $(form));
             }
         });
     }
@@ -54,14 +54,14 @@ var validation = (function ($) {
     function insertFormError(validator, error, element){
 
         // Insert error message after the last radio button in a group
-        if (element.is('input:radio')){
-            var $lastOption = $(element).parent().siblings('.form-radio').addBack().filter(':last')
+        if (element.is('input:radio')) {
+            var $lastOption = $(element).parent().siblings('.form-radio').addBack().filter(':last');
             error.insertAfter($lastOption);
         }
 
         // Insert error message after the last checkbox button in a group
-        else if (element.is('input:checkbox')){
-            var $lastOption = $(element).parent().siblings('.form-checkbox').addBack().filter(':last')
+        else if (element.is('input:checkbox')) {
+            var $lastOption = $(element).parent().siblings('.form-checkbox').addBack().filter(':last');
             error.insertAfter($lastOption);
         }
 

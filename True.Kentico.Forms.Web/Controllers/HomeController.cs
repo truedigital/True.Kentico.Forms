@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms;
 using True.Kentico.Forms.Forms.ControlValidationFactory;
@@ -94,10 +96,16 @@ namespace True.Kentico.Forms.Web.Controllers
                 }
             };
 
+            var submissionOptions = new SubmissionOptions
+            {
+                DisplayText = "thanks for submitting"
+            };
+
             var model = new Form
             {
                 Name = "my form",
                 SubmitText = "Submit",
+                SubmissionOptions = submissionOptions,
                 Controls = controls
             };
 
