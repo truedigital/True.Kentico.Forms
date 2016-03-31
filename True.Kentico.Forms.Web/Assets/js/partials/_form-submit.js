@@ -2,6 +2,10 @@ var formSubmit = (function ($) {
 
     function submission(evt, $form) {
 
+        var url = $(evt.currentTarget).data('submitRedirect');
+        var clear = $(evt.currentTarget).data('submitClear');
+        var text = $(evt.currentTarget).data('submitText');
+        
         evt.preventDefault();
 
         $.ajax({
@@ -9,10 +13,7 @@ var formSubmit = (function ($) {
             type: this.method,
             data: $form.serialize(),
             success: function (response) {
-                var url = $(evt.currentTarget).data('submitRedirect');
-                var clear = $(evt.currentTarget).data('submitClear');
-                var text = $(evt.currentTarget).data('submitText');
-
+        
                 if (typeof url !== 'undefined') window.location.assign(url);
                 if (typeof text !== 'undefined') $form.html(text);
                 if (typeof clear !== 'undefined') $form.trigger('reset');
@@ -20,7 +21,7 @@ var formSubmit = (function ($) {
                 return false;
             },
             error: function () {
-                $form.find('[data-form-message]').append("Sorry, it didn't work");
+                $('[data-submit-message]').text("Sorry, it didn't work");
             }
         });
     }
