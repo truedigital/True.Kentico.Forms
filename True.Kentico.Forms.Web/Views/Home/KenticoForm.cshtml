@@ -8,7 +8,7 @@
     var KenticoForm = new KenticoForm<Form>(Model);
 }
 
-@KenticoForm.BeginForm("/home/formresult")
+@KenticoForm.BeginForm("formresult", "home")
 
 <div id="form-result">
     <input type="hidden" name="form-name" value="@Model.Name" />
