@@ -8,12 +8,12 @@ namespace True.Kentico.Forms.Forms.FormParts
         public string ValidationErrorMessage { get; set; }
         public bool HasValue { get; set; }
         public string ValidationValue { get; set; }
-
-
+        
         public bool Validate(string value)
         {
-            //validate somehow, maybe create a factory that can look up how to validate a given
-            //ControlValidation object based on the ValidationRule type, using the ValidationValue
+            //todo validate somehow
+            //maybe create a factory that can look up how to validate a given ControlValidation 
+            //object based on the ValidationRule type, using the ValidationValue
             //and value as arguments to the validation type returned from the factory?
 
             //alternatively this method could be made abstract/virtual and we could make each

@@ -19,14 +19,10 @@ namespace True.Kentico.Forms.Forms.Validation
 
             foreach (var control in form.Controls)
             {
-                var isValid = control.IsValid();
-
-                if (isValid == false)
-                {
-                    //do something appropriate here to get the error messages
-                    var errors = control.Validation.Select(v => v.ValidationErrorMessage).Aggregate((s0, s1) => s0 + ", " + s1);
-                    Errors.Add(control.SubmittedValue, errors);
-                }
+                if (control.IsValid()) continue;
+                //do something appropriate here to get the error messages
+                var errors = control.Validation.Select(v => v.ValidationErrorMessage).Aggregate((s0, s1) => s0 + ", " + s1);
+                Errors.Add(control.SubmittedValue, errors);
             }
 
             return !Errors.Any();
