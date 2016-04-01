@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace True.Kentico.Forms.Html
 {
-	internal class MultiLevelTag: TagBuilder
+	public class MultiLevelTag: TagBuilder
 	{
 		public IEnumerable<MultiLevelTag> InnerTags => new ReadOnlyCollection<MultiLevelTag>(_innerTags);
 

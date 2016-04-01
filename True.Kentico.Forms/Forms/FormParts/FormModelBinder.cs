@@ -10,7 +10,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         {
             var request = controllerContext.HttpContext.Request;
 
-            var formName = request.Form.Get("form-name");
+            var formName = request.Form.Get("formname");
             var formInfo = BizFormInfoProvider.GetBizFormInfo(formName, SiteContext.CurrentSiteID);
 
             var formFactory = new FormFactory(new ControlFactory.ControlFactory());

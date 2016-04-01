@@ -12,6 +12,7 @@ namespace True.Kentico.Forms.Html.Extensions
     public static partial class KenticoFormHelperExtensions
     {
         public static IHtmlString RenderFormControls<TModel, TControls>(this KenticoForm<TModel> model, TControls controls) where TControls : IList<IControl>
+            where TModel : IForm
         {
             var result = new StringBuilder();
 
@@ -73,6 +74,16 @@ namespace True.Kentico.Forms.Html.Extensions
                         "<div class=\"form-row\">",
                         model.LabelFor(control).ToHtmlString(),
                         model.CheckboxFor(control).ToHtmlString(),
+                        "</div>"
+                        ));
+                }
+
+                if (control.Type == ControlType.TextArea)
+                {
+                    result.AppendLine(string.Concat(
+                        "<div class=\"form-row\">",
+                        model.LabelFor(control).ToHtmlString(),
+                        model.TextAreaFor(control).ToHtmlString(),
                         "</div>"
                         ));
                 }

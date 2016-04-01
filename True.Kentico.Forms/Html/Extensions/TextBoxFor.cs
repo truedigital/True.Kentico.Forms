@@ -1,55 +1,25 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms.FormParts;
-using True.Kentico.Forms.Html.ExtraAttributes;
+using True.Kentico.Forms.Html.Renderers;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
-        public static IHtmlString TextBoxFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control) where TControl : IControl
+        public static IHtmlString TextBoxFor<TModel>(this KenticoForm<TModel> html, IControl control)
+            where TModel : IForm
         {
-            var id = control.Name;
+            return TextBoxFor<TModel>(html, control, new DefaultTextBoxForControlRenderer());
+        }
 
-            var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
+        public static IHtmlString TextBoxFor<TModel>(this KenticoForm<TModel> html, IControl control, IControlRenderer customRenderer)
+            where TModel : IForm
+        {
+              var renderedControl = customRenderer.Render(control);
 
-            // todo var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
+            return MvcHtmlString.Create(renderedControl.ToString());
 
-            var div = new MultiLevelTag("div");
-            div.AddCssClass("form-inner");
-
-            var input = new MultiLevelTag("input");
-            input.Attributes.Add("id", id);
-            input.Attributes.Add("name", id);
-            input.Attributes.Add("type", "text");
-
-            if (control.IsRequired)
-            {
-                input.Attributes.Add("required", null);
-                input.Attributes.Add("data-msg-required", $"{displayName} is required");
-            }
-
-            foreach (var validation in control.Validation)
-            {
-                input.Attributes.Add($"data-rule-{validation.ValidationRule}", validation.ValidationValue);
-                input.Attributes.Add($"data-msg-{validation.ValidationRule}", validation.ValidationErrorMessage);
-            }
-
-            div.Add(input);
-
-            // todo if (helpTextAttr != null)
-            //{
-            //    var helpTextDiv = new MultiLevelTag("div");
-            //    helpTextDiv.AddCssClass("form-help");
-            //    helpTextDiv.InnerHtml = helpTextAttr.HelpText;
-            //    div.Add(helpTextDiv);
-            //}
-
-            return MvcHtmlString.Create(div.ToString());
         }
     }
 }

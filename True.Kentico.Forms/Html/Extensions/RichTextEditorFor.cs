@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
+using True.Kentico.Forms.Forms.FormParts;
 using True.Kentico.Forms.Html.ExtraAttributes;
 
 namespace True.Kentico.Forms.Html.Extensions
@@ -10,7 +11,8 @@ namespace True.Kentico.Forms.Html.Extensions
 	public static partial class KenticoFormHelperExtensions
 	{
 		public static IHtmlString RichTextEditorFor<TModel, TProperty>(this KenticoForm<TModel> html, Expression<Func<TModel, TProperty>> expression)
-		{
+            where TModel : IForm
+        {
 			var item = (MemberExpression)expression.Body;
 			var id = item.Member.Name;
 

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using CMS.Helpers;
 using True.Kentico.Forms.Forms.FormParts;
 using True.Kentico.Forms.Html.ExtraAttributes;
+using True.Kentico.Forms.Html.Renderers;
 using CompareAttribute = System.ComponentModel.DataAnnotations.CompareAttribute;
 
 namespace True.Kentico.Forms.Html.Extensions
@@ -13,43 +14,17 @@ namespace True.Kentico.Forms.Html.Extensions
     public static partial class KenticoFormHelperExtensions
     {
         public static IHtmlString EmailFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control) where TControl : IControl
+            where TModel : IForm
         {
-            var id = control.Name;
-            var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
+            return EmailFor<TModel, TControl>(html, control, new DefaultEmailControlRenderer());
+        }
 
-            // todo var helpTextAttr = "Something";
-            
-            var div = new MultiLevelTag("div");
-            div.AddCssClass("form-inner");
+        public static IHtmlString EmailFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control, IControlRenderer renderer) where TControl : IControl
+            where TModel : IForm
+        {
+            var renderedControl = renderer.Render(control);
 
-            var input = new MultiLevelTag("input");
-            input.Attributes.Add("id", id);
-            input.Attributes.Add("name", id);
-            input.Attributes.Add("type", "email");
-
-            if (control.IsRequired)
-            {
-                input.Attributes.Add("required", null);
-                input.Attributes.Add("data-msg-required", $"{displayName} is required");
-            }
-
-            foreach (var validation in control.Validation)
-            {
-                input.Attributes.Add($"data-rule-{validation.ValidationRule}", validation.ValidationValue);
-                input.Attributes.Add($"data-msg-{validation.ValidationRule}", validation.ValidationErrorMessage);
-            }
-            
-            div.Add(input);
-
-            /* todo help text if (helpTextAttr != null)
-            {
-                var helpTextDiv = new MultiLevelTag("div");
-                helpTextDiv.AddCssClass("form-help");
-                helpTextDiv.InnerHtml = helpTextAttr.HelpText;
-                div.Add(helpTextDiv);
-            }*/
-
-            return MvcHtmlString.Create(div.ToString());
+            return MvcHtmlString.Create(renderedControl);
         }
     }
 }
