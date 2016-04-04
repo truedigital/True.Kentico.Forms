@@ -20,6 +20,8 @@ namespace True.Kentico.Forms.Forms.FormParts
         public string SubmittedValue { get; set; }
 
         public string DefaultValue { get; set; }
+        public string ExplanationText { get; set; }
+        public string Tooltip { get; set; }
         public bool HasMultipleDefaultValues { get; set; }
         public IEnumerable<string> DefaultValues => DefaultValue?.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries) ?? Enumerable.Empty<string>();
         

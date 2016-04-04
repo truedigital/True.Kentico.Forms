@@ -1,4 +1,5 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System;
+using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
@@ -33,13 +34,17 @@ namespace True.Kentico.Forms.Html.Renderers
 
             div.Add(input);
 
-            /* todo help text if (helpTextAttr != null)
+            if (!String.IsNullOrWhiteSpace(control.ExplanationText))
             {
                 var helpTextDiv = new MultiLevelTag("div");
                 helpTextDiv.AddCssClass("form-help");
-                helpTextDiv.InnerHtml = helpTextAttr.HelpText;
+                helpTextDiv.InnerHtml = control.ExplanationText;
                 div.Add(helpTextDiv);
-            }*/
+            }
+            if (!String.IsNullOrWhiteSpace(control.Tooltip))
+            {
+                input.Attributes.Add("title", control.Tooltip);
+            }
             return div.ToString();
         }
     }

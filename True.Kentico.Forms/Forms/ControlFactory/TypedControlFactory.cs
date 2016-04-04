@@ -25,7 +25,9 @@ namespace True.Kentico.Forms.Forms.ControlFactory
                 Name = info.Name,
                 Label = info.Caption,
                 IsRequired = !info.AllowEmpty,
-                DefaultValue = info.DefaultValue
+                DefaultValue = info.DefaultValue,
+                ExplanationText = info.GetPropertyValue(FormFieldPropertyEnum.ExplanationText),
+                Tooltip = info.GetPropertyValue(FormFieldPropertyEnum.FieldCaption)
             };
 
             foreach (var validationInfo in info.FieldMacroRules)

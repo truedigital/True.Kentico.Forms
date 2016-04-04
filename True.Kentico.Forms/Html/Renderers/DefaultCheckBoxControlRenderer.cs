@@ -1,4 +1,5 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System;
+using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
@@ -18,6 +19,11 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "checkbox");
 
+            if (control.DefaultValue == "True")
+            {
+                input.Attributes.Add("checked", "");
+            }
+
             if (control.IsRequired)
                 input.Attributes.Add("required", null);
 
@@ -35,14 +41,18 @@ namespace True.Kentico.Forms.Html.Renderers
 
             div.Add(input);
             div.Add(label);
-            
-            //if (helpTextAttr != null)
-            //{
-            //    var helpTextDiv = new MultiLevelTag("div");
-            //    helpTextDiv.AddCssClass("form-help");
-            //    helpTextDiv.InnerHtml = helpTextAttr.HelpText;
-            //    div.Add(helpTextDiv);
-            //}
+
+            if (!String.IsNullOrWhiteSpace(control.ExplanationText))
+            {
+                var helpTextDiv = new MultiLevelTag("div");
+                helpTextDiv.AddCssClass("form-help");
+                helpTextDiv.InnerHtml = control.ExplanationText;
+                div.Add(helpTextDiv);
+            }
+            if (!String.IsNullOrWhiteSpace(control.Tooltip))
+            {
+                input.Attributes.Add("title", control.Tooltip);
+            }
             return div.ToString();
         }
     }

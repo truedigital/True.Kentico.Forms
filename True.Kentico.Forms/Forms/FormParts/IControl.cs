@@ -11,6 +11,8 @@ namespace True.Kentico.Forms.Forms.FormParts
         bool IsRequired { get; set; }
         string SubmittedValue { get; set; }
         string DefaultValue { get; set; }
+        string ExplanationText { get; set; }
+        string Tooltip { get; set; }
 
         bool HasMultipleDefaultValues { get; set; }
         IEnumerable<string> DefaultValues { get; }

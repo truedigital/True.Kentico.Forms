@@ -24,11 +24,14 @@ namespace True.Kentico.Forms.Forms.ControlFactory
             {
                 Name = info.Name,
                 Label = info.Caption,
+
                 IsRequired = !info.AllowEmpty,
                 DefaultValue = info.Settings["Options"].ToString().Replace("##EMPTY##1;", " "), // to allow for an empty option
-                HasMultipleDefaultValues = true
-            };
-
+                HasMultipleDefaultValues = true,
+                ExplanationText = info.GetPropertyValue(FormFieldPropertyEnum.ExplanationText),
+                Tooltip= info.GetPropertyValue(FormFieldPropertyEnum.FieldCaption)
+        };
+            
             foreach (var validationInfo in info.FieldMacroRules)
             {
                 var validation = _validationFactory.Create(validationInfo);
