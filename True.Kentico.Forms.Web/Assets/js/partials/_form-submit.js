@@ -3,7 +3,7 @@ var formSubmit = (function ($) {
     function submission(evt, $form) {
 
         var url = $(evt.currentTarget).data('submitRedirect');
-        var clear = $(evt.currentTarget).data('submitClear');
+        var clear = $(evt.currentTarget).data('submitReset');
         var text = $(evt.currentTarget).data('submitText');
         
         evt.preventDefault();
