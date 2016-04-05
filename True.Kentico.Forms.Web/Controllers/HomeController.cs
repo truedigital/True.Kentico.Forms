@@ -77,7 +77,8 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = false, Label = "How often do you shop for fashion items online", Type = ControlType.RadioButton, Name = "Shop",
-                    DefaultValue = "Daily\r\nWeekly\r\nFornightly\r\nMonthly"
+                    DefaultValue = "Daily\r\nWeekly\r\nFornightly\r\nMonthly",
+                    DefaultValues = new Dictionary<string,bool> { {"Daily", false}, {"Weekly", false}, {"Monthly", false} }
                 },
                 new Control
                 {
