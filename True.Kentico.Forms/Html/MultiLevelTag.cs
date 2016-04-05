@@ -6,35 +6,35 @@ using System.Web.Mvc;
 
 namespace True.Kentico.Forms.Html
 {
-	public class MultiLevelTag: TagBuilder
-	{
-		public IEnumerable<MultiLevelTag> InnerTags => new ReadOnlyCollection<MultiLevelTag>(_innerTags);
-
-		private readonly IList<MultiLevelTag> _innerTags = new List<MultiLevelTag>();
-
-		public MultiLevelTag(string tagName) : base(tagName)
+    public class MultiLevelTag : TagBuilder
     {
-		}
+        public IEnumerable<MultiLevelTag> InnerTags => new ReadOnlyCollection<MultiLevelTag>(_innerTags);
 
-		public void Add(MultiLevelTag tag)
-		{
-			if (tag == null)
-				throw new ArgumentNullException(nameof(tag));
+        private readonly IList<MultiLevelTag> _innerTags = new List<MultiLevelTag>();
 
-			_innerTags.Add(tag);
-		}
+        public MultiLevelTag(string tagName) : base(tagName)
+        {
+        }
 
-		public override string ToString()
-		{
-			var sb = new StringBuilder();
+        public void Add(MultiLevelTag tag)
+        {
+            if (tag == null)
+                throw new ArgumentNullException(nameof(tag));
 
-			foreach (var tag in _innerTags)
-				sb.Append(tag);
+            _innerTags.Add(tag);
+        }
 
-			if (_innerTags.Count > 0)
-				InnerHtml = sb.ToString();
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
 
-			return base.ToString();
-		}
-	}
+            foreach (var tag in _innerTags)
+                sb.Append(tag);
+
+            if (_innerTags.Count > 0)
+                InnerHtml = sb.ToString();
+
+            return base.ToString();
+        }
+    }
 }

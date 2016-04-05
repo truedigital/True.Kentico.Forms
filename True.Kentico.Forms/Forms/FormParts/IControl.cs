@@ -15,8 +15,8 @@ namespace True.Kentico.Forms.Forms.FormParts
         string Tooltip { get; set; }
 
         bool HasMultipleDefaultValues { get; set; }
-        IEnumerable<string> DefaultValues { get; }
-        
+        IDictionary<string, bool> DefaultValues { get; set; }
+
         bool IsValid();
     }
 }

@@ -23,7 +23,11 @@ namespace True.Kentico.Forms.Html.Renderers
             var items = control.DefaultValues;
 
             foreach (var innerItem in items)
-                ddl.Add(new MultiLevelTag("option") { InnerHtml = innerItem });
+            {
+                var option = new MultiLevelTag("option") { InnerHtml = innerItem.Key };
+                if (innerItem.Value) option.Attributes.Add("selected", null);
+                ddl.Add(option);
+            }
 
             if (control.IsRequired)
             {

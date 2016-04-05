@@ -33,7 +33,7 @@ namespace True.Kentico.Forms.Html.Renderers
 
                 var label = new MultiLevelTag("label");
                 label.Attributes.Add("for", $"{id}_{count}");
-                label.SetInnerText(innerItem);
+                label.SetInnerText(innerItem.Key);
 
                 var checkboxDiv = new MultiLevelTag("div");
                 checkboxDiv.AddCssClass("form-checkbox");

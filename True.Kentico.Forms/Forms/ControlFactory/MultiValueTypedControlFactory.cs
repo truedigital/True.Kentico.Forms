@@ -1,4 +1,6 @@
-﻿using CMS.FormEngine;
+﻿using System;
+using System.Linq;
+using CMS.FormEngine;
 using True.Kentico.Forms.Forms.ControlValidationFactory;
 using True.Kentico.Forms.Forms.FormParts;
 
@@ -9,7 +11,7 @@ namespace True.Kentico.Forms.Forms.ControlFactory
         private readonly IControlValidationFactory _validationFactory;
 
         public MultiValueTypedControlFactory()
-            : this( new ControlValidationFactory.ControlValidationFactory())
+            : this(new ControlValidationFactory.ControlValidationFactory())
         {
         }
 
@@ -26,12 +28,18 @@ namespace True.Kentico.Forms.Forms.ControlFactory
                 Label = info.Caption,
 
                 IsRequired = !info.AllowEmpty,
-                DefaultValue = info.Settings["Options"].ToString().Replace("##EMPTY##1;", " "), // to allow for an empty option
                 HasMultipleDefaultValues = true,
                 ExplanationText = info.GetPropertyValue(FormFieldPropertyEnum.ExplanationText),
-                Tooltip= info.GetPropertyValue(FormFieldPropertyEnum.FieldCaption)
-        };
-            
+                Tooltip = info.GetPropertyValue(FormFieldPropertyEnum.FieldCaption)
+            };
+
+            control.DefaultValues = info.Settings["Options"].ToString().Replace("##EMPTY##1;", " ")
+                .Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)
+                .ToDictionary(item => item,
+                    item =>
+                        info.GetPropertyValue(FormFieldPropertyEnum.DefaultValue)
+                        .Equals(item.ToString(), StringComparison.OrdinalIgnoreCase));
+
             foreach (var validationInfo in info.FieldMacroRules)
             {
                 var validation = _validationFactory.Create(validationInfo);

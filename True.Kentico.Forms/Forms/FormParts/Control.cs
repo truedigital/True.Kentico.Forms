@@ -9,6 +9,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         public Control()
         {
             Validation = new List<IControlValidation>();
+            DefaultValues = new Dictionary<string, bool>();
         }
 
         public string Name { get; set; }
@@ -23,14 +24,16 @@ namespace True.Kentico.Forms.Forms.FormParts
         public string ExplanationText { get; set; }
         public string Tooltip { get; set; }
         public bool HasMultipleDefaultValues { get; set; }
-        public IEnumerable<string> DefaultValues => DefaultValue?.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries) ?? Enumerable.Empty<string>();
-        
+        // public IEnumerable<string> DefaultValues => DefaultValue?.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries) ?? Enumerable.Empty<string>();
+        public IDictionary<string, bool> DefaultValues { get; set; }
+
         public bool IsValid()
         {
             if (IsRequired && string.IsNullOrWhiteSpace(SubmittedValue))
                 return false;
 
             var isValid = true;
+
             foreach (var validation in Validation)
             {
                 isValid &= validation.Validate(SubmittedValue);

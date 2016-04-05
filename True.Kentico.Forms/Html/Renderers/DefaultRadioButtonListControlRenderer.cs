@@ -30,7 +30,7 @@ namespace True.Kentico.Forms.Html.Renderers
 
                 var label = new MultiLevelTag("label");
                 label.Attributes.Add("for", $"{id}_{count}");
-                label.SetInnerText(innerItem);
+                label.SetInnerText(innerItem.Key);
 
                 var radioDiv = new MultiLevelTag("div");
                 radioDiv.AddCssClass("form-radio");

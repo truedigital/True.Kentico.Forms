@@ -82,12 +82,14 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = false, Label = "Where have you seen things", Type = ControlType.MultipleChoice, Name = "Where",
-                    DefaultValue = "Buses\r\nPosters\r\nFacebook\r\nHeart Radio"
+                    DefaultValue = "Buses\r\nPosters\r\nFacebook\r\nHeart Radio",
+                    DefaultValues = new Dictionary<string,bool> { {"Buses", true}, {"Posters", false}, {"Facebook", false} }
                 },
                 new Control
                 {
                     IsRequired = false, Label = "Did you go to the fashion show", Type = ControlType.DropDownList, Name = "Show",
-                    DefaultValue = " \r\nYes\r\nNo"
+                    DefaultValue = " \r\nYes\r\nNo",
+                    DefaultValues = new Dictionary<string,bool> { { " ", false}, {"Yes", true}, {"No", false} }
                 },
                 new Control
                 {
