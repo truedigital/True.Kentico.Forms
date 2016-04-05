@@ -21,9 +21,10 @@ namespace True.Kentico.Forms.Html.Renderers
             {
                 var input = new MultiLevelTag("input");
                 input.Attributes.Add("id", $"{id}_{count}");
-                input.Attributes.Add("value", $"{innerItem}");
+                input.Attributes.Add("value", $"{innerItem.Key}");
                 input.Attributes.Add("name", id);
                 input.Attributes.Add("type", "radio");
+                if (innerItem.Value) input.Attributes.Add("checked", null);
 
                 if (count == 1 && control.IsRequired)
                     input.Attributes.Add("required", null);

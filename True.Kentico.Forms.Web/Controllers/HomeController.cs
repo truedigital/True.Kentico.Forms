@@ -94,7 +94,8 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true, Label = "Opt in", Type = ControlType.RadioButton, Name = "Optin",
-                    DefaultValue = "Yes"
+                    DefaultValue = "Yes",
+                    DefaultValues = new Dictionary<string,bool> { {"Yes", true},{ "No", true } }
                 }
             };
 
