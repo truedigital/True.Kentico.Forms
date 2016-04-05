@@ -24,6 +24,7 @@ namespace True.Kentico.Forms.Html.Renderers
                 input.Attributes.Add("name", $"{id}");
                 input.Attributes.Add("value", $"{innerItem}");
                 input.Attributes.Add("type", "checkbox");
+                if (innerItem.Value) input.Attributes.Add("checked", null);
 
                 if (control.IsRequired)
                 {
