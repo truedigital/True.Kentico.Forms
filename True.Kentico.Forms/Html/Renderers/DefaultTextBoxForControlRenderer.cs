@@ -29,18 +29,8 @@ namespace True.Kentico.Forms.Html.Renderers
 
             div.Add(input);
 
-            if (!String.IsNullOrWhiteSpace(control.ExplanationText))
-            {
-                var helpTextDiv = new MultiLevelTag("div");
-                helpTextDiv.AddCssClass("form-help");
-                helpTextDiv.InnerHtml = control.ExplanationText;
-                div.Add(helpTextDiv);
-            }
-
-            if (!String.IsNullOrWhiteSpace(control.Tooltip))
-            {
-                input.Attributes.Add("title", control.Tooltip);
-            }
+            ExplanationText(control, div);
+            ToolTip(control, input);
 
             return div.ToString();
         }

@@ -10,8 +10,6 @@ namespace True.Kentico.Forms.Html.Renderers
             var id = control.Name;
 
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
-            
-            //var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
 
             var div = new MultiLevelTag("div");
             div.AddCssClass("form-inner");
@@ -26,17 +24,8 @@ namespace True.Kentico.Forms.Html.Renderers
 
             div.Add(input);
 
-            if (!String.IsNullOrWhiteSpace(control.ExplanationText))
-            {
-                var helpTextDiv = new MultiLevelTag("div");
-                helpTextDiv.AddCssClass("form-help");
-                helpTextDiv.InnerHtml = control.ExplanationText;
-                div.Add(helpTextDiv);
-            }
-            if (!String.IsNullOrWhiteSpace(control.Tooltip))
-            {
-                input.Attributes.Add("title", control.Tooltip);
-            }
+            ExplanationText(control, div);
+            ToolTip(control, input);
 
             return div.ToString();
         }

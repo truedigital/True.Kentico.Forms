@@ -29,7 +29,6 @@ namespace True.Kentico.Forms.Html.Renderers
             div.Add(input);
 
             ExplanationText(control, div);
-
             ToolTip(control, input);
 
             return div.ToString();

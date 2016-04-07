@@ -52,6 +52,8 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true, Label = "First name", Type = ControlType.TextBox, Name = "FirstName",
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "a tool tip saying what goes here",
                     Validation = new List<IControlValidation>
                     {
                         new ControlValidation { HasValue = true, ValidationRule = "minlength", ValidationValue = "3", ValidationErrorMessage = "too short"},
@@ -79,12 +81,16 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true, Label = "This is a checkbox", Type = ControlType.CheckBox, Name = "CheckYes",
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "a tool tip saying what goes here",
                     DefaultValue = "Yes",
                     DefaultValues = new Dictionary<string,bool> { {"Yes", false}}
                 },
                 new Control
                 {
                     IsRequired = true,
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "a tool tip saying what goes here",
                     Label = "Radio button options",
                     Type = ControlType.RadioButton,
                     Name = "Shop",
@@ -94,6 +100,8 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true,
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "a tool tip saying what goes here",
                     Label = "Multiple choices",
                     Type = ControlType.MultipleChoice,
                     Name = "Where",
@@ -103,6 +111,8 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true,
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "a tool tip saying what goes here",
                     Label = "Drop Down List",
                     Type = ControlType.DropDownList,
                     Name = "Show",
@@ -112,6 +122,8 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true,
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "a tool tip saying what goes here",
                     Label = "Radio button opt in",
                     Type = ControlType.RadioButton,
                     Name = "Optin",
