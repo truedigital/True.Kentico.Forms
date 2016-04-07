@@ -3,12 +3,12 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    public class DefaultRadioButtonListControlRenderer : IControlRenderer
+    internal class DefaultRadioButtonListControlRenderer : BaseControlRenderer
     {
-        public string Render(IControl control)
+        public override string Render(IControl control)
         {
             var id = control.Name;
-
+            var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
             //var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
 
             var div = new MultiLevelTag("div");
@@ -42,6 +42,8 @@ namespace True.Kentico.Forms.Html.Renderers
                 div.Add(radioDiv);
                 count++;
             }
+
+            IsRequired(control, div, displayName);
 
             if (!String.IsNullOrWhiteSpace(control.ExplanationText))
             {
