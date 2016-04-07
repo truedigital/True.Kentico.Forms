@@ -3,9 +3,9 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    internal class DefaultEmailControlRenderer : IControlRenderer
+    internal class DefaultEmailControlRenderer : BaseControlRenderer
     {
-        public string Render(IControl control)
+        public override string Render(IControl control)
         {
             var id = control.Name;
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
@@ -20,11 +20,7 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "email");
 
-            if (control.IsRequired)
-            {
-                input.Attributes.Add("required", null);
-                input.Attributes.Add("data-msg-required", $"{displayName} is required");
-            }
+            IsRequired(control, input, displayName);
 
             foreach (var validation in control.Validation)
             {
