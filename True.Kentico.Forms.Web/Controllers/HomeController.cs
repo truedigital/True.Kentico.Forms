@@ -69,6 +69,8 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true, Label = "Email address", Type = ControlType.Email, Name = "EmailAddress",
+                    ExplanationText = "explanation about putting your email in this field",
+                    Tooltip = "a tool tip saying what is an email",
                     Validation = new List<IControlValidation>
                     {
                         new ControlValidation { HasValue = true, ValidationRule = "email", ValidationErrorMessage = "not valid email"}

@@ -9,7 +9,6 @@ namespace True.Kentico.Forms.Html.Renderers
         {
             var id = control.Name;
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
-            //var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
 
             var div = new MultiLevelTag("div");
             div.AddCssClass("form-inner");
