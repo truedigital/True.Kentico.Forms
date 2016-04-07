@@ -105,8 +105,8 @@ namespace True.Kentico.Forms.Web.Controllers
                     Label = "Multiple choices",
                     Type = ControlType.MultipleChoice,
                     Name = "Where",
-                    DefaultValue = "Buses\r\nPosters\r\nFacebook\r\nHeart Radio",
-                    DefaultValues = new Dictionary<string, bool> { { "Buses", true }, { "Posters", false }, { "Facebook", false } }
+                    DefaultValue = "Buses|Radio",
+                    DefaultValues = new Dictionary<string, bool> { { "Buses", true }, { "Posters", false }, { "Heart Radio", true } }
                 },
                 new Control
                 {

@@ -33,12 +33,14 @@ namespace True.Kentico.Forms.Forms.ControlFactory
                 Tooltip = info.GetPropertyValue(FormFieldPropertyEnum.FieldCaption)
             };
 
-            control.DefaultValues = info.Settings["Options"].ToString().Replace("##EMPTY##1;", " ")
+            var defaultValues = info.GetPropertyValue(FormFieldPropertyEnum.DefaultValue)
+                .Split(new[] { "|" }, StringSplitOptions.RemoveEmptyEntries);
+
+            control.DefaultValues = info.Settings["Options"].ToString()
+                .Replace("##EMPTY##1;", " ")
                 .Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries)
                 .ToDictionary(item => item,
-                    item =>
-                        info.GetPropertyValue(FormFieldPropertyEnum.DefaultValue)
-                        .Equals(item.ToString(), StringComparison.OrdinalIgnoreCase));
+                    item => defaultValues.Contains(item));
 
             foreach (var validationInfo in info.FieldMacroRules)
             {
