@@ -3,9 +3,9 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    internal class DefaultDropDownListControlRenderer : IControlRenderer
+    internal class DefaultDropDownListControlRenderer : BaseControlRenderer
     {
-        public string Render(IControl control)
+        public override string Render(IControl control)
         {
             var id = control.Name;
 
@@ -28,13 +28,9 @@ namespace True.Kentico.Forms.Html.Renderers
                 if (innerItem.Value) option.Attributes.Add("selected", null);
                 ddl.Add(option);
             }
-
-            if (control.IsRequired)
-            {
-                ddl.Attributes.Add("required", null);
-                ddl.Attributes.Add("data-msg-required", $"{displayName} is required");
-            }
-
+            
+            IsRequired(control, ddl, displayName);
+            
             div.Add(ddl);
 
             if (!String.IsNullOrWhiteSpace(control.ExplanationText))

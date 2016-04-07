@@ -82,7 +82,7 @@ namespace True.Kentico.Forms.Web.Controllers
                 },
                 new Control
                 {
-                    IsRequired = false,
+                    IsRequired = true,
                     Label = "How often do you shop for fashion items online",
                     Type = ControlType.RadioButton,
                     Name = "Shop",
@@ -91,7 +91,7 @@ namespace True.Kentico.Forms.Web.Controllers
                 },
                 new Control
                 {
-                    IsRequired = false,
+                    IsRequired = true,
                     Label = "Where have you seen things",
                     Type = ControlType.MultipleChoice,
                     Name = "Where",
@@ -100,7 +100,7 @@ namespace True.Kentico.Forms.Web.Controllers
                 },
                 new Control
                 {
-                    IsRequired = false,
+                    IsRequired = true,
                     Label = "Did you go to the fashion show",
                     Type = ControlType.DropDownList,
                     Name = "Show",
