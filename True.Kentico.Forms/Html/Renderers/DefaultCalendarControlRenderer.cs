@@ -3,18 +3,15 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    internal class DefaultCalendarControlRenderer : IControlRenderer
+    internal class DefaultCalendarControlRenderer : BaseControlRenderer
     {
-        public string Render(IControl control)
+        public override string Render(IControl control)
         {
-            //var item = (MemberExpression)expression.Body;
             var id = control.Name;
 
-            ////var dispAttr = GetAttribute<DisplayAttribute>(item);
-            ////var displayName = dispAttr != null ? dispAttr.Name : item.Member.Name;
-
-            ////var reqAttr = GetAttribute<RequiredAttribute>(item);
-            ////var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
+            var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
+            
+            //var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
 
             var div = new MultiLevelTag("div");
             div.AddCssClass("form-inner");
@@ -25,11 +22,7 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("type", "text");
             input.AddCssClass("datepicker");
 
-            //if (reqAttr != null)
-            //{
-            //    input.Attributes.Add("required", null);
-            //    input.Attributes.Add("data-msg-required", $"{displayName} is required");
-            //}
+            IsRequired(control, input, displayName);
 
             div.Add(input);
 
