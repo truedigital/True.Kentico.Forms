@@ -3,16 +3,14 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    internal class DefaultTextBoxForControlRenderer : IControlRenderer
+    internal class DefaultTextBoxForControlRenderer : BaseControlRenderer
     {
-        public string Render(IControl control)
+        public override string Render(IControl control)
         {
             var id = control.Name;
 
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
-
-            // todo var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
-
+            
             var div = new MultiLevelTag("div");
             div.AddCssClass("form-inner");
 
@@ -21,11 +19,7 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "text");
 
-            if (control.IsRequired)
-            {
-                input.Attributes.Add("required", null);
-                input.Attributes.Add("data-msg-required", $"{displayName} is required");
-            }
+            IsRequired(control, input, displayName);
 
             foreach (var validation in control.Validation)
             {
@@ -34,6 +28,7 @@ namespace True.Kentico.Forms.Html.Renderers
             }
 
             div.Add(input);
+
             if (!String.IsNullOrWhiteSpace(control.ExplanationText))
             {
                 var helpTextDiv = new MultiLevelTag("div");
@@ -41,10 +36,12 @@ namespace True.Kentico.Forms.Html.Renderers
                 helpTextDiv.InnerHtml = control.ExplanationText;
                 div.Add(helpTextDiv);
             }
+
             if (!String.IsNullOrWhiteSpace(control.Tooltip))
             {
                 input.Attributes.Add("title", control.Tooltip);
             }
+
             return div.ToString();
         }
     }

@@ -3,9 +3,9 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    internal class DefaultTextAreaControlRenderer : IControlRenderer
+    internal class DefaultTextAreaControlRenderer : BaseControlRenderer
     {
-        public string Render(IControl control)
+        public override string Render(IControl control)
         {
             var id = control.Name;
 
@@ -18,11 +18,7 @@ namespace True.Kentico.Forms.Html.Renderers
             textarea.Attributes.Add("id", id);
             textarea.Attributes.Add("name", id);
 
-            if (control.IsRequired)
-            {
-                textarea.Attributes.Add("required", null);
-                textarea.Attributes.Add("data-msg-required", $"{displayName} is required");
-            }
+            IsRequired(control, textarea, displayName);
 
             foreach (var validation in control.Validation)
             {

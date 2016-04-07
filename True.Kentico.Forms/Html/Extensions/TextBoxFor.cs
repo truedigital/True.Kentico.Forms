@@ -16,10 +16,9 @@ namespace True.Kentico.Forms.Html.Extensions
         public static IHtmlString TextBoxFor<TModel>(this KenticoForm<TModel> html, IControl control, IControlRenderer customRenderer)
             where TModel : IForm
         {
-              var renderedControl = customRenderer.Render(control);
+            var renderedControl = customRenderer.Render(control);
 
-            return MvcHtmlString.Create(renderedControl.ToString());
-
+            return MvcHtmlString.Create(renderedControl);
         }
     }
 }
