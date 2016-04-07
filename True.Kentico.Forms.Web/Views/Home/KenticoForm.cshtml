@@ -10,10 +10,7 @@
 @KenticoForm.BeginForm("Save", "Form", Model.SubmissionOptions)
 
 <div id="form-result">
-
-    @Html.HiddenFor(m => m.Name)
-    @Html.HiddenFor(m => m.SubmitText)
-
+    
     @KenticoForm.RenderFormControls(Model.Controls)
 
     @KenticoForm.SubmitButton(Model.SubmitText)
