@@ -3,9 +3,9 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    internal class DefaultCheckBoxControlRenderer : IControlRenderer
+    internal class DefaultCheckBoxControlRenderer : BaseControlRenderer
     {
-        public string Render(IControl control)
+        public override string Render(IControl control)
         {
             var id = control.Name;
 
@@ -24,8 +24,7 @@ namespace True.Kentico.Forms.Html.Renderers
                 input.Attributes.Add("checked", "");
             }
 
-            if (control.IsRequired)
-                input.Attributes.Add("required", null);
+            IsRequired(control, input, displayName);
 
             foreach (var validation in control.Validation)
             {
@@ -33,11 +32,10 @@ namespace True.Kentico.Forms.Html.Renderers
                 input.Attributes.Add($"data-msg-{validation.ValidationRule}", validation.ValidationErrorMessage);
             }
 
+            // todo why does this have its own label?
             var label = new MultiLevelTag("label");
             label.Attributes.Add("for", $"{id}");
             label.SetInnerText(displayName);
-
-          
 
             div.Add(input);
             div.Add(label);

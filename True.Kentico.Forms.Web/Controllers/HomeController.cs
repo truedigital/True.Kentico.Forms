@@ -76,27 +76,45 @@ namespace True.Kentico.Forms.Web.Controllers
                 },
                 new Control
                 {
-                    IsRequired = false, Label = "How often do you shop for fashion items online", Type = ControlType.RadioButton, Name = "Shop",
-                    DefaultValue = "Daily\r\nWeekly\r\nFornightly\r\nMonthly",
-                    DefaultValues = new Dictionary<string,bool> { {"Daily", false}, {"Weekly", false}, {"Monthly", false} }
-                },
-                new Control
-                {
-                    IsRequired = false, Label = "Where have you seen things", Type = ControlType.MultipleChoice, Name = "Where",
-                    DefaultValue = "Buses\r\nPosters\r\nFacebook\r\nHeart Radio",
-                    DefaultValues = new Dictionary<string,bool> { {"Buses", true}, {"Posters", false}, {"Facebook", false} }
-                },
-                new Control
-                {
-                    IsRequired = false, Label = "Did you go to the fashion show", Type = ControlType.DropDownList, Name = "Show",
-                    DefaultValue = " \r\nYes\r\nNo",
-                    DefaultValues = new Dictionary<string,bool> { { " ", false}, {"Yes", true}, {"No", false} }
-                },
-                new Control
-                {
-                    IsRequired = true, Label = "Opt in", Type = ControlType.RadioButton, Name = "Optin",
+                    IsRequired = true, Label = "Choose 'Yes'", Type = ControlType.CheckBox, Name = "CheckYes",
                     DefaultValue = "Yes",
-                    DefaultValues = new Dictionary<string,bool> { {"Yes", true},{ "No", true } }
+                    DefaultValues = new Dictionary<string,bool> { {"Yes", false}}
+                },
+                new Control
+                {
+                    IsRequired = false,
+                    Label = "How often do you shop for fashion items online",
+                    Type = ControlType.RadioButton,
+                    Name = "Shop",
+                    DefaultValue = "Daily\r\nWeekly\r\nFornightly\r\nMonthly",
+                    DefaultValues = new Dictionary<string, bool> { { "Daily", false }, { "Weekly", false }, { "Monthly", false } }
+                },
+                new Control
+                {
+                    IsRequired = false,
+                    Label = "Where have you seen things",
+                    Type = ControlType.MultipleChoice,
+                    Name = "Where",
+                    DefaultValue = "Buses\r\nPosters\r\nFacebook\r\nHeart Radio",
+                    DefaultValues = new Dictionary<string, bool> { { "Buses", true }, { "Posters", false }, { "Facebook", false } }
+                },
+                new Control
+                {
+                    IsRequired = false,
+                    Label = "Did you go to the fashion show",
+                    Type = ControlType.DropDownList,
+                    Name = "Show",
+                    DefaultValue = " \r\nYes\r\nNo",
+                    DefaultValues = new Dictionary<string, bool> { { " ", false }, { "Yes", true }, { "No", false } }
+                },
+                new Control
+                {
+                    IsRequired = true,
+                    Label = "Opt in",
+                    Type = ControlType.RadioButton,
+                    Name = "Optin",
+                    DefaultValue = "Yes",
+                    DefaultValues = new Dictionary<string, bool> { { "Yes", true }, { "No", true } }
                 }
             };
 
