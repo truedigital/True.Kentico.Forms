@@ -76,14 +76,14 @@ namespace True.Kentico.Forms.Web.Controllers
                 },
                 new Control
                 {
-                    IsRequired = true, Label = "Choose 'Yes'", Type = ControlType.CheckBox, Name = "CheckYes",
+                    IsRequired = true, Label = "This is a checkbox", Type = ControlType.CheckBox, Name = "CheckYes",
                     DefaultValue = "Yes",
                     DefaultValues = new Dictionary<string,bool> { {"Yes", false}}
                 },
                 new Control
                 {
                     IsRequired = true,
-                    Label = "How often do you shop for fashion items online",
+                    Label = "Radio button options",
                     Type = ControlType.RadioButton,
                     Name = "Shop",
                     DefaultValue = "Daily\r\nWeekly\r\nFornightly\r\nMonthly",
@@ -92,7 +92,7 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true,
-                    Label = "Where have you seen things",
+                    Label = "Multiple choices",
                     Type = ControlType.MultipleChoice,
                     Name = "Where",
                     DefaultValue = "Buses\r\nPosters\r\nFacebook\r\nHeart Radio",
@@ -101,7 +101,7 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true,
-                    Label = "Did you go to the fashion show",
+                    Label = "Drop Down List",
                     Type = ControlType.DropDownList,
                     Name = "Show",
                     DefaultValue = " \r\nYes\r\nNo",
@@ -110,7 +110,7 @@ namespace True.Kentico.Forms.Web.Controllers
                 new Control
                 {
                     IsRequired = true,
-                    Label = "Opt in",
+                    Label = "Radio button opt in",
                     Type = ControlType.RadioButton,
                     Name = "Optin",
                     DefaultValue = "Yes",

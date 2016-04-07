@@ -3,12 +3,12 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    internal class DefaultMultipleChoiceControlRenderer : IControlRenderer
+    internal class DefaultMultipleChoiceControlRenderer : BaseControlRenderer
     {
-        public string Render(IControl control)
+        public override string Render(IControl control)
         {
             var id = control.Name;
-
+            var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
             //var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
 
             var div = new MultiLevelTag("div");
@@ -25,7 +25,7 @@ namespace True.Kentico.Forms.Html.Renderers
                 input.Attributes.Add("value", $"{innerItem}");
                 input.Attributes.Add("type", "checkbox");
                 if (innerItem.Value) input.Attributes.Add("checked", null);
-
+                
                 if (control.IsRequired)
                 {
                     input.Attributes.Add("required", null);
@@ -46,12 +46,8 @@ namespace True.Kentico.Forms.Html.Renderers
                 count++;
             }
 
-            if (control.IsRequired)
-            {
-                div.Attributes.Add("required", null);
-                div.Attributes.Add("data-msg-required", $"{control.Label} is required");
-            }
-
+            IsRequired(control, div, displayName);
+            
             if (!String.IsNullOrWhiteSpace(control.ExplanationText))
             {
                 var helpTextDiv = new MultiLevelTag("div");
