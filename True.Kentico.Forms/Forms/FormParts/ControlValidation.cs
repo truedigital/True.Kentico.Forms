@@ -1,5 +1,7 @@
 using System.Collections.Specialized;
 using CMS.FormEngine;
+using CMS.Helpers;
+using CMS.MacroEngine;
 
 namespace True.Kentico.Forms.Forms.FormParts
 {
@@ -9,21 +11,16 @@ namespace True.Kentico.Forms.Forms.FormParts
         public string ValidationErrorMessage { get; set; }
         public bool HasValue { get; set; }
         public string ValidationValue { get; set; }
-        
+        public string MacroValidationRule { get; set; }
+
         public bool Validate(string value)
         {
-            
-            //todo validate somehow
-            //maybe create a factory that can look up how to validate a given ControlValidation 
-            //object based on the ValidationRule type, using the ValidationValue
-            //and value as arguments to the validation type returned from the factory?
+            //todo this does not work
+            //var resolver = MacroResolver.GetInstance();
+            //var result = resolver.ResolveMacros(value, new EvaluationContext(resolver, MacroValidationRule));
 
-            //alternatively this method could be made abstract/virtual and we could make each
-            //validation type override this method to handle validation in a specific way
-            //based on what it is validating, this would involve creating derived types
-            //for each validation type and for handling the logic for creating the correct
-            //ControlValidation type in the ControlFactory
-
+            //bool isValid;
+            //return bool.TryParse(result, out isValid) && isValid;
             return true;
         }
     }

@@ -16,9 +16,8 @@ namespace True.Kentico.Forms.Forms.ControlFactory
             {"TextAreaControl", new TypedControlFactory<TextAreaControl>()},
             {"HtmlAreaControl", new TypedControlFactory<HtmlAreaControl>()},
             {"emailinput", new TypedControlFactory<EmailControl>()},
+            {"UploadControl", new TypedControlFactory<UploadFileControl>()},
             //{"SecurityCode", new TypedControlFactory()},
-            //{"UploadControl", new TypedControlFactory()},
-
             {"DropDownListControl", new MultiValueTypedControlFactory<DropDownListControl>()},
             {"MultipleChoiceControl", new MultiValueTypedControlFactory<MultipleChoiceControl>()},
             {"RadioButtonsControl", new MultiValueTypedControlFactory<RadioButtonControl>()},

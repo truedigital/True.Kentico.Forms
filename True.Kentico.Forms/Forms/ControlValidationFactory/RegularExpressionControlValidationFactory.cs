@@ -15,7 +15,8 @@ namespace True.Kentico.Forms.Forms.ControlValidationFactory
                 HasValue = true,
                 ValidationValue = rule.Rule.Properties.T,
                 ValidationRule = "regular-expression",
-                ValidationErrorMessage = string.IsNullOrEmpty(info.ErrorMessage) ? "Invalid data entered" : info.ErrorMessage
+                ValidationErrorMessage = string.IsNullOrEmpty(info.ErrorMessage) ? "Invalid data entered" : info.ErrorMessage,
+                MacroValidationRule = info.MacroRule
             };
         }
     }

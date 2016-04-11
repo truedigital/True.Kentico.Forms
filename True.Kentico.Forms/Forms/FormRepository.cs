@@ -1,6 +1,9 @@
 using System;
+using System.Linq;
 using System.Text;
 using CMS.DataEngine;
+using CMS.FormEngine;
+using CMS.MacroEngine;
 using CMS.OnlineForms;
 using CMS.SiteProvider;
 using True.Kentico.Forms.Forms.FormParts;
@@ -11,15 +14,20 @@ namespace True.Kentico.Forms.Forms
     {
         private readonly IFormFactory _formFactory;
 
-        public FormRepository(IFormFactory formFactory)
+        //public FormRepository(IFormFactory formFactory)
+        //{
+        //    _formFactory = formFactory;
+        //}
+
+        public FormRepository()
         {
-            _formFactory = formFactory;
+            _formFactory = new FormFactory(new ControlFactory.ControlFactory());
         }
 
         public void Submit(IForm form)
         {
             var isValid = true;
-            var errors  = new StringBuilder();
+            var errors = new StringBuilder();
             try
             {
                 var formInfo = BizFormInfoProvider.GetBizFormInfo(form.Name, SiteContext.CurrentSiteID);
@@ -48,7 +56,8 @@ namespace True.Kentico.Forms.Forms
                 item.SetValue("FormInserted", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 item.SetValue("FormUpdated", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                BizFormItemProvider.SetItem(item);
+
+               BizFormItemProvider.SetItem(item);
                 BizFormInfoProvider.RefreshDataCount(formInfo.FormName, formInfo.FormSiteID);
             }
             catch (Exception ex)
