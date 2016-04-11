@@ -18,8 +18,8 @@ namespace True.Kentico.Forms.Forms
 
         public void Submit(IForm form)
         {
-            bool isValid = true;
-            StringBuilder errors  = new StringBuilder();
+            var isValid = true;
+            var errors  = new StringBuilder();
             try
             {
                 var formInfo = BizFormInfoProvider.GetBizFormInfo(form.Name, SiteContext.CurrentSiteID);
