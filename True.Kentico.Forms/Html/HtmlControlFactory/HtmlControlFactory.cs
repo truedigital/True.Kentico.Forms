@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CMS.FormEngine;
-using CMS.Helpers;
-using True.Kentico.Forms.Forms.ControlFactory;
 using True.Kentico.Forms.Forms.FormParts;
-using True.Kentico.Forms.Html.Extensions;
 
 namespace True.Kentico.Forms.Html.HtmlControlFactory
 {

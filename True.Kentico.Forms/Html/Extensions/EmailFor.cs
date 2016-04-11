@@ -1,26 +1,21 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
-using CMS.Helpers;
 using True.Kentico.Forms.Forms.FormParts;
-using True.Kentico.Forms.Html.ExtraAttributes;
 using True.Kentico.Forms.Html.Renderers;
-using CompareAttribute = System.ComponentModel.DataAnnotations.CompareAttribute;
+using True.Kentico.Forms.Infrastructure;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
-        public static IHtmlString EmailFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control) where TControl : IControl
-            where TModel : IForm
+        public static IHtmlString EmailFor<TControl>(this KenticoForm html, TControl control) where TControl : IControl
+            
         {
-            return EmailFor<TModel, TControl>(html, control, new DefaultEmailControlRenderer());
+            return EmailFor<TControl>(html, control, ControlRendererRegistrar.Resolve(ControlType.Email));
         }
 
-        public static IHtmlString EmailFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control, IControlRenderer renderer) where TControl : IControl
-            where TModel : IForm
+        public static IHtmlString EmailFor<TControl>(this KenticoForm html, TControl control, IControlRenderer renderer) where TControl : IControl
+            
         {
             var renderedControl = renderer.Render(control);
 

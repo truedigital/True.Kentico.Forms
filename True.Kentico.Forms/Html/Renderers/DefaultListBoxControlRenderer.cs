@@ -1,8 +1,13 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    internal class DefaultDropDownListControlRenderer : BaseControlRenderer
+    public class DefaultListBoxControlRenderer : BaseControlRenderer
     {
         public override string Render(IControl control)
         {
@@ -16,24 +21,29 @@ namespace True.Kentico.Forms.Html.Renderers
             var ddl = new MultiLevelTag("select");
             ddl.Attributes.Add("id", id);
             ddl.Attributes.Add("name", id);
+            ddl.Attributes.Add("multiple", null);
 
             var items = control.DefaultValues;
 
             foreach (var innerItem in items)
             {
-                var option = new MultiLevelTag("option") { InnerHtml = innerItem.Key };
-                if (innerItem.Value) option.Attributes.Add("selected", null);
-                ddl.Add(option);
+                ddl.Add(new MultiLevelTag("option")
+                {
+                    InnerHtml = innerItem.Key,
+                    Attributes = {new KeyValuePair<string, string>("selected", innerItem.Value.ToString())}
+                });
             }
-            
+
             IsRequired(control, ddl, displayName);
-            
+
             div.Add(ddl);
 
             ExplanationText(control, div);
             ToolTip(control, ddl);
 
             return div.ToString();
+
+
         }
     }
 }

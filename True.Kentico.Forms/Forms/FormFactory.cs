@@ -4,7 +4,7 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Forms
 {
-    public class FormFactory : IFormFactory
+    internal class FormFactory : IFormFactory
     {
         private readonly IControlFactory _controlFactory;
 

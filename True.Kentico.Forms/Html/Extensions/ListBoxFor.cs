@@ -1,56 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq.Expressions;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms.FormParts;
-using True.Kentico.Forms.Html.ExtraAttributes;
+using True.Kentico.Forms.Html.Renderers;
+using True.Kentico.Forms.Infrastructure;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
 	public static partial class KenticoFormHelperExtensions
-	{
-		public static IHtmlString ListBoxFor<TModel, TProperty>(this KenticoForm<TModel> html, Expression<Func<TModel, TProperty>> expression) where TProperty : List<KeyValuePair<int, string>>
-            where TModel : IForm
+    {
+        public static IHtmlString ListBoxFor<TControl>(this KenticoForm html, TControl control) where TControl : IControl
+
         {
-			var item = (MemberExpression)expression.Body;
-			var id = item.Member.Name;
+            return ListBoxFor<TControl>(html, control, ControlRendererRegistrar.Resolve(ControlType.ListBox));
+        }
 
-			var dispAttr = GetAttribute<DisplayAttribute>(item);
-			var displayName = dispAttr != null ? dispAttr.Name : item.Member.Name;
+        public static IHtmlString ListBoxFor<TControl>(this KenticoForm html, TControl control, IControlRenderer customRenderer) where TControl : IControl
 
-			var reqAttr = GetAttribute<RequiredAttribute>(item);
-			var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
+        {
+            var renderedControl = customRenderer.Render(control);
 
-			var div = new MultiLevelTag("div");
-			div.AddCssClass("form-inner");
-
-			var ddl = new MultiLevelTag("select");
-			ddl.Attributes.Add("id", id);
-			ddl.Attributes.Add("name", id);
-			ddl.Attributes.Add("multiple", null);
-
-			var items = (List<KeyValuePair<int, string>>)GetValue(expression, html.Model);
-
-			foreach (var innerItem in items)
-				ddl.Add(new MultiLevelTag("option") { InnerHtml = innerItem.Value });
-
-			if (reqAttr != null) {
-				ddl.Attributes.Add("required", null);
-				ddl.Attributes.Add("data-msg-required", $"{displayName} is required");
-			}
-
-			div.Add(ddl);
-
-			if (helpTextAttr != null) {
-				var helpTextDiv = new MultiLevelTag("div");
-				helpTextDiv.AddCssClass("form-help");
-				helpTextDiv.InnerHtml = helpTextAttr.HelpText;
-				div.Add(helpTextDiv);
-			}
-
-			return MvcHtmlString.Create(div.ToString());
-		}
-	}
+            return MvcHtmlString.Create(renderedControl.ToString());
+        }
+    }
 }

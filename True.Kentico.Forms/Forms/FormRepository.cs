@@ -53,6 +53,7 @@ namespace True.Kentico.Forms.Forms
             }
             catch (Exception ex)
             {
+
                 throw new InvalidOperationException("An unknown error occured while saving the form. Please contact our support team.");
             }
         }

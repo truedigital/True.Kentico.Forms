@@ -2,21 +2,22 @@
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms.FormParts;
 using True.Kentico.Forms.Html.Renderers;
+using True.Kentico.Forms.Infrastructure;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
-        public static IHtmlString CheckboxFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control)
+        public static IHtmlString CheckboxFor<TControl>(this KenticoForm html, TControl control)
             where TControl : IControl 
-            where TModel : IForm
+            
         {
-            return CheckboxFor<TModel, TControl>(html, control, new DefaultCheckBoxControlRenderer());
+            return CheckboxFor<TControl>(html, control, ControlRendererRegistrar.Resolve(ControlType.CheckBox));
         }
 
-        public static IHtmlString CheckboxFor<TModel, TControl>(this KenticoForm<TModel> html, TControl control, IControlRenderer customRenderer)
+        public static IHtmlString CheckboxFor<TControl>(this KenticoForm html, TControl control, IControlRenderer customRenderer)
             where TControl : IControl 
-            where TModel : IForm
+            
         {
 
             var renderedControl = customRenderer.Render(control);

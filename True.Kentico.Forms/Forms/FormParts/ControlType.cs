@@ -8,6 +8,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         Country,
         Email,
         HtmlArea,
+        Label,
         ListBox,
         MultipleChoice,
         RadioButton,

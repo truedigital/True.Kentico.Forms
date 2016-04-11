@@ -8,12 +8,12 @@ namespace True.Kentico.Forms.Html.Extensions
 {
 	public static partial class KenticoFormHelperExtensions
 	{
-	    public static IHtmlString CalendarFor<TModel>(this KenticoForm<TModel> html, IControl control) where TModel : IForm
+	    public static IHtmlString CalendarFor(this KenticoForm html, IControl control) 
 	    {
-	        return CalendarFor<TModel>(html, control, ControlRendererRegistrar.ControlRenderers[ControlType.Calendar]);
+	        return CalendarFor(html, control, ControlRendererRegistrar.Resolve(ControlType.Calendar));
 	    }
 
-	    public static IHtmlString CalendarFor<TModel>(this KenticoForm<TModel> html, IControl control, IControlRenderer customRenderer) where TModel : IForm
+	    public static IHtmlString CalendarFor(this KenticoForm html, IControl control, IControlRenderer customRenderer) 
 	    {
 	        var renderedControl = customRenderer.Render(control);
 

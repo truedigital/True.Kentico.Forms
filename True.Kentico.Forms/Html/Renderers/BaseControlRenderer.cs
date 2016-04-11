@@ -1,9 +1,8 @@
-using System;
 using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
-    internal abstract class BaseControlRenderer : IControlRenderer
+    public abstract class BaseControlRenderer : IControlRenderer
     {
         internal virtual void IsRequired(IControl control, MultiLevelTag controlTag, string displayName)
         {

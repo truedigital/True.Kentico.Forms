@@ -3,21 +3,22 @@
 @using True.Kentico.Forms.Html.Extensions
 
 @model Form
-@{
-    var KenticoForm = new KenticoForm<Form>(Model);
-}
 
-@KenticoForm.BeginForm("Save", "Form", Model.SubmissionOptions)
+
+@Html.KenticoForm().BeginForm("Save", "Form", Model.Name, Model.SubmissionOptions)
 
 <div id="form-result">
-    
-    @KenticoForm.RenderFormControls(Model.Controls)
 
-    @KenticoForm.SubmitButton(Model.SubmitText)
+    @Html.HiddenFor(m => m.Name)
+    @Html.HiddenFor(m => m.SubmitText)
+
+    @Html.KenticoForm().RenderFormControls(Model.Controls)
+
+    @Html.KenticoForm().SubmitButton(Model.SubmitText)
 
 </div>
 
-@KenticoForm.EndForm()
+@Html.KenticoForm().EndForm()
 
 <hr />
 
