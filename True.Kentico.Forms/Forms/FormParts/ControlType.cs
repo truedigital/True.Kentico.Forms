@@ -14,6 +14,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         RadioButton,
         TextBox,
         TextArea,
+        UploadFile,
         Unknown
     }
 }

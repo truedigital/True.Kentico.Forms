@@ -113,6 +113,9 @@
     <Compile Include="Forms\FormParts\ControlType.cs" />
     <Compile Include="Forms\FormParts\ControlValidation.cs" />
     <Compile Include="Forms\FormParts\Form.cs" />
+    <Compile Include="Html\Extensions\HtmlAreaFor.cs" />
+    <Compile Include="Html\Extensions\UploadFor.cs" />
+    <Compile Include="Html\Renderers\DefaultUploadForControlRenderer.cs" />
     <Compile Include="Infrastructure\FormModelBinder.cs" />
     <Compile Include="Forms\FormRepository.cs" />
     <Compile Include="Forms\FormParts\IAutoresponder.cs" />

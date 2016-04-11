@@ -20,6 +20,12 @@ namespace True.Kentico.Forms.Web.Controllers
             {
                 new Control
                 {
+                    IsRequired = true, Label = "Upload an image", Type = ControlType.UploadFile, Name = "ImageUpload",
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "only image file extensions for now"
+                },
+                new Control
+                {
                     IsRequired = true, Label = "First name", Type = ControlType.TextBox, Name = "FirstName",
                     ExplanationText = "explanation about this field",
                     Tooltip = "a tool tip saying what goes here",

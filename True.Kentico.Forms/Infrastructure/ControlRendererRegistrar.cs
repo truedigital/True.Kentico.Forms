@@ -22,7 +22,8 @@ namespace True.Kentico.Forms.Infrastructure
                 {ControlType.RadioButton, new DefaultRadioButtonListControlRenderer()},
                 {ControlType.TextArea, new DefaultTextAreaControlRenderer()},
                 {ControlType.TextBox, new DefaultTextBoxForControlRenderer()},
-                {ControlType.Label, new DefaultLabelControlRenderer()}
+                {ControlType.Label, new DefaultLabelControlRenderer()},
+                {ControlType.UploadFile, new DefaultUploadForControlRenderer()}
             };
         }
 
