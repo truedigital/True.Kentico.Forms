@@ -7,6 +7,6 @@ namespace True.Kentico.Forms.Forms.FormParts
         bool HasValue { get; set; }
         string ValidationValue { get; set; }
 
-        bool Validate(string value);
+        bool Validate(object value);
     }
 }

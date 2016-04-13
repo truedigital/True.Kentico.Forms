@@ -9,7 +9,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         ControlType Type { get; set; }
         IList<IControlValidation> Validation { get; set; }
         bool IsRequired { get; set; }
-        string SubmittedValue { get; set; }
+        object SubmittedValue { get; set; }
         string DefaultValue { get; set; }
         string ExplanationText { get; set; }
         string Tooltip { get; set; }

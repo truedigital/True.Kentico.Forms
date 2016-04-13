@@ -17,7 +17,7 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("id", id);
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "file");
-            input.Attributes.Add("accept", ".gif, .jpg, .png");
+            // input.Attributes.Add("accept", ".gif, .jpg, .png");
 
             IsRequired(control, input, displayName);
 

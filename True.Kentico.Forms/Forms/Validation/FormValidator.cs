@@ -23,7 +23,7 @@ namespace True.Kentico.Forms.Forms.Validation
 
                 //do something appropriate here to get the error messages
                 var errors = control.Validation.Select(v => v.ValidationErrorMessage).Aggregate((s0, s1) => s0 + ", " + s1);
-                Errors.Add(control.SubmittedValue, errors);
+                Errors.Add(control.Label, errors);
             }
 
             return !Errors.Any();

@@ -8,7 +8,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         public string ValidationValue { get; set; }
         public string MacroValidationRule { get; set; }
 
-        public bool Validate(string value)
+        public bool Validate(object value)
         {
             //todo this does not work
             //var resolver = MacroResolver.GetInstance();

@@ -20,9 +20,10 @@ namespace True.Kentico.Forms.Infrastructure
 
             foreach (var control in form.Controls)
             {
-                control.SubmittedValue = control.Type == ControlType.UploadFile ?
-                    request.Files[control.Name]?.FileName :
-                    request.Form.Get(control.Name);
+                if (control.Type == ControlType.UploadFile)
+                    control.SubmittedValue = request.Files[control.Name];
+                else
+                    control.SubmittedValue = request.Form.Get(control.Name);
             }
 
             return form;
