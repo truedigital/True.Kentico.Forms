@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms.FormParts;
+using True.Kentico.Forms.Infrastructure;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
@@ -11,22 +12,22 @@ namespace True.Kentico.Forms.Html.Extensions
             return BeginForm(html, action, controllerName, formName, options, "post", "block", true, false);
         }
 
-        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string dataLayout) 
+        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string dataLayout)
         {
             return BeginForm(html, action, controllerName, formName, options, "post", dataLayout, true, false);
         }
 
-        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string method, string dataLayout) 
+        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string method, string dataLayout)
         {
             return BeginForm(html, action, controllerName, formName, options, method, dataLayout, true, false);
         }
 
-        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string method, string dataLayout, bool validate) 
+        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string method, string dataLayout, bool validate)
         {
             return BeginForm(html, action, controllerName, formName, options, method, dataLayout, validate, false);
         }
 
-        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string method, string dataLayout, bool validate, bool summary) 
+        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string method, string dataLayout, bool validate, bool summary)
         {
             var submitData = "data-submit-";
             if (!string.IsNullOrEmpty(options.RedirectUrl)) submitData += $"url=\"{options.RedirectUrl}\" ";
@@ -34,11 +35,12 @@ namespace True.Kentico.Forms.Html.Extensions
             if (options.ClearAfterSave) submitData += $"reset=\"{options.ClearAfterSave}\" ";
 
             return MvcHtmlString.Create($"<form action=\"/{controllerName}/{action}\" " +
-                                                $"method=\"{method}\" " +
-                                                "class=\"form form--kentico\" " +
-                                                submitData +
-                                                $"{(validate ? " data-validate" : string.Empty)}{(summary ? " " + "data-summary" : string.Empty)} " +
-                                                $"data-layout=\"{dataLayout}\">" +
+                                        "entype=\"multipart/form-data\" " +
+                                        $"method=\"{method}\" " +
+                                        "class=\"form form--kentico\" " +
+                                        submitData +
+                                        $"{(validate ? " data-validate" : string.Empty)}{(summary ? " " + "data-summary" : string.Empty)} " +
+                                        $"data-layout=\"{dataLayout}\">" +
                                         $"<input type=\"hidden\" name=\"formname\" value=\"{formName}\" /> ");
         }
 

@@ -10,7 +10,7 @@ namespace True.Kentico.Forms.Web.Controllers
         public ActionResult Index()
         {
             return View();
-            
+
         }
 
 
@@ -59,7 +59,7 @@ namespace True.Kentico.Forms.Web.Controllers
                     ExplanationText = "explanation about this field",
                     Tooltip = "a tool tip saying what goes here",
                     DefaultValue = "Yes",
-                    DefaultValues = new Dictionary<string,bool> { {"Yes", false}}
+                    DefaultValues = new Dictionary<string,bool> { {"Yes", true}}
                 },
                 new Control
                 {
@@ -70,7 +70,7 @@ namespace True.Kentico.Forms.Web.Controllers
                     Type = ControlType.RadioButton,
                     Name = "Shop",
                     DefaultValue = "Daily\r\nWeekly\r\nFornightly\r\nMonthly",
-                    DefaultValues = new Dictionary<string, bool> { { "Daily", false }, { "Weekly", false }, { "Monthly", false } }
+                    DefaultValues = new Dictionary<string, bool> { { "Daily", true }, { "Weekly", false }, { "Monthly", false } }
                 },
                 new Control
                 {

@@ -42,9 +42,6 @@
     <Reference Include="CMS.Helpers">
       <HintPath>..\Libs\CMS.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="CMS.MacroEngine">
-      <HintPath>..\Libs\CMS.MacroEngine.dll</HintPath>
-    </Reference>
     <Reference Include="CMS.OnlineForms">
       <HintPath>..\Libs\CMS.OnlineForms.dll</HintPath>
     </Reference>

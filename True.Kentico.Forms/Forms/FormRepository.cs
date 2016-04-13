@@ -1,9 +1,6 @@
 using System;
-using System.Linq;
 using System.Text;
 using CMS.DataEngine;
-using CMS.FormEngine;
-using CMS.MacroEngine;
 using CMS.OnlineForms;
 using CMS.SiteProvider;
 using True.Kentico.Forms.Forms.FormParts;
@@ -13,11 +10,6 @@ namespace True.Kentico.Forms.Forms
     public class FormRepository : IFormRepository
     {
         private readonly IFormFactory _formFactory;
-
-        //public FormRepository(IFormFactory formFactory)
-        //{
-        //    _formFactory = formFactory;
-        //}
 
         public FormRepository()
         {
@@ -57,7 +49,7 @@ namespace True.Kentico.Forms.Forms
                 item.SetValue("FormUpdated", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
 
-               BizFormItemProvider.SetItem(item);
+                BizFormItemProvider.SetItem(item);
                 BizFormInfoProvider.RefreshDataCount(formInfo.FormName, formInfo.FormSiteID);
             }
             catch (Exception ex)

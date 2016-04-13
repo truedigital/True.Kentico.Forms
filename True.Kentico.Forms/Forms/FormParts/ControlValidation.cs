@@ -1,8 +1,3 @@
-using System.Collections.Specialized;
-using CMS.FormEngine;
-using CMS.Helpers;
-using CMS.MacroEngine;
-
 namespace True.Kentico.Forms.Forms.FormParts
 {
     public class ControlValidation : IControlValidation

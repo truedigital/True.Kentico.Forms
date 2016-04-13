@@ -1,16 +1,14 @@
 ﻿@using True.Kentico.Forms.Forms.FormParts
 @using True.Kentico.Forms.Html
 @using True.Kentico.Forms.Html.Extensions
+@using True.Kentico.Forms.Infrastructure
 
 @model Form
 
 
-@Html.KenticoForm().BeginForm("Save", "Form", Model.Name, Model.SubmissionOptions)
+@Html.KenticoForm().BeginForm("FormResult", "Home", Model.Name, Model.SubmissionOptions)
 
 <div id="form-result">
-
-    @Html.HiddenFor(m => m.Name)
-    @Html.HiddenFor(m => m.SubmitText)
 
     @Html.KenticoForm().RenderFormControls(Model.Controls)
 

@@ -1,17 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-using True.Kentico.Forms.Forms.FormParts;
+﻿using System.Web.Mvc;
 
-namespace True.Kentico.Forms.Html
+namespace True.Kentico.Forms.Infrastructure
 {
 	public class KenticoForm
 	{
-	    public KenticoForm()
-	    {
-	        
-	    }
-
 	}
 
     public static class KenticoHTMLExtensions

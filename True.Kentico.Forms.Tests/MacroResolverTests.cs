@@ -23,6 +23,23 @@ namespace True.Kentico.Forms.Tests
         }
 
         [TestMethod]
+        public void TestMethod2()
+        {
+            var inputValue = "Mark";
+
+            string macroRule1 = "{%Rule(\"(Value.Matches(\"^([0-9])+\"))\", \"<rules><r pos=\"0\" par=\"\" op=\"and\" n=\"RegExp\" ><p n=\"regexp\"><t>^([0-9])+</t><v>^([0-9])+</v><r>0</r><d></d><vt>text</vt><tv>0</tv></p></r></rules>\") | (user)administrator | (hash)80926522b00d9a1ed56d02f35f78cfa75eed4d18c4e6e250842f741aad9b5f01 %}";
+            string macroRule2 = $"{{%Rule(\"({inputValue}.Matches(\"^([0-9])+\"))\", \"<rules><r pos=\"0\" par=\"\" op=\"and\" n=\"RegExp\" ><p n=\"regexp\"><t>^([0-9])+</t><v>^([0-9])+</v><r>0</r><d></d><vt>text</vt><tv>0</tv></p></r></rules>\") | (user)administrator | (hash)80926522b00d9a1ed56d02f35f78cfa75eed4d18c4e6e250842f741aad9b5f01 %}}";
+
+            var result1 = _resolver.ResolveMacros(inputValue, new EvaluationContext(_resolver, macroRule1));
+
+            var result1a = _resolver.ResolveMacros(macroRule1);
+
+            var result2 = _resolver.ResolveMacros(macroRule2);//, new EvaluationContext(_resolver, macroRule1));
+            
+            Assert.Inconclusive();
+        }
+
+        [TestMethod]
         public void MyTestMethod()
         {
             var inputValue = "0213";
