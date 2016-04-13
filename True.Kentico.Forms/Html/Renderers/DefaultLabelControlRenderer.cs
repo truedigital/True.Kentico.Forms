@@ -1,4 +1,5 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System;
+using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
@@ -7,6 +8,10 @@ namespace True.Kentico.Forms.Html.Renderers
     {
         public string Render(IControl control)
         {
+            if (String.IsNullOrWhiteSpace(control.Label))
+            {
+                return "";
+            }
             var id = control.Name;
             var required = control.IsRequired ? " form-label--required" : string.Empty;
             var tb = new MultiLevelTag("label") { InnerHtml = $"{control.Label}" };

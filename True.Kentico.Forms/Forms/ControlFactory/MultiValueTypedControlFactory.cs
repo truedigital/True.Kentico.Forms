@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CMS.FormEngine;
 using True.Kentico.Forms.Forms.ControlValidationFactory;
@@ -26,7 +27,6 @@ namespace True.Kentico.Forms.Forms.ControlFactory
             {
                 Name = info.Name,
                 Label = info.Caption,
-
                 IsRequired = !info.AllowEmpty,
                 HasMultipleDefaultValues = true,
                 ExplanationText = info.GetPropertyValue(FormFieldPropertyEnum.ExplanationText),

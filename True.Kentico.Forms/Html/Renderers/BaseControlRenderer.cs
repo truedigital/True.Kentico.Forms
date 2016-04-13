@@ -4,7 +4,7 @@ namespace True.Kentico.Forms.Html.Renderers
 {
     public abstract class BaseControlRenderer : IControlRenderer
     {
-        internal virtual void IsRequired(IControl control, MultiLevelTag controlTag, string displayName)
+        public virtual void IsRequired(IControl control, MultiLevelTag controlTag, string displayName)
         {
             if (!control.IsRequired) return;
 
@@ -12,7 +12,7 @@ namespace True.Kentico.Forms.Html.Renderers
             controlTag.Attributes.Add("data-msg-required", $"{displayName} is required");
         }
 
-        internal virtual void ExplanationText(IControl control, MultiLevelTag parentTag)
+        public virtual void ExplanationText(IControl control, MultiLevelTag parentTag)
         {
             if (string.IsNullOrWhiteSpace(control.ExplanationText)) return;
             var helpTextDiv = new MultiLevelTag("div");
@@ -21,7 +21,7 @@ namespace True.Kentico.Forms.Html.Renderers
             parentTag.Add(helpTextDiv);
         }
 
-        internal virtual void ToolTip(IControl control, MultiLevelTag parentTag)
+        public virtual void ToolTip(IControl control, MultiLevelTag parentTag)
         {
             if (string.IsNullOrWhiteSpace(control.Tooltip)) return;
             parentTag.Attributes.Add("title", control.Tooltip);

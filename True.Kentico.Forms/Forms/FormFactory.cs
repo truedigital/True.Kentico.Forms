@@ -4,7 +4,10 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Forms
 {
-    internal class FormFactory : IFormFactory
+    /// <summary>
+    /// class used to convert a bizformInfo object to an Iform object
+    /// </summary>
+    public class FormFactory : IFormFactory
     {
         private readonly IControlFactory _controlFactory;
 
@@ -49,6 +52,8 @@ namespace True.Kentico.Forms.Forms
                 Notification = notification,
                 SubmissionOptions = submissionOptions
             };
+
+
 
             foreach (var controlInfo in info.Form.GetFields(true, false))
             {
