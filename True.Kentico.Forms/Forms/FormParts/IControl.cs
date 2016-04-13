@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 
 namespace True.Kentico.Forms.Forms.FormParts
 {
@@ -9,7 +10,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         ControlType Type { get; set; }
         IList<IControlValidation> Validation { get; set; }
         bool IsRequired { get; set; }
-        object SubmittedValue { get; set; }
+        string SubmittedValue { get; set; }
         string DefaultValue { get; set; }
         string ExplanationText { get; set; }
         string Tooltip { get; set; }
@@ -18,5 +19,10 @@ namespace True.Kentico.Forms.Forms.FormParts
         IDictionary<string, bool> DefaultValues { get; set; }
 
         bool IsValid();
+    }
+
+    public interface IFileControl : IControl
+    {
+        Stream SubmittedData { get; set; }
     }
 }

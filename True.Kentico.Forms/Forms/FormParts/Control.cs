@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web;
 
 namespace True.Kentico.Forms.Forms.FormParts
@@ -17,7 +19,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         public IList<IControlValidation> Validation { get; set; }
         public bool IsRequired { get; set; }
 
-        public object SubmittedValue { get; set; }
+        public string SubmittedValue { get; set; }
 
         public string DefaultValue { get; set; }
         public string ExplanationText { get; set; }
@@ -27,7 +29,7 @@ namespace True.Kentico.Forms.Forms.FormParts
 
         public bool IsValid()
         {
-            if (IsRequired && HasValue())
+            if (IsRequired && string.IsNullOrWhiteSpace(SubmittedValue))
                 return false;
 
             var isValid = true;
@@ -38,16 +40,6 @@ namespace True.Kentico.Forms.Forms.FormParts
             }
 
             return isValid;
-        }
-
-        private bool HasValue()
-        {
-            var submittedString = SubmittedValue as string;
-            if (submittedString != null)
-                return string.IsNullOrWhiteSpace(submittedString);
-
-            var submittedValue = SubmittedValue as HttpPostedFileBase;
-            return submittedValue != null;
         }
     }
 
@@ -91,8 +83,10 @@ namespace True.Kentico.Forms.Forms.FormParts
         }
     }
 
-    public class UploadFileControl : Control
+    public class UploadFileControl : Control, IFileControl
     {
+        public Stream SubmittedData { get; set; }
+
         public UploadFileControl()
         {
             Type = ControlType.UploadFile;

@@ -1,9 +1,14 @@
 using System;
 using System.Text;
+using System.Web;
+using CMS.Core;
 using CMS.DataEngine;
+using CMS.FormEngine;
+using CMS.IO;
 using CMS.OnlineForms;
 using CMS.SiteProvider;
 using True.Kentico.Forms.Forms.FormParts;
+using Stream = System.IO.Stream;
 
 namespace True.Kentico.Forms.Forms
 {
@@ -31,7 +36,18 @@ namespace True.Kentico.Forms.Forms
                 {
                     if (control.IsValid())
                     {
-                        item.SetValue(control.Name, control.SubmittedValue);
+                        if (control is IFileControl)
+                        {
+                            var fileControl = control as IFileControl;
+                            var fileNameMask = Guid.NewGuid();
+                            var extension = fileControl.SubmittedValue.Substring(fileControl.SubmittedValue.LastIndexOf(".", StringComparison.Ordinal));
+                            item.SetValue(fileControl.Name, $"{fileControl.SubmittedValue}/{fileNameMask}{extension}");
+                            SaveFile($"{fileNameMask}{extension}", fileControl.SubmittedData);
+                        }
+                        else
+                        {
+                            item.SetValue(control.Name, control.SubmittedValue);
+                        }
                     }
                     else
                     {
@@ -57,6 +73,20 @@ namespace True.Kentico.Forms.Forms
 
                 throw new InvalidOperationException("An unknown error occured while saving the form. Please contact our support team.");
             }
+        }
+
+        private void SaveFile(string maskedFileName, Stream inputStream)
+        {
+            // Path to BizForm files in file system.
+            var filesFolderPath = FormHelper.GetBizFormFilesFolderPath(SiteContext.CurrentSiteName);
+
+            // Get file size and path
+            var filePath = filesFolderPath + maskedFileName;
+
+            // Ensure disk path
+            DirectoryHelper.EnsureDiskPath(filePath, HttpRuntime.AppDomainAppPath);
+
+            StorageHelper.SaveFileToDisk(filePath, new BinaryData(inputStream));
         }
 
         public IForm GetForm(string formName)

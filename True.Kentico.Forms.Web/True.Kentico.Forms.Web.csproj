@@ -135,7 +135,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Assets\js\partials\_front-end-debug.js" />
     <Content Include="Assets\js\partials\_validation.js" />
     <Content Include="Assets\js\scripts.js" />
     <Content Include="Assets\js\scripts.min.js" />

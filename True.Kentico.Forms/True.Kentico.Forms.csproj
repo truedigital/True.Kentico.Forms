@@ -33,6 +33,9 @@
     <Reference Include="CMS.Base">
       <HintPath>..\Libs\CMS.Base.dll</HintPath>
     </Reference>
+    <Reference Include="CMS.Core">
+      <HintPath>..\Libs\CMS.Core.dll</HintPath>
+    </Reference>
     <Reference Include="CMS.DataEngine">
       <HintPath>..\Libs\CMS.DataEngine.dll</HintPath>
     </Reference>
@@ -41,6 +44,9 @@
     </Reference>
     <Reference Include="CMS.Helpers">
       <HintPath>..\Libs\CMS.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.IO">
+      <HintPath>..\Libs\CMS.IO.dll</HintPath>
     </Reference>
     <Reference Include="CMS.OnlineForms">
       <HintPath>..\Libs\CMS.OnlineForms.dll</HintPath>

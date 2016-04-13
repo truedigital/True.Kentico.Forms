@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Web.Mvc;
 using CMS.OnlineForms;
 using CMS.SiteProvider;
@@ -20,10 +21,16 @@ namespace True.Kentico.Forms.Infrastructure
 
             foreach (var control in form.Controls)
             {
-                if (control.Type == ControlType.UploadFile)
-                    control.SubmittedValue = request.Files[control.Name];
+                if (control is IFileControl)
+                {
+                    var fileControl = control as IFileControl;
+                    fileControl.SubmittedValue = request.Files[control.Name]?.FileName;
+                    fileControl.SubmittedData = request.Files[control.Name]?.InputStream;
+                }
                 else
+                {
                     control.SubmittedValue = request.Form.Get(control.Name);
+                }
             }
 
             return form;
