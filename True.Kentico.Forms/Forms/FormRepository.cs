@@ -38,11 +38,7 @@ namespace True.Kentico.Forms.Forms
                     {
                         if (control is IFileControl)
                         {
-                            var fileControl = control as IFileControl;
-                            var fileNameMask = Guid.NewGuid();
-                            var extension = fileControl.SubmittedValue.Substring(fileControl.SubmittedValue.LastIndexOf(".", StringComparison.Ordinal));
-                            item.SetValue(fileControl.Name, $"{fileNameMask}{extension}/{fileControl.SubmittedValue}");
-                            SaveFile($"{fileNameMask}{extension}", fileControl.SubmittedData);
+                            HandleFileControl(control, item);
                         }
                         else
                         {
@@ -73,6 +69,17 @@ namespace True.Kentico.Forms.Forms
 
                 throw new InvalidOperationException("An unknown error occured while saving the form. Please contact our support team.");
             }
+        }
+
+        private void HandleFileControl(IControl control, BizFormItem item)
+        {
+            var fileControl = control as IFileControl;
+            if (string.IsNullOrWhiteSpace(fileControl.SubmittedValue) | fileControl.SubmittedData == null) return;
+
+            var fileNameMask = Guid.NewGuid();
+            var extension = fileControl.SubmittedValue.Substring(fileControl.SubmittedValue.LastIndexOf(".", StringComparison.Ordinal));
+            item.SetValue(fileControl.Name, $"{fileNameMask}{extension}/{fileControl.SubmittedValue}");
+            SaveFile($"{fileNameMask}{extension}", fileControl.SubmittedData);
         }
 
         private void SaveFile(string maskedFileName, Stream inputStream)
