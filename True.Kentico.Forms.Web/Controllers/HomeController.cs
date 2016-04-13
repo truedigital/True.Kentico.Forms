@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using True.Kentico.Forms.Forms;
 using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Web.Controllers
@@ -10,9 +9,7 @@ namespace True.Kentico.Forms.Web.Controllers
         public ActionResult Index()
         {
             return View();
-
         }
-
 
         public ActionResult KenticoForm()
         {
@@ -120,7 +117,7 @@ namespace True.Kentico.Forms.Web.Controllers
                 Controls = controls
             };
 
-            return View(model);
+            return View("~/Views/KenticoForm/Index.cshtml", model);
         }
 
         [HttpPost]
