@@ -17,6 +17,7 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("id", $"{id}");
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "checkbox");
+            input.Attributes.Add("value", $"{id}");
 
             if (control.DefaultValue == "True")
             {
@@ -34,7 +35,7 @@ namespace True.Kentico.Forms.Html.Renderers
             // todo why does this have its own label?
             var label = new MultiLevelTag("label");
             label.Attributes.Add("for", $"{id}");
-            label.SetInnerText(displayName);
+            label.SetInnerText(control.DefaultValue);
 
             div.Add(input);
             div.Add(label);

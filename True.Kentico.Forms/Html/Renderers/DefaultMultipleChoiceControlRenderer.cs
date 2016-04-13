@@ -8,7 +8,6 @@ namespace True.Kentico.Forms.Html.Renderers
         {
             var id = control.Name;
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
-            //var helpTextAttr = GetAttribute<HelpTextAttribute>(item);
 
             var div = new MultiLevelTag("div");
             div.AddCssClass("form-inner");
@@ -21,7 +20,7 @@ namespace True.Kentico.Forms.Html.Renderers
                 var input = new MultiLevelTag("input");
                 input.Attributes.Add("id", $"{id}_{count}");
                 input.Attributes.Add("name", $"{id}");
-                input.Attributes.Add("value", $"{innerItem}");
+                input.Attributes.Add("value", $"{innerItem.Key}");
                 input.Attributes.Add("type", "checkbox");
                 if (innerItem.Value) input.Attributes.Add("checked", null);
 
