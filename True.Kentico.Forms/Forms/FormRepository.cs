@@ -59,8 +59,7 @@ namespace True.Kentico.Forms.Forms
 
                 item.SetValue("FormInserted", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 item.SetValue("FormUpdated", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-
-
+                
                 BizFormItemProvider.SetItem(item);
                 BizFormInfoProvider.RefreshDataCount(formInfo.FormName, formInfo.FormSiteID);
             }
@@ -74,11 +73,12 @@ namespace True.Kentico.Forms.Forms
         private void HandleFileControl(IControl control, BizFormItem item)
         {
             var fileControl = control as IFileControl;
-            if (string.IsNullOrWhiteSpace(fileControl.SubmittedValue) | fileControl.SubmittedData == null) return;
+            if (string.IsNullOrWhiteSpace(fileControl?.SubmittedValue) | fileControl?.SubmittedData == null) return;
 
             var fileNameMask = Guid.NewGuid();
             var extension = fileControl.SubmittedValue.Substring(fileControl.SubmittedValue.LastIndexOf(".", StringComparison.Ordinal));
             item.SetValue(fileControl.Name, $"{fileNameMask}{extension}/{fileControl.SubmittedValue}");
+
             SaveFile($"{fileNameMask}{extension}", fileControl.SubmittedData);
         }
 
