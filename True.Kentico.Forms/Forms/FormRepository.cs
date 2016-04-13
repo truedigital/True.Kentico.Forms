@@ -41,7 +41,7 @@ namespace True.Kentico.Forms.Forms
                             var fileControl = control as IFileControl;
                             var fileNameMask = Guid.NewGuid();
                             var extension = fileControl.SubmittedValue.Substring(fileControl.SubmittedValue.LastIndexOf(".", StringComparison.Ordinal));
-                            item.SetValue(fileControl.Name, $"{fileControl.SubmittedValue}/{fileNameMask}{extension}");
+                            item.SetValue(fileControl.Name, $"{fileNameMask}{extension}/{fileControl.SubmittedValue}");
                             SaveFile($"{fileNameMask}{extension}", fileControl.SubmittedData);
                         }
                         else
