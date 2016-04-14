@@ -2,9 +2,9 @@
 @using True.Kentico.Forms.Html.Extensions
 @using True.Kentico.Forms.Infrastructure
 
-@model Form
+@model IForm
 
-@Html.KenticoForm().BeginForm("FormResult", "Home", Model.Name, Model.SubmissionOptions)
+@Html.KenticoForm().BeginForm("Save", "KenticoForm", Model.Name, Model.SubmissionOptions)
 
 <div id="form-result">
 

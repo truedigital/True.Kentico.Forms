@@ -12,7 +12,7 @@ namespace True.Kentico.Forms.Web
 			routes.MapRoute(
 					name: "Default",
 					url: "{controller}/{action}/{id}",
-					defaults: new { controller = "Home", action = "KenticoForm", id = UrlParameter.Optional }
+					defaults: new { controller = "KenticoForm", action = "Example", id = UrlParameter.Optional }
 			);
 		}
 	}

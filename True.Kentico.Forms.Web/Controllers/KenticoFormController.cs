@@ -1,42 +1,57 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms;
 using True.Kentico.Forms.Forms.FormParts;
+using True.Kentico.Forms.Web.Models;
 
 namespace True.Kentico.Forms.Web.Controllers
 {
     public class KenticoFormController : Controller
     {
-        public class FormController : Controller
+        private readonly IFormRepository _formRepository;
+
+        public KenticoFormController() : this(new FormRepository())
         {
-            private readonly FormRepository _formRepository;
+        }
 
-            public FormController(FormRepository formRepository)
+        public KenticoFormController(IFormRepository formRepository)
+        {
+            _formRepository = formRepository;
+        }
+
+        public ActionResult Index()
+        {
+            var form = _formRepository.GetForm("");
+            return View(form);
+        }
+
+        public ActionResult Example()
+        {
+            var form = new ExampleForm("example_form");
+            return View("~/Views/KenticoForm/Index.cshtml", form);
+        }
+
+        /// <summary>
+        /// The controller action that handles the form submission post event.
+        /// </summary>
+        /// <returns>200 status, error in Json format or 500 status</returns>
+        [HttpPost]
+        public ActionResult Save(IForm form)
+        {
+            try
             {
-                _formRepository = formRepository;
+                _formRepository.Submit(form);
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
-
-            /// <summary>
-            /// Default controller action
-            /// </summary>
-            /// <returns>Work view ActionResult</returns>
-            [HttpPost]
-            public ActionResult Save(IForm form)
+            catch (InvalidOperationException ex)
             {
-                try
-                {
-                    _formRepository.Submit(form);
-                    return new HttpStatusCodeResult(HttpStatusCode.OK);
-                }
-                catch (InvalidOperationException ex)
-                {
-                    return Json(ex.Message);
-                }
-                catch
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
-                }
+                return Json(ex.Message);
+            }
+            catch
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
             }
         }
     }
