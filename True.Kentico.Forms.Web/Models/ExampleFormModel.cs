@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using True.Kentico.Forms.Forms.FormParts;
+using True.Kentico.Forms.Forms.Validation;
 
 namespace True.Kentico.Forms.Web.Models
 {
@@ -36,8 +37,8 @@ namespace True.Kentico.Forms.Web.Models
                     Tooltip = "a tool tip saying what goes here",
                     Validation = new List<IControlValidation>
                     {
-                        new ControlValidation { HasValue = true, ValidationRule = "minlength", ValidationValue = "3", ValidationErrorMessage = "too short"},
-                        new ControlValidation { HasValue = true, ValidationRule = "maxlength", ValidationValue = "5", ValidationErrorMessage = "too long"}
+                        new MinimumLengthControlValidation { HasValue = true, ValidationRule = "minlength", ValidationValue = "3", ValidationErrorMessage = "too short"},
+                        new MaximumLengthControlValidation { HasValue = true, ValidationRule = "maxlength", ValidationValue = "5", ValidationErrorMessage = "too long"}
                     }
                 },
                 new Control
@@ -45,7 +46,7 @@ namespace True.Kentico.Forms.Web.Models
                     IsRequired = true, Label = "Surname", Type = ControlType.TextBox, Name = "Surname",
                     Validation = new List<IControlValidation>
                     {
-                        new ControlValidation { HasValue = true, ValidationRule = "maxlength", ValidationValue = "9", ValidationErrorMessage = "too long"}
+                        new MaximumLengthControlValidation { HasValue = true, ValidationRule = "maxlength", ValidationValue = "9", ValidationErrorMessage = "too long"}
                     }
                 },
                 new Control
@@ -55,7 +56,7 @@ namespace True.Kentico.Forms.Web.Models
                     Tooltip = "a tool tip saying what is an email",
                     Validation = new List<IControlValidation>
                     {
-                        new ControlValidation { HasValue = true, ValidationRule = "email", ValidationErrorMessage = "not valid email"}
+                        new EmailControlValidation { HasValue = true, ValidationRule = "email", ValidationErrorMessage = "not valid email"}
                     }
                 },
                 new Control
