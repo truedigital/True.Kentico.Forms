@@ -1,6 +1,9 @@
+using System;
+using CMS.MacroEngine;
+
 namespace True.Kentico.Forms.Forms.FormParts
 {
-    public class ControlValidation : IControlValidation
+    public abstract class ControlValidation : IControlValidation
     {
         public string ValidationRule { get; set; }
         public string ValidationErrorMessage { get; set; }
@@ -8,15 +11,6 @@ namespace True.Kentico.Forms.Forms.FormParts
         public string ValidationValue { get; set; }
         public string MacroValidationRule { get; set; }
 
-        public bool Validate(object value)
-        {
-            //todo this does not work
-            //var resolver = MacroResolver.GetInstance();
-            //var result = resolver.ResolveMacros(value, new EvaluationContext(resolver, MacroValidationRule));
-
-            //bool isValid;
-            //return bool.TryParse(result, out isValid) && isValid;
-            return true;
-        }
+        public abstract bool Validate(string value);
     }
 }

@@ -9,6 +9,10 @@ namespace True.Kentico.Forms.Infrastructure
 {
     public class FormModelBinder : IModelBinder
     {
+        public FormModelBinder()
+        {
+            
+        }
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             var request = controllerContext.HttpContext.Request;

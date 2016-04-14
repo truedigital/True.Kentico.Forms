@@ -1,5 +1,6 @@
 using CMS.FormEngine;
 using True.Kentico.Forms.Forms.FormParts;
+using True.Kentico.Forms.Forms.Validation;
 
 namespace True.Kentico.Forms.Forms.ControlValidationFactory
 {
@@ -10,7 +11,7 @@ namespace True.Kentico.Forms.Forms.ControlValidationFactory
             var parser = new XmlRulesParser();
             var rule = parser.GetXmlRules(info);
 
-            return new ControlValidation
+            return new MaximumValueControlValidation
             {
                 HasValue = true,
                 ValidationValue = rule.Rule.Properties.T,
