@@ -189,7 +189,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cd "$(ProjectDir)" nuget pack True.Kentico.Forms.csproj</PostBuildEvent>
+    <PostBuildEvent>cd "$(ProjectDir)"
+nuget pack True.Kentico.Forms.csproj</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
