@@ -12,7 +12,7 @@
     <tags>Kentico MVC C#</tags>
   </metadata>
   <files>
-    <file src="NuGet\Lib\*.dll" target="lib\Net45" />
+    <file src="bin\$configuration$\*.dll" target="lib\Net45" />
     <file src="NuGet\Content\**\*.*" target="content" />
   </files>
 </package>
