@@ -1,7 +1,0 @@
-<configuration>
-    <system.web>
-	<httpModules>
-	      <add name="KenticoFormsInitialisationModule" type="True.Kentico.Forms.Infrastructure.KenticoFormsInitialisationModule, True.Kentico.Forms" />
-	    </httpModules>
-    </system.web>
-</configuration>
