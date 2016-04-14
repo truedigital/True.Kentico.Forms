@@ -4,7 +4,7 @@ using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Infrastructure
 {
-    class KenticoMVCFormsInitialisationModule : IHttpModule
+    class KenticoFormsInitialisationModule : IHttpModule
     {
         public void Init(HttpApplication context)
         {

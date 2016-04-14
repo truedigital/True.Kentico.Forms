@@ -179,7 +179,7 @@
     <Compile Include="Html\Renderers\DefaultTextBoxForControlRenderer.cs" />
     <Compile Include="Html\Renderers\IControlRenderer.cs" />
     <Compile Include="Infrastructure\ControlRendererRegistrar.cs" />
-    <Compile Include="Infrastructure\KenticoInitialisationModule.cs" />
+    <Compile Include="Infrastructure\KenticoFormsInitialisationModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\Validation\FormValidator.cs" />
   </ItemGroup>
