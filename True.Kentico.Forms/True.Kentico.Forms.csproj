@@ -184,9 +184,6 @@
     <Compile Include="Forms\Validation\FormValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Html\Documents\Readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
