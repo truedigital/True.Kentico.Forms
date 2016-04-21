@@ -57,13 +57,9 @@ View:
 
 @Html.KenticoForm().BeginForm("Save", "KenticoForm", Model.Name, Model.SubmissionOptions)
 
-<div id="form-result">
+@Html.KenticoForm().RenderFormControls(Model.Controls)
 
-    @Html.KenticoForm().RenderFormControls(Model.Controls)
-
-    @Html.KenticoForm().SubmitButton(Model.SubmitText)
-
-</div>
+@Html.KenticoForm().SubmitButton(Model.SubmitText)
 
 @Html.KenticoForm().EndForm()
 
@@ -139,8 +135,25 @@ submitHandler: function(form) {
     formSubmit.submission(event, $(form));
 }
 
-The project styles are written in Sass. The styles and scripts get built with gulp. $TODO$ what about gulp?!
-The front-end assets are built using gulp.
+In order to wire up the client validation, you'll need to include some scripts in your layout view. The basic set up is to load in jQuery in the head and the partials JavaScript at the bottom of the page. They need to be at the bottom because they are looking for particular elements on the page, so if those elements aren't loaded yet, then the script doesn't do anything. An example layout view is here:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="@Url.Content("/Assets/js/vendor/jquery-1.11.2.js")"></script>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="@Url.Content("/Assets/js/partials/_form-submit.js")"></script>
+    <script src="@Url.Content("/Assets/js/partials/_validation.js")"></script>
+</body>
+</html>
+
+The package comes with some basic styles. The originals were written in Sass and have been compiled to a css file here: ~\Assets\css\style.css. 
 
 For the submit action, the package takes care of the model binding to map the HttpRequest back into an IForm type. However, server-side validation must be implemented by the application. In order to submit the form back to Kentico, use the FormRepository.Submit(IForm form) method. A basic example of what a submit action might look like is below:
 
