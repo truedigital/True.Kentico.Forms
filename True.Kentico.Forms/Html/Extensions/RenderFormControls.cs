@@ -39,9 +39,6 @@ namespace True.Kentico.Forms.Html.Extensions
                     case ControlType.Email:
                         result.AppendLine(string.Concat("<div class=\"form-row\">", model.LabelFor(control).ToHtmlString(), model.EmailFor(control).ToHtmlString(), "</div>"));
                         break;
-                    case ControlType.HtmlArea:
-                        result.AppendLine(string.Concat("<div class=\"form-row\">", model.LabelFor(control).ToHtmlString(), model.HtmlAreaFor(control).ToHtmlString(), "</div>"));
-                        break;
                     case ControlType.Label:
                         result.AppendLine(model.LabelFor(control).ToHtmlString());
                         break;
