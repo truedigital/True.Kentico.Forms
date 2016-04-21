@@ -1,6 +1,8 @@
 ﻿@using True.Kentico.Forms.Forms.FormParts
 @using True.Kentico.Forms.Html.Extensions
 @using True.Kentico.Forms.Infrastructure
+@using True.Kentico.Forms.Web.Renderers
+
 
 @model IForm
 
@@ -10,6 +12,10 @@
 
     @Html.KenticoForm().RenderFormControls(Model.Controls)
 
+    @Html.KenticoForm().LabelFor(Model, "FirstName")
+    
+    @Html.KenticoForm().LabelFor(Model, "FirstName", new CustomLabelRenderer())
+    
     @Html.KenticoForm().SubmitButton(Model.SubmitText)
 
 </div>

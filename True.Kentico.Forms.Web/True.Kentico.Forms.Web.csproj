@@ -166,6 +166,7 @@
     </Compile>
     <Compile Include="Models\ExampleFormModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\CustomLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\js\partials\_form-submit.js" />

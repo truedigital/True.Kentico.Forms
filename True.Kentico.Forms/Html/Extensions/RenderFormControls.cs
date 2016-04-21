@@ -10,6 +10,13 @@ namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
+        /// <summary>
+        /// Convenience method to render a set of form fields complete with a containing label
+        /// </summary>
+        /// <typeparam name="TControls"></typeparam>
+        /// <param name="model"></param>
+        /// <param name="controls"></param>
+        /// <returns></returns>
         public static IHtmlString RenderFormControls<TControls>(this KenticoForm model, TControls controls) where TControls : IList<IControl>
         {
             var result = new StringBuilder();

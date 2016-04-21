@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms;
@@ -29,8 +28,8 @@ namespace True.Kentico.Forms.Web.Controllers
 
         public ActionResult Example()
         {
-            var form = new ExampleForm("example_form");
-            return View("~/Views/KenticoForm/Index.cshtml", form);
+            //var form = _formRepository.GetForm("myform");
+            return View("~/Views/KenticoForm/Index.cshtml", new ExampleForm("dave"));
         }
 
         /// <summary>
