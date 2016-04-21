@@ -131,7 +131,6 @@
     <Compile Include="Forms\Validation\DateToControlValidation.cs" />
     <Compile Include="Forms\FormParts\Form.cs" />
     <Compile Include="Forms\Validation\DateFromControlValidation.cs" />
-    <Compile Include="Html\Extensions\HtmlAreaFor.cs" />
     <Compile Include="Html\Extensions\UploadFor.cs" />
     <Compile Include="Html\Renderers\DefaultUploadForControlRenderer.cs" />
     <Compile Include="Infrastructure\FormModelBinder.cs" />
