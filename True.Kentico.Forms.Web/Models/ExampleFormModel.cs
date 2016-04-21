@@ -43,6 +43,16 @@ namespace True.Kentico.Forms.Web.Models
                 },
                 new Control
                 {
+                    IsRequired = true, Label = "Enter a Uk Postcode", Type = ControlType.TextBox, Name = "UkPostcode",
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "a tool tip saying what goes here",
+                    Validation = new List<IControlValidation>
+                    {
+                        new RegularExpressionControlValidation { HasValue = true, ValidationRule = "regular-expression", ValidationValue = "(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$", ValidationErrorMessage = "not right"}
+                    }
+                },
+                new Control
+                {
                     IsRequired = true, Label = "Surname", Type = ControlType.TextBox, Name = "Surname",
                     Validation = new List<IControlValidation>
                     {
