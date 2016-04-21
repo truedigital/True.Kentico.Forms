@@ -15,13 +15,7 @@ namespace True.Kentico.Forms.Html.Extensions
         {
             return CheckboxFor<TControl>(html, control, ControlRendererRegistrar.Resolve(ControlType.CheckBox));
         }
-
-        public static IHtmlString CheckboxFor(this KenticoForm html, IControl control, IControlRenderer customRenderer)
-        {
-            var renderedControl = customRenderer.Render(control);
-            return MvcHtmlString.Create(renderedControl);
-        }
-
+        
         public static IHtmlString CheckboxFor<TControl>(this KenticoForm html, TControl control, IControlRenderer customRenderer)
             where TControl : IControl 
         {
@@ -29,6 +23,15 @@ namespace True.Kentico.Forms.Html.Extensions
             var renderedControl = customRenderer.Render(control);
 
             return MvcHtmlString.Create(renderedControl);
+        }
+
+        public static IHtmlString CheckboxFor(this KenticoForm html, IForm model, string controlName)
+        {
+            var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
+
+            return control != null ?
+                CalendarFor(html, control, ControlRendererRegistrar.Resolve(ControlType.CheckBox))
+                : MvcHtmlString.Create("");
         }
 
         public static IHtmlString CheckboxFor(this KenticoForm html, IForm model, string controlName, IControlRenderer customRenderer)
