@@ -188,7 +188,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cd "$(ProjectDir)"
+    <PostBuildEvent>xcopy /s /q /y "$(SolutionDir)True.Kentico.Forms.Web\Assets" "$(ProjectDir)NuGet\Content\Assets"
+cd "$(ProjectDir)"
 nuget pack True.Kentico.Forms.csproj</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
