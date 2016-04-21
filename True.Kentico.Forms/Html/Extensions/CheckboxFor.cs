@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using System;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms.FormParts;
 using True.Kentico.Forms.Html.Renderers;
@@ -10,19 +12,30 @@ namespace True.Kentico.Forms.Html.Extensions
     {
         public static IHtmlString CheckboxFor<TControl>(this KenticoForm html, TControl control)
             where TControl : IControl 
-            
         {
             return CheckboxFor<TControl>(html, control, ControlRendererRegistrar.Resolve(ControlType.CheckBox));
         }
 
+        public static IHtmlString CheckboxFor(this KenticoForm html, IControl control, IControlRenderer customRenderer)
+        {
+            var renderedControl = customRenderer.Render(control);
+            return MvcHtmlString.Create(renderedControl);
+        }
+
         public static IHtmlString CheckboxFor<TControl>(this KenticoForm html, TControl control, IControlRenderer customRenderer)
             where TControl : IControl 
-            
         {
 
             var renderedControl = customRenderer.Render(control);
 
-            return MvcHtmlString.Create(renderedControl.ToString());
+            return MvcHtmlString.Create(renderedControl);
+        }
+
+        public static IHtmlString CheckboxFor(this KenticoForm html, IForm model, string controlName, IControlRenderer customRenderer)
+        {
+            var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
+            var renderedControl = customRenderer.Render(control);
+            return MvcHtmlString.Create(renderedControl);
         }
     }
 }
