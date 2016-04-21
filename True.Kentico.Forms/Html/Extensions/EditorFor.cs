@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
@@ -8,8 +9,8 @@ using True.Kentico.Forms.Infrastructure;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
-	public static partial class KenticoFormHelperExtensions
-	{
+    public static partial class KenticoFormHelperExtensions
+    {
 
         public static IHtmlString EditorFor<TControl>(this KenticoForm html, TControl control) where TControl : IControl
 
@@ -23,6 +24,22 @@ namespace True.Kentico.Forms.Html.Extensions
             var renderedControl = customRenderer.Render(control);
 
             return MvcHtmlString.Create(renderedControl.ToString());
+        }
+
+        public static IHtmlString EditorFor(this KenticoForm html, IForm model, string controlName)
+        {
+            var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
+
+            return control != null ?
+                CalendarFor(html, control, ControlRendererRegistrar.Resolve(ControlType.HtmlArea))
+                : MvcHtmlString.Create("");
+        }
+
+        public static IHtmlString EditorFor(this KenticoForm html, IForm model, string controlName, IControlRenderer customRenderer)
+        {
+            var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
+            var renderedControl = customRenderer.Render(control);
+            return MvcHtmlString.Create(renderedControl);
         }
     }
 }
