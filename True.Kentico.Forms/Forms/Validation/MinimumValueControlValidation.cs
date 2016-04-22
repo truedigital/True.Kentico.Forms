@@ -4,7 +4,7 @@ namespace True.Kentico.Forms.Forms.Validation
 {
     public class MinimumValueControlValidation : ControlValidation
     {
-        public override bool Validate(string value)
+        public override bool Validate(object value)
         {
             return true;
         }

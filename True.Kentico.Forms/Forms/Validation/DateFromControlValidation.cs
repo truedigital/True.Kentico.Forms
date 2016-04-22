@@ -9,7 +9,7 @@ namespace True.Kentico.Forms.Forms.Validation
 {
     public class DateFromControlValidation : ControlValidation
     {
-        public override bool Validate(string value)
+        public override bool Validate(Object value)
         {
             bool isValid = true;
 
