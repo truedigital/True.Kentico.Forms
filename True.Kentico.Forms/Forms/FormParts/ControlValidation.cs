@@ -9,7 +9,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         public string ValidationErrorMessage { get; set; }
         public bool HasValue { get; set; }
         public string ValidationValue { get; set; }
-       
+
         public string MacroValidationRule { get; set; }
 
         public abstract bool Validate(object value);

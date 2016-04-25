@@ -15,7 +15,7 @@ namespace True.Kentico.Forms.Forms.ControlValidationFactory
             {
                 HasValue = true,
                 ValidationValue = rule.Rule.Properties.T,
-                ValidationRule = "minimum-value",
+                ValidationRule = "min",
                 ValidationErrorMessage = string.IsNullOrEmpty(info.ErrorMessage) ? "Value is less than minimum" : info.ErrorMessage
             };
         }

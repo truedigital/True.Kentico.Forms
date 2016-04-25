@@ -15,7 +15,7 @@ namespace True.Kentico.Forms.Forms.ControlValidationFactory
             {
                 HasValue = true,
                 ValidationValue = rule.Rule.Properties.T,
-                ValidationRule = "maximum-value",
+                ValidationRule = "max",
                 ValidationErrorMessage = string.IsNullOrEmpty(info.ErrorMessage) ? "Value is greater than maximum" : info.ErrorMessage
             };
         }
