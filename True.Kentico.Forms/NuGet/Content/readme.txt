@@ -153,7 +153,7 @@ In order to wire up the client validation, you'll need to include some scripts i
 </body>
 </html>
 
-The package comes with some basic styles. The originals were written in Sass and have been compiled to a css file here: ~\Assets\css\style.css. 
+There are no styles included in the package. They can be implemented by your application.
 
 For the submit action, the package takes care of the model binding to map the HttpRequest back into an IForm type. However, server-side validation must be implemented by the application. In order to submit the form back to Kentico, use the FormRepository.Submit(IForm form) method. A basic example of what a submit action might look like is below:
 
