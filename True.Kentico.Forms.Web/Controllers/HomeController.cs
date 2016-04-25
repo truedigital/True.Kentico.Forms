@@ -14,7 +14,7 @@ namespace True.Kentico.Forms.Web.Controllers
 
         public ActionResult KenticoForm()
         {
-            return View("~/Views/KenticoForm/Index.cshtml", new ExampleForm("my-form"));
+            return View("~/Views/KenticoForm/Index.cshtml", new LongForm("my-form"));
         }
 
         [HttpPost]

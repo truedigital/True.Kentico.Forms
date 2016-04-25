@@ -29,7 +29,7 @@ namespace True.Kentico.Forms.Web.Controllers
         public ActionResult Example()
         {
             //var form = _formRepository.GetForm("myform");
-            return View("~/Views/KenticoForm/Index.cshtml", new ExampleForm("dave"));
+            return View("~/Views/KenticoForm/Index.cshtml", new ShortForm("dave"));
         }
 
         /// <summary>
@@ -41,6 +41,7 @@ namespace True.Kentico.Forms.Web.Controllers
         {
             try
             {
+                // need to call validate here
                 _formRepository.Submit(form);
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }

@@ -14,11 +14,13 @@ var formSubmit = (function ($) {
             formData.append(this.name, this.value);
         });
 
-        $.each($("input[type=file]").prop('files'), function () {
-            var name = $("input[type=file]")[0].name;
-            formData.append(name, this);
-        });
-        
+        if ($('input[type=file]').length) {
+            $.each($("input[type=file]").prop('files'), function() {
+                var name = $("input[type=file]")[0].name;
+                formData.append(name, this);
+            });
+        }
+
         $.ajax({
             url: $form.attr('action'),
             type: $form.attr('method'),

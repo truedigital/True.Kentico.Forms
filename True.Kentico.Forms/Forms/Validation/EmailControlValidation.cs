@@ -1,3 +1,4 @@
+using CMS.Helpers;
 using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Forms.Validation
@@ -6,8 +7,7 @@ namespace True.Kentico.Forms.Forms.Validation
     {
         public override bool Validate(object value)
         {
-            //todo: implement email control validation
-            return true;
+            return ValidationHelper.IsEmail(value);
         }
     }
 }

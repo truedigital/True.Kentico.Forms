@@ -1,4 +1,5 @@
-﻿using CMS.OnlineForms;
+﻿using CMS.Base;
+using CMS.OnlineForms;
 using True.Kentico.Forms.Forms.ControlFactory;
 using True.Kentico.Forms.Forms.FormParts;
 
@@ -52,8 +53,6 @@ namespace True.Kentico.Forms.Forms
                 Notification = notification,
                 SubmissionOptions = submissionOptions
             };
-
-
 
             foreach (var controlInfo in info.Form.GetFields(true, false))
             {

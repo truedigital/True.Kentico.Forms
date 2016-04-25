@@ -11,10 +11,6 @@
 <div id="form-result">
 
     @Html.KenticoForm().RenderFormControls(Model.Controls)
-
-    @Html.KenticoForm().LabelFor(Model, "FirstName")
-    
-    @Html.KenticoForm().LabelFor(Model, "FirstName", new CustomLabelRenderer())
     
     @Html.KenticoForm().SubmitButton(Model.SubmitText)
 

@@ -1,23 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
-using CMS.OnlineForms;
-using CMS.SiteProvider;
-using True.Kentico.Forms.Forms;
 using True.Kentico.Forms.Forms.FormParts;
+using True.Kentico.Forms.Web.Models;
 
-namespace True.Kentico.Forms.Infrastructure
+namespace True.Kentico.Forms.Web.Binders
 {
-    public class FormModelBinder : IModelBinder
+    public class CustomFormModelBinder : IModelBinder
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             var request = controllerContext.HttpContext.Request;
 
             var formName = request.Form.Get("formname");
-            var formInfo = BizFormInfoProvider.GetBizFormInfo(formName, SiteContext.CurrentSiteID);
 
-            var formFactory = new FormFactory(new Forms.ControlFactory.ControlFactory());
-            var form = formFactory.Create(formInfo);
+            var form = new ShortForm(formName);
 
             foreach (var control in form.Controls)
             {

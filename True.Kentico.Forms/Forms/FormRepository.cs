@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Text;
 using System.Web;
 using CMS.Core;
@@ -19,6 +20,18 @@ namespace True.Kentico.Forms.Forms
         public FormRepository()
         {
             _formFactory = new FormFactory(new ControlFactory.ControlFactory());
+        }
+
+        public IForm GetForm(string formName)
+        {
+            BizFormInfo formObject = BizFormInfoProvider.GetBizFormInfo(formName, SiteContext.CurrentSiteID);
+
+            if (formObject != null)
+            {
+                var formInfo = _formFactory.Create(formObject);
+                return formInfo;
+            }
+            return null;
         }
 
         public void Submit(IForm form)
@@ -59,7 +72,7 @@ namespace True.Kentico.Forms.Forms
 
                 item.SetValue("FormInserted", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 item.SetValue("FormUpdated", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                
+
                 BizFormItemProvider.SetItem(item);
                 BizFormInfoProvider.RefreshDataCount(formInfo.FormName, formInfo.FormSiteID);
             }
@@ -69,7 +82,7 @@ namespace True.Kentico.Forms.Forms
                 throw new InvalidOperationException("An unknown error occured while saving the form. Please contact our support team.");
             }
         }
-
+        
         private void HandleFileControl(IControl control, BizFormItem item)
         {
             var fileControl = control as IFileControl;
@@ -94,18 +107,6 @@ namespace True.Kentico.Forms.Forms
             DirectoryHelper.EnsureDiskPath(filePath, HttpRuntime.AppDomainAppPath);
 
             StorageHelper.SaveFileToDisk(filePath, new BinaryData(inputStream));
-        }
-
-        public IForm GetForm(string formName)
-        {
-            BizFormInfo formObject = BizFormInfoProvider.GetBizFormInfo(formName, SiteContext.CurrentSiteID);
-
-            if (formObject != null)
-            {
-                var formInfo = _formFactory.Create(formObject);
-                return formInfo;
-            }
-            return null;
         }
     }
 }

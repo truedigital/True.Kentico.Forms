@@ -7,7 +7,7 @@ using True.Kentico.Forms.Forms.Validation;
 
 namespace True.Kentico.Forms.Web.Models
 {
-    public class ExampleForm : IForm
+    public class LongForm : IForm
     {
         public string Name { get; set; }
         public string SubmitText { get; set; }
@@ -20,7 +20,7 @@ namespace True.Kentico.Forms.Web.Models
             return Controls.FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
 
-        public ExampleForm(string name)
+        public LongForm(string name)
         {
             var controls = new List<IControl>
             {
@@ -120,6 +120,68 @@ namespace True.Kentico.Forms.Web.Models
                     Name = "Optin",
                     DefaultValue = "Yes",
                     DefaultValues = new Dictionary<string, bool> { { "Yes", true }, { "No", true } }
+                }
+            };
+
+            var submissionOptions = new SubmissionOptions
+            {
+                DisplayText = "thanks for submitting"
+            };
+
+            Name = name;
+            SubmitText = "Submit";
+            SubmissionOptions = submissionOptions;
+            Controls = controls;
+        }
+    }
+
+    public class ShortForm : IForm
+    {
+        public string Name { get; set; }
+        public string SubmitText { get; set; }
+        public IList<IControl> Controls { get; set; }
+        public IAutoresponder Autoresponder { get; set; }
+        public INotification Notification { get; set; }
+        public ISubmissionOptions SubmissionOptions { get; set; }
+        public IControl Find(string name)
+        {
+            return Controls.FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        public ShortForm(string name)
+        {
+            var controls = new List<IControl>
+            {
+                new Control
+                {
+                    IsRequired = true, Label = "First name", Type = ControlType.TextBox, Name = "FirstName",
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "a tool tip saying what goes here",
+                    Validation = new List<IControlValidation>
+                    {
+                        new MinimumLengthControlValidation { HasValue = true, ValidationRule = "minlength", ValidationValue = "3", ValidationErrorMessage = "too short"},
+                        new MaximumLengthControlValidation { HasValue = true, ValidationRule = "maxlength", ValidationValue = "5", ValidationErrorMessage = "too long"}
+                    }
+                },
+                new Control
+                {
+                    IsRequired = true, Label = "Email address", Type = ControlType.Email, Name = "EmailAddress",
+                    ExplanationText = "explanation about putting your email in this field",
+                    Tooltip = "a tool tip saying what is an email",
+                    Validation = new List<IControlValidation>
+                    {
+                        new EmailControlValidation { HasValue = true, ValidationRule = "email", ValidationErrorMessage = "not valid email"}
+                    }
+                },
+                new Control
+                {
+                    IsRequired = true, Label = "Enter a Uk Postcode", Type = ControlType.TextBox, Name = "UkPostcode",
+                    ExplanationText = "explanation about this field",
+                    Tooltip = "a tool tip saying what goes here",
+                    Validation = new List<IControlValidation>
+                    {
+                        new RegularExpressionControlValidation { HasValue = true, ValidationRule = "regular-expression", ValidationValue = "(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$", ValidationErrorMessage = "not right"}
+                    }
                 }
             };
 
