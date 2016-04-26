@@ -190,7 +190,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /s /q /y "$(SolutionDir)True.Kentico.Forms.Web\Assets\js" "$(ProjectDir)NuGet\Content\Assets\js"
+    <PostBuildEvent>xcopy /s /q /y "$(SolutionDir)True.Kentico.Forms.Web\Assets" "$(ProjectDir)NuGet\Content\Assets"
 cd "$(ProjectDir)"
 nuget pack True.Kentico.Forms.csproj</PostBuildEvent>
   </PropertyGroup>

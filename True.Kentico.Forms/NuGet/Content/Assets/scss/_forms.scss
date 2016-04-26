@@ -1,0 +1,64 @@
+
+
+
+form[data-layout="inline"]{
+    .form-label {
+        display: inline-block;
+        vertical-align: top;
+        min-width: 150px;
+        text-align: right;
+        margin-right: 40px;
+    }
+    .form-inner {
+        display: inline-block;
+    }
+}
+
+
+.form-summary {
+    display: none;
+    color: #ff2700;
+
+    form[data-summary] & {
+        display: block;
+    }
+
+    &.is-hidden {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+.form-row {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    &--required {
+        &:after {
+            content: '*';
+            color: #ff2700;
+            font-size: 14px;
+        }
+    }
+}
+
+label.is-invalid {
+    color: #ff2700;
+    display: block
+}
+
+input.is-invalid,
+textarea.is-invalid,
+select.is-invalid {
+    border-color: #ff2700;
+}
+
+
+
