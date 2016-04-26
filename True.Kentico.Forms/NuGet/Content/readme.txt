@@ -135,7 +135,9 @@ submitHandler: function(form) {
     formSubmit.submission(event, $(form));
 }
 
-In order to wire up the client validation, you'll need to include some scripts in your layout view. The basic set up is to load in jQuery in the head and the partials JavaScript at the bottom of the page. They need to be at the bottom because they are looking for particular elements on the page, so if those elements aren't loaded yet, then the script doesn't do anything. An example layout view is here:
+In order to wire up the client validation, you'll need to include some scripts in your layout view. The basic set up is to load in jQuery in the head and the partials at the bottom of the page. They need to be at the bottom because they are looking for particular elements on the page, so if those elements aren't loaded yet, then the script doesn't do anything. In order to handle a date picker field, the package uses pikaday.js. 
+
+An example layout view is here:
 
 <!DOCTYPE html>
 <html>
