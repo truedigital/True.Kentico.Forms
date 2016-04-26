@@ -104,8 +104,10 @@
     <Compile Include="Forms\ControlFactory\TypedControlFactory.cs" />
     <Compile Include="Forms\ControlValidationFactory\ControlValidationFactory.cs" />
     <Compile Include="Forms\ControlValidationFactory\ControlValidationTypeProvider.cs" />
+    <Compile Include="Forms\ControlValidationFactory\CompareToControlValidationFactory.cs" />
     <Compile Include="Forms\ControlValidationFactory\DateFromControlValidationFactory.cs" />
     <Compile Include="Forms\ControlValidationFactory\DateToControlValidationFactory.cs" />
+    <Compile Include="Forms\Validation\CompareToControlValidation.cs" />
     <Compile Include="Forms\Validation\MinimumValueControlValidation.cs" />
     <Compile Include="Forms\Validation\RegularExpressionControlValidation.cs" />
     <Compile Include="Forms\Validation\MinimumLengthControlValidation.cs" />

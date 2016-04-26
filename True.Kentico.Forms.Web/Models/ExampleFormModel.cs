@@ -175,6 +175,10 @@ namespace True.Kentico.Forms.Web.Models
                 },
                 new Control
                 {
+                    IsRequired = true, Label = "Pick a date", Type = ControlType.Calendar, Name = "DatePick"
+                },
+                new Control
+                {
                     IsRequired = true, Label = "Enter a Uk Postcode", Type = ControlType.TextBox, Name = "UkPostcode",
                     ExplanationText = "explanation about this field",
                     Tooltip = "a tool tip saying what goes here",

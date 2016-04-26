@@ -170,7 +170,9 @@
     <Compile Include="Renderers\CustomLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\pikaday.css" />
     <Content Include="Assets\js\partials\_form-submit.js" />
+    <Content Include="Assets\js\vendor\pikaday.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Assets\css\style.css" />

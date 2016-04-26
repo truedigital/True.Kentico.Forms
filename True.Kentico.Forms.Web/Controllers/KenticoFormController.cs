@@ -37,12 +37,11 @@ namespace True.Kentico.Forms.Web.Controllers
         /// </summary>
         /// <returns>200 status, error in Json format or 500 status</returns>
         [HttpPost]
-        public ActionResult Save(IForm form)
+        public ActionResult Save()
         {
             try
             {
-                // need to call validate here
-                _formRepository.Submit(form);
+                // _formRepository.Submit(form);
                 return new HttpStatusCodeResult(HttpStatusCode.OK);
             }
             catch (InvalidOperationException ex)

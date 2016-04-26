@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CMS.FormEngine;
 using True.Kentico.Forms.Forms.FormParts;
+using True.Kentico.Forms.Forms.Validation;
 
 namespace True.Kentico.Forms.Forms.ControlValidationFactory
 {
@@ -8,6 +9,7 @@ namespace True.Kentico.Forms.Forms.ControlValidationFactory
     {
         private static readonly Dictionary<ValidationType, IControlValidationFactory> ControlValidationFactories = new Dictionary<ValidationType, IControlValidationFactory>
         {
+            {ValidationType.CompareTo, new CompareToControlValidationFactory()},
             {ValidationType.Email, new EmailControlValidationFactory()},
             {ValidationType.MaximumValue, new MaximumValueControlValidationFactory()},
             {ValidationType.MaximumLength, new MaximumLengthControlValidationFactory()},

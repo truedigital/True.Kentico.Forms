@@ -1,1 +1,806 @@
-﻿/* line 13, C:/_Code/Forms/Forms/assets/scss/base/_fonts.scss */body{font-family:"Arial"}/* line 157, C:/_Code/Forms/Forms/assets/scss/base/mixins/_mq.scss */body:before{background-color:rgba(255,56,0,0.8);border-top:1px solid #ab2601;border-left:1px solid #ab2601;border-right:1px solid #ab2601;color:#ffe7e0;font:small-caption;padding:3px 6px 4px 6px;position:fixed;right:21px;bottom:0;z-index:100}@media all and (min-width: 20em){/* line 157, C:/_Code/Forms/Forms/assets/scss/base/mixins/_mq.scss */body:before{content:"mobile ≥ 320px (20em)"}}@media all and (min-width: 30em){/* line 157, C:/_Code/Forms/Forms/assets/scss/base/mixins/_mq.scss */body:before{content:"mobile-large ≥ 480px (30em)"}}@media all and (min-width: 46.25em){/* line 157, C:/_Code/Forms/Forms/assets/scss/base/mixins/_mq.scss */body:before{content:"tablet-small ≥ 740px (46.25em)"}}@media all and (min-width: 61.25em){/* line 157, C:/_Code/Forms/Forms/assets/scss/base/mixins/_mq.scss */body:before{content:"tablet ≥ 980px (61.25em)"}}@media all and (min-width: 64.375em){/* line 157, C:/_Code/Forms/Forms/assets/scss/base/mixins/_mq.scss */body:before{content:"desktop ≥ 1030px (64.375em)"}}@media all and (min-width: 81.25em){/* line 157, C:/_Code/Forms/Forms/assets/scss/base/mixins/_mq.scss */body:before{content:"wide ≥ 1300px (81.25em)"}}/* line 11, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */.grid{max-width:1140px;margin-left:auto;margin-right:auto;position:relative;padding:0 20px}/* line 12, C:/_Code/Forms/Forms/assets/scss/base/susy/susy/output/support/_clearfix.scss */.grid:after{content:" ";display:block;clear:both}/* line 65, C:/_Code/Forms/Forms/assets/scss/base/susy/susy/language/susy/_background.scss */head{display:block;position:fixed;left:10px;bottom:10px;z-index:999;color:#333;background:rgba(255,255,255,0.25)}/* line 66, C:/_Code/Forms/Forms/assets/scss/base/susy/susy/language/susy/_background.scss */head:before{content:"|||";display:block;padding:5px 10px;font-family:sans-serif;font-size:16px;font-weight:bold}/* line 67, C:/_Code/Forms/Forms/assets/scss/base/susy/susy/language/susy/_background.scss */head:hover{background:rgba(255,255,255,0.5);color:red}/* line 71, C:/_Code/Forms/Forms/assets/scss/base/susy/susy/language/susy/_background.scss */head:hover ~ .grid,head:hover ~ body .grid{position:relative}/* line 74, C:/_Code/Forms/Forms/assets/scss/base/susy/susy/language/susy/_background.scss */head:hover ~ .grid:before,head:hover ~ body .grid:before{position:absolute;top:0;left:0;bottom:0;right:0;content:" ";z-index:998;background-image:-webkit-linear-gradient(left, rgba(102,102,255,0.15), rgba(179,179,255,0.15) 80%, transparent 80%);background-image:linear-gradient(to right, rgba(102,102,255,0.15),rgba(179,179,255,0.15) 80%,transparent 80%);background-size:8.47458%;background-origin:content-box;background-clip:content-box;background-position:left top}/* line 17, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */.grid--debug .grid{background-image:-webkit-linear-gradient(left, rgba(102,102,255,0.15), rgba(179,179,255,0.15) 80%, transparent 80%);background-image:linear-gradient(to right, rgba(102,102,255,0.15),rgba(179,179,255,0.15) 80%,transparent 80%);background-size:8.47458%;background-origin:content-box;background-clip:content-box;background-position:left top}/* line 29, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-row]{margin-bottom:20px;padding-bottom:20px}/* line 2, C:/_Code/Forms/Forms/assets/scss/base/mixins/_clearfix.scss */[data-row]:after{content:"";display:table;clear:both}/* line 34, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-row]>*{margin-bottom:20px}/* line 38, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-row]:last-child{margin-bottom:0}@media all and (min-width: 46.25em){/* line 50, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-columns~="1/4"]{width:23.72881%;float:left;margin-right:1.69492%}/* line 61, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-columns~="1/3"]{width:32.20339%;float:left;margin-right:1.69492%}/* line 72, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-columns~="1/2"]{width:49.15254%;float:left;margin-right:1.69492%}/* line 86, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-columns~="2/3"]{width:66.10169%;float:left;margin-right:1.69492%}/* line 98, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-columns~="3/4"]{width:74.57627%;float:left;margin-right:1.69492%}/* line 110, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-columns~="full"]{clear:both;width:100%;float:left;margin-left:0;margin-right:0}/* line 116, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-columns~="last"]{float:right;margin-right:0}/* line 120, C:/_Code/Forms/Forms/assets/scss/base/_grid.scss */[data-columns~="container"]{float:none !important;margin:0 !important}/* line 2, C:/_Code/Forms/Forms/assets/scss/base/mixins/_clearfix.scss */[data-columns~="container"]:after{content:"";display:table;clear:both}}/* line 4, C:/_Code/Forms/Forms/assets/scss/base/_base.scss */*,*:before,*:after{box-sizing:border-box}/* line 10, C:/_Code/Forms/Forms/assets/scss/base/_base.scss */html{position:relative;height:100%}/* line 15, C:/_Code/Forms/Forms/assets/scss/base/_base.scss */body{min-width:320px}/* line 3, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.text--left{text-align:left}/* line 6, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.text--right{text-align:right}/* line 9, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.text--center{text-align:center}/* line 12, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.text--justify{text-align:justify}/* line 19, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.float--left{float:left}/* line 22, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.float--right{float:right}/* line 29, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.display--none{display:none}/* line 32, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.display--block{display:block}/* line 35, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.display--inline-block{display:inline-block}/* line 38, C:/_Code/Forms/Forms/assets/scss/base/_helper-classes.scss */.display--flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}/* line 2, C:/_Code/Forms/Forms/assets/scss/base/mixins/_clearfix.scss */.clear:after{content:"";display:table;clear:both}/* line 2, C:/_Code/Forms/Forms/assets/scss/elements/_buttons.scss */[data-button]{display:inline-block;color:#fff;font-weight:bold;font-size:15px;font-size:0.9375rem;line-height:15px;line-height:0.9375rem;padding:8px 22px 10px 22px;text-decoration:none;border-radius:3px;border:1px solid #697e1f;text-align:center;margin:10px 0;background-image:-webkit-linear-gradient(#999, #666);background-image:linear-gradient(#999, #666);cursor:pointer}/* line 15, C:/_Code/Forms/Forms/assets/scss/elements/_buttons.scss */[data-button]:hover{color:#fff;background-image:-webkit-linear-gradient(#666, #999);background-image:linear-gradient(#666, #999)}/* line 22, C:/_Code/Forms/Forms/assets/scss/elements/_buttons.scss */[data-button="dark"]{background-image:-webkit-linear-gradient(#666, #333);background-image:linear-gradient(#666, #333);border:1px solid #758c22;color:#fff}/* line 26, C:/_Code/Forms/Forms/assets/scss/elements/_buttons.scss */[data-button="dark"]:hover{background-image:-webkit-linear-gradient(#333, #666);background-image:linear-gradient(#333, #666)}/* line 31, C:/_Code/Forms/Forms/assets/scss/elements/_buttons.scss */[data-button="light"]{background-image:-webkit-linear-gradient(#eee, #999);background-image:linear-gradient(#eee, #999);border:1px solid #758c22;color:#333}/* line 35, C:/_Code/Forms/Forms/assets/scss/elements/_buttons.scss */[data-button="light"]:hover{background-image:-webkit-linear-gradient(#999, #eee);background-image:linear-gradient(#999, #eee);color:currentColor}/* line 1, C:/_Code/Forms/Forms/assets/scss/elements/_headings.scss */.heading{margin:24px 0;font-weight:normal;font-size:32px;font-size:2rem;line-height:42px;line-height:2.625rem}/* line 9, C:/_Code/Forms/Forms/assets/scss/elements/_headings.scss */.heading--xlarge{font-size:36px;font-size:2.25rem;line-height:46px;line-height:2.875rem;font-weight:bold}/* line 16, C:/_Code/Forms/Forms/assets/scss/elements/_headings.scss */.heading--large{font-size:32px;font-size:2rem;line-height:42px;line-height:2.625rem;font-weight:bold}/* line 22, C:/_Code/Forms/Forms/assets/scss/elements/_headings.scss */.heading--small{font-size:18px;font-size:1.125rem;line-height:24px;line-height:1.5rem;font-weight:bold;text-transform:uppercase;margin:24px 0 12px}@media all and (min-width: 46.25em){/* line 32, C:/_Code/Forms/Forms/assets/scss/elements/_headings.scss */.heading--xlarge{font-size:80px;font-size:5rem;line-height:95px;line-height:5.9375rem;font-weight:bold}/* line 38, C:/_Code/Forms/Forms/assets/scss/elements/_headings.scss */.heading--large{font-size:60px;font-size:3.75rem;line-height:75px;line-height:4.6875rem}}/* line 4, C:/_Code/Forms/Forms/assets/scss/elements/_images.scss */img{max-width:100%}/* line 1, C:/_Code/Forms/Forms/assets/scss/elements/_links.scss */a{color:#506600;text-decoration:underline;-webkit-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out}/* line 6, C:/_Code/Forms/Forms/assets/scss/elements/_links.scss */a:hover{color:#506600}/* line 3, C:/_Code/Forms/Forms/assets/scss/elements/_lists.scss */ul,ol{padding-left:20px}/* line 9, C:/_Code/Forms/Forms/assets/scss/elements/_lists.scss */.list--reset{list-style:none;margin:0;padding:0}/* line 13, C:/_Code/Forms/Forms/assets/scss/elements/_lists.scss */.list--reset li{margin:0;padding:0}/* line 2, C:/_Code/Forms/Forms/assets/scss/elements/_paragraphs.scss */p{margin-bottom:20px}/* line 2, C:/_Code/Forms/Forms/assets/scss/elements/_tables.scss */.table{margin-top:36px;margin-bottom:36px;max-width:100%;width:100% !important;border:1px solid #ccc}/* line 9, C:/_Code/Forms/Forms/assets/scss/elements/_tables.scss */.table th,.table td{padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px}/* line 16, C:/_Code/Forms/Forms/assets/scss/elements/_tables.scss */.table th{background:#eee;font-weight:bold;font-size:16px;font-size:1rem;text-align:left;border:1px solid #ccc}/* line 26, C:/_Code/Forms/Forms/assets/scss/elements/_tables.scss */.table tr:first-child td,.table tr:first-child th{padding-top:10px;padding-bottom:10px}/* line 32, C:/_Code/Forms/Forms/assets/scss/elements/_tables.scss */.table tr:last-child td{border-bottom:0}/* line 36, C:/_Code/Forms/Forms/assets/scss/elements/_tables.scss */.table td{border-bottom:1px solid #ccc}/* line 5, C:/_Code/Forms/Forms/assets/scss/elements/_type.scss */body{font-family:"Arial";font-size:16px;line-height:1.4}/* line 5, C:/_Code/Forms/Forms/assets/scss/modules/_forms.scss */form[data-layout="inline"] .form-label{display:inline-block;vertical-align:top;min-width:150px;text-align:right;margin-right:40px}/* line 12, C:/_Code/Forms/Forms/assets/scss/modules/_forms.scss */form[data-layout="inline"] .form-inner{display:inline-block}/* line 18, C:/_Code/Forms/Forms/assets/scss/modules/_forms.scss */.form-summary{display:none;color:#ff2700}/* line 22, C:/_Code/Forms/Forms/assets/scss/modules/_forms.scss */form[data-summary] .form-summary{display:block}/* line 26, C:/_Code/Forms/Forms/assets/scss/modules/_forms.scss */.form-summary.is-hidden{visibility:hidden;opacity:0}/* line 38, C:/_Code/Forms/Forms/assets/scss/modules/_forms.scss */.form-row{margin-bottom:20px}/* line 44, C:/_Code/Forms/Forms/assets/scss/modules/_forms.scss */.form-label--required:after{content:'*';color:#ff2700;font-size:14px}/* line 52, C:/_Code/Forms/Forms/assets/scss/modules/_forms.scss */label.is-invalid{color:#ff2700;display:block}/* line 57, C:/_Code/Forms/Forms/assets/scss/modules/_forms.scss */input.is-invalid,textarea.is-invalid,select.is-invalid{border-color:#ff2700}/* line 8, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */.grid-debug--trigger{position:fixed;bottom:0;right:0;z-index:100;background:rgba(58,57,52,0.9);display:block;padding:5px 6px;font-family:sans-serif;font-size:12px;line-height:14px;font-weight:bold;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;color:#fff;border-top:rgba(0,0,0,0.6);border-left:rgba(0,0,0,0.6);-webkit-transition:all 250ms ease;transition:all 250ms ease}/* line 27, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */.grid-debug--trigger:hover,.grid-debug--trigger.active{background:#000}/* line 30, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */.grid-debug--trigger:active{color:#3a3934;background:rgba(255,255,255,0.8)}/* line 40, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */[front-end]{position:relative}/* line 43, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */[front-end]:before{position:absolute;top:0;right:0;z-index:99;display:inline-block !important;padding:4px 8px;background:rgba(0,0,0,0.25);color:#fff;font-size:10px;line-height:10px;-webkit-transition:all 250ms;transition:all 250ms;box-shadow:0px 1px 2px 0px rgba(0,0,0,0.4)}/* line 59, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */[front-end="to-do"]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;width:100%;min-height:200px;background:rgba(238,238,238,0.9)}/* line 67, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */[front-end="to-do"] span{font-family:"BebasNeue";text-transform:uppercase;font-weight:bold;font-size:24px}/* line 74, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */[front-end="to-do"]:before{content:'To do';background:rgba(201,48,44,0.7)}/* line 80, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */[front-end="in-progress"]{outline:1px solid rgba(236,151,31,0.2)}/* line 82, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */[front-end="in-progress"]:before{content:'In progress' !important;background:rgba(236,151,31,0.8)}/* line 89, C:/_Code/Forms/Forms/assets/scss/base/dev/_dev-front-end.scss */.front-end__module-name{display:block;text-align:center}
+﻿body {
+    font-family: "Arial"
+}
+
+body:before {
+    background-color: rgba(255, 56, 0, 0.8);
+    border-top: 1px solid #ab2601;
+    border-left: 1px solid #ab2601;
+    border-right: 1px solid #ab2601;
+    color: #ffe7e0;
+    font: small-caption;
+    padding: 3px 6px 4px 6px;
+    position: fixed;
+    right: 21px;
+    bottom: 0;
+    z-index: 100
+}
+
+@media all and (min-width: 20em) {
+
+    body:before {
+        content: "mobile ≥ 320px (20em)"
+    }
+}
+
+@media all and (min-width: 30em) {
+
+    body:before {
+        content: "mobile-large ≥ 480px (30em)"
+    }
+}
+
+@media all and (min-width: 46.25em) {
+
+    body:before {
+        content: "tablet-small ≥ 740px (46.25em)"
+    }
+}
+
+@media all and (min-width: 61.25em) {
+
+    body:before {
+        content: "tablet ≥ 980px (61.25em)"
+    }
+}
+
+@media all and (min-width: 64.375em) {
+
+    body:before {
+        content: "desktop ≥ 1030px (64.375em)"
+    }
+}
+
+@media all and (min-width: 81.25em) {
+
+    body:before {
+        content: "wide ≥ 1300px (81.25em)"
+    }
+}
+
+
+
+
+.grid {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 0 20px
+}
+
+
+
+
+.grid:after {
+    content: " ";
+    display: block;
+    clear: both
+}
+
+
+
+
+head {
+    display: block;
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    z-index: 999;
+    color: #333;
+    background: rgba(255, 255, 255, 0.25)
+}
+
+
+
+
+head:before {
+    content: "|||";
+    display: block;
+    padding: 5px 10px;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold
+}
+
+
+
+
+head:hover {
+    background: rgba(255, 255, 255, 0.5);
+    color: red
+}
+
+
+
+
+head:hover ~ .grid,
+head:hover ~ body .grid {
+    position: relative
+}
+
+
+
+
+head:hover ~ .grid:before,
+head:hover ~ body .grid:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: " ";
+    z-index: 998;
+    background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.15), rgba(179, 179, 255, 0.15) 80%, transparent 80%);
+    background-image: linear-gradient(to right, rgba(102, 102, 255, 0.15), rgba(179, 179, 255, 0.15) 80%, transparent 80%);
+    background-size: 8.47458%;
+    background-origin: content-box;
+    background-clip: content-box;
+    background-position: left top
+}
+
+
+
+
+.grid--debug .grid {
+    background-image: -webkit-linear-gradient(left, rgba(102, 102, 255, 0.15), rgba(179, 179, 255, 0.15) 80%, transparent 80%);
+    background-image: linear-gradient(to right, rgba(102, 102, 255, 0.15), rgba(179, 179, 255, 0.15) 80%, transparent 80%);
+    background-size: 8.47458%;
+    background-origin: content-box;
+    background-clip: content-box;
+    background-position: left top
+}
+
+
+
+
+[data-row] {
+    margin-bottom: 20px;
+    padding-bottom: 20px
+}
+
+
+
+
+[data-row]:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+
+
+
+[data-row]>* {
+    margin-bottom: 20px
+}
+
+
+
+
+[data-row]:last-child {
+    margin-bottom: 0
+}
+
+@media all and (min-width: 46.25em) {
+
+4"] {
+        width: 23.72881%;
+        float: left;
+        margin-right: 1.69492%
+    }
+
+3"] {
+        width: 32.20339%;
+        float: left;
+        margin-right: 1.69492%
+    }
+
+2"] {
+        width: 49.15254%;
+        float: left;
+        margin-right: 1.69492%
+    }
+
+3"] {
+        width: 66.10169%;
+        float: left;
+        margin-right: 1.69492%
+    }
+
+4"] {
+        width: 74.57627%;
+        float: left;
+        margin-right: 1.69492%
+    }
+
+    [data-columns~="full"] {
+        clear: both;
+        width: 100%;
+        float: left;
+        margin-left: 0;
+        margin-right: 0
+    }
+
+    [data-columns~="last"] {
+        float: right;
+        margin-right: 0
+    }
+
+    [data-columns~="container"] {
+        float: none !important;
+        margin: 0 !important
+    }
+
+    [data-columns~="container"]:after {
+        content: "";
+        display: table;
+        clear: both
+    }
+}
+
+
+
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box
+}
+
+
+
+
+html {
+    position: relative;
+    height: 100%
+}
+
+
+
+
+body {
+    min-width: 320px
+}
+
+
+
+
+.text--left {
+    text-align: left
+}
+
+
+
+
+.text--right {
+    text-align: right
+}
+
+
+
+
+.text--center {
+    text-align: center
+}
+
+
+
+
+.text--justify {
+    text-align: justify
+}
+
+
+
+
+.float--left {
+    float: left
+}
+
+
+
+
+.float--right {
+    float: right
+}
+
+
+
+
+.display--none {
+    display: none
+}
+
+
+
+
+.display--block {
+    display: block
+}
+
+
+
+
+.display--inline-block {
+    display: inline-block
+}
+
+
+
+
+.display--flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+
+
+
+
+.clear:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+
+
+
+[data-button] {
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    font-size: 0.9375rem;
+    line-height: 15px;
+    line-height: 0.9375rem;
+    padding: 8px 22px 10px 22px;
+    text-decoration: none;
+    border-radius: 3px;
+    border: 1px solid #697e1f;
+    text-align: center;
+    margin: 10px 0;
+    background-image: -webkit-linear-gradient(#999, #666);
+    background-image: linear-gradient(#999, #666);
+    cursor: pointer
+}
+
+
+
+
+[data-button]:hover {
+    color: #fff;
+    background-image: -webkit-linear-gradient(#666, #999);
+    background-image: linear-gradient(#666, #999)
+}
+
+
+
+
+[data-button="dark"] {
+    background-image: -webkit-linear-gradient(#666, #333);
+    background-image: linear-gradient(#666, #333);
+    border: 1px solid #758c22;
+    color: #fff
+}
+
+
+
+
+[data-button="dark"]:hover {
+    background-image: -webkit-linear-gradient(#333, #666);
+    background-image: linear-gradient(#333, #666)
+}
+
+
+
+
+[data-button="light"] {
+    background-image: -webkit-linear-gradient(#eee, #999);
+    background-image: linear-gradient(#eee, #999);
+    border: 1px solid #758c22;
+    color: #333
+}
+
+
+
+
+[data-button="light"]:hover {
+    background-image: -webkit-linear-gradient(#999, #eee);
+    background-image: linear-gradient(#999, #eee);
+    color: currentColor
+}
+
+
+
+
+.heading {
+    margin: 24px 0;
+    font-weight: normal;
+    font-size: 32px;
+    font-size: 2rem;
+    line-height: 42px;
+    line-height: 2.625rem
+}
+
+
+
+
+.heading--xlarge {
+    font-size: 36px;
+    font-size: 2.25rem;
+    line-height: 46px;
+    line-height: 2.875rem;
+    font-weight: bold
+}
+
+
+
+
+.heading--large {
+    font-size: 32px;
+    font-size: 2rem;
+    line-height: 42px;
+    line-height: 2.625rem;
+    font-weight: bold
+}
+
+
+
+
+.heading--small {
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 24px;
+    line-height: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 24px 0 12px
+}
+
+@media all and (min-width: 46.25em) {
+
+    .heading--xlarge {
+        font-size: 80px;
+        font-size: 5rem;
+        line-height: 95px;
+        line-height: 5.9375rem;
+        font-weight: bold
+    }
+
+    .heading--large {
+        font-size: 60px;
+        font-size: 3.75rem;
+        line-height: 75px;
+        line-height: 4.6875rem
+    }
+}
+
+
+
+
+img {
+    max-width: 100%
+}
+
+
+
+
+a {
+    color: #506600;
+    text-decoration: underline;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out
+}
+
+
+
+
+a:hover {
+    color: #506600
+}
+
+
+
+
+ul,
+ol {
+    padding-left: 20px
+}
+
+
+
+
+.list--reset {
+    list-style: none;
+    margin: 0;
+    padding: 0
+}
+
+
+
+
+.list--reset li {
+    margin: 0;
+    padding: 0
+}
+
+
+
+
+p {
+    margin-bottom: 20px
+}
+
+
+
+
+.table {
+    margin-top: 36px;
+    margin-bottom: 36px;
+    max-width: 100%;
+    width: 100% !important;
+    border: 1px solid #ccc
+}
+
+
+
+
+.table th,
+.table td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+
+
+
+.table th {
+    background: #eee;
+    font-weight: bold;
+    font-size: 16px;
+    font-size: 1rem;
+    text-align: left;
+    border: 1px solid #ccc
+}
+
+
+
+
+.table tr:first-child td,
+.table tr:first-child th {
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
+
+
+
+.table tr:last-child td {
+    border-bottom: 0
+}
+
+
+
+
+.table td {
+    border-bottom: 1px solid #ccc
+}
+
+
+
+
+body {
+    font-family: "Arial";
+    font-size: 16px;
+    line-height: 1.4
+}
+
+
+
+
+form[data-layout="inline"] .form-label {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 150px;
+    text-align: right;
+    margin-right: 40px
+}
+
+
+
+
+form[data-layout="inline"] .form-inner {
+    display: inline-block
+}
+
+
+
+
+.form-summary {
+    display: none;
+    color: #ff2700
+}
+
+
+
+
+form[data-summary] .form-summary {
+    display: block
+}
+
+
+
+
+.form-summary.is-hidden {
+    visibility: hidden;
+    opacity: 0
+}
+
+
+
+
+.form-row {
+    margin-bottom: 20px
+}
+
+
+
+
+.form-label--required:after {
+    content: '*';
+    color: #ff2700;
+    font-size: 14px
+}
+
+
+
+
+label.is-invalid {
+    color: #ff2700;
+    display: block
+}
+
+
+
+
+input.is-invalid,
+textarea.is-invalid,
+select.is-invalid {
+    border-color: #ff2700
+}
+
+
+
+
+.grid-debug--trigger {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(58, 57, 52, 0.9);
+    display: block;
+    padding: 5px 6px;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #fff;
+    border-top: rgba(0, 0, 0, 0.6);
+    border-left: rgba(0, 0, 0, 0.6);
+    -webkit-transition: all 250ms ease;
+    transition: all 250ms ease
+}
+
+
+
+
+.grid-debug--trigger:hover,
+.grid-debug--trigger.active {
+    background: #000
+}
+
+
+
+
+.grid-debug--trigger:active {
+    color: #3a3934;
+    background: rgba(255, 255, 255, 0.8)
+}
+
+
+
+
+[front-end] {
+    position: relative
+}
+
+
+
+
+[front-end]:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    display: inline-block !important;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-size: 10px;
+    line-height: 10px;
+    -webkit-transition: all 250ms;
+    transition: all 250ms;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.4)
+}
+
+
+
+
+[front-end="to-do"] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 200px;
+    background: rgba(238, 238, 238, 0.9)
+}
+
+
+
+
+[front-end="to-do"] span {
+    font-family: "BebasNeue";
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 24px
+}
+
+
+
+
+[front-end="to-do"]:before {
+    content: 'To do';
+    background: rgba(201, 48, 44, 0.7)
+}
+
+
+
+
+[front-end="in-progress"] {
+    outline: 1px solid rgba(236, 151, 31, 0.2)
+}
+
+
+
+
+[front-end="in-progress"]:before {
+    content: 'In progress' !important;
+    background: rgba(236, 151, 31, 0.8)
+}
+
+
+
+
+.front-end__module-name {
+    display: block;
+    text-align: center
+}

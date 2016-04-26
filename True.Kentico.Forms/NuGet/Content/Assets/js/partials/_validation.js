@@ -2,46 +2,59 @@ var validation = (function ($) {
 
     // === VALIDATOR
 
-    if ($('form[data-validate]').length){
+    if ($('form[data-validate]').length) {
         $.ajax({
             url: '/assets/js/vendor/jquery.validate.js',
             dataType: 'script',
             cache: true
         })
-        .done(function() {
+        .done(function () {
             setFormDefaults();
-            $('form[data-validate]').each(function() {
+            $('form[data-validate]').each(function () {
                 $(this).validate();
             });
+        });
+    }
+
+    if ($('.datepicker').length) {
+        $.ajax({
+            url: '/assets/js/vendor/pikaday.js',
+            dataType: 'script',
+            cache: true
+        })
+        .done(function () {
+            console.log('loaded pikaday');
+            var picker = new Pikaday({ field: document.querySelector('.datepicker') });
+            // picker.show();
         });
     }
 
 
     // === VALIDATOR SETTINGS
 
-    function setFormDefaults(){
+    function setFormDefaults() {
 
         jQuery.validator.setDefaults({
             debug: true,
             errorClass: 'is-invalid',
             validClass: 'is-valid',
             ignoreTitle: true,
-            showErrors: function(errorMap, errorList) {
+            showErrors: function (errorMap, errorList) {
                 this.defaultShowErrors();
-                if ($(this.currentForm).is('[data-summary]')){
+                if ($(this.currentForm).is('[data-summary]')) {
                     showFormSummary(this, errorMap, errorList);
                 }
             },
-            errorPlacement: function(error, element) {
+            errorPlacement: function (error, element) {
                 insertFormError(this, error, element);
             },
-            highlight: function(element, errorClass, validClass){
+            highlight: function (element, errorClass, validClass) {
                 $(element).closest('.form-row').addBack().addClass(errorClass).removeClass(validClass);
             },
-            unhighlight: function(element, errorClass, validClass){
+            unhighlight: function (element, errorClass, validClass) {
                 $(element).closest('.form-row').addBack().removeClass(errorClass).addClass(validClass);
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
                 $(form).find('[data-submit]').attr('disabled', true).addClass('is-disabled');
                 formSubmit.submission(event, $(form));
             }
@@ -60,7 +73,7 @@ var validation = (function ($) {
 
     // === FORM ERROR PLACEMENT
 
-    function insertFormError(validator, error, element){
+    function insertFormError(validator, error, element) {
 
         // Insert error message after the last radio button in a group
         if (element.is('input:radio')) {
@@ -68,13 +81,13 @@ var validation = (function ($) {
             error.insertAfter($lastOption);
         }
 
-        // Insert error message after the last checkbox button in a group
+            // Insert error message after the last checkbox button in a group
         else if (element.is('input:checkbox')) {
             var $lastOption = $(element).parent().siblings('.form-checkbox').addBack().filter(':last');
             error.insertAfter($lastOption);
         }
 
-        // Insert error message after element
+            // Insert error message after element
         else {
             error.insertAfter(element);
         }
@@ -83,11 +96,11 @@ var validation = (function ($) {
 
     // === FORM SUMMARY
 
-    function showFormSummary(validator, errorMap, errorList){
+    function showFormSummary(validator, errorMap, errorList) {
         var $form = $(validator.currentForm);
 
         // Insert summary container if needed
-        if (!$form.find('.form-summary').length){
+        if (!$form.find('.form-summary').length) {
             $form.prepend('<div class="form-summary" />');
         }
 
@@ -96,7 +109,7 @@ var validation = (function ($) {
         var errorText = (errorCount == '1') ? errorCount + ' error' : errorCount + ' errors';
 
         // Update summary
-        if (errorCount == '0'){
+        if (errorCount == '0') {
             $formSummary.addClass('is-hidden');
         }
         else {
