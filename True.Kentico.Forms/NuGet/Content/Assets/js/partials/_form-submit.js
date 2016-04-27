@@ -10,12 +10,12 @@ var formSubmit = (function ($) {
 
         var formData = new FormData();
 
-        $.each($form.serializeArray(), function() {
+        $.each($form.serializeArray(), function () {
             formData.append(this.name, this.value);
         });
 
         if ($('input[type=file]').length) {
-            $.each($("input[type=file]").prop('files'), function() {
+            $.each($("input[type=file]").prop('files'), function () {
                 var name = $("input[type=file]")[0].name;
                 formData.append(name, this);
             });
@@ -35,8 +35,8 @@ var formSubmit = (function ($) {
 
                 return false;
             },
-            error: function () {
-                $('[data-submit-message]').text("Sorry, there was a problem with the submission. Please try again.");
+            error: function (xhr, textStatus, error) {
+                $('[data-submit-message]').html('<p>' + xhr.responseJSON + '</p>');
             }
         });
     }

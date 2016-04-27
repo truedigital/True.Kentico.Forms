@@ -4,20 +4,25 @@
 @using True.Kentico.Forms.Web.Renderers
 
 
-@model IForm
+@model True.Kentico.Forms.Web.Models.ShortForm
 
-@Html.KenticoForm().BeginForm("Save", "KenticoForm", Model.Name, Model.SubmissionOptions)
+@Html.KenticoForm().BeginForm("Submit", "KenticoForm", Model.Name, Model.SubmissionOptions)
 
 <div id="form-result">
 
     @Html.KenticoForm().RenderFormControls(Model.Controls)
     
+    @*<div class="form-row">
+        @Html.KenticoForm().LabelFor(Model, "UkPostcode")
+        @Html.KenticoForm().CalendarFor(Model, "UkPostcode")
+    </div>*@
+    
     @Html.KenticoForm().SubmitButton(Model.SubmitText)
-
+    
 </div>
 
 @Html.KenticoForm().EndForm()
 
 <hr />
 
-<div data-submit-message></div>
+<label data-submit-message class="is-invalid"></label>

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using True.Kentico.Forms.Forms;
 using True.Kentico.Forms.Forms.FormParts;
@@ -20,11 +22,11 @@ namespace True.Kentico.Forms.Web.Controllers
             _formRepository = formRepository;
         }
 
-        public ActionResult Index()
-        {
-            var form = _formRepository.GetForm("");
-            return View(form);
-        }
+        //public ActionResult Index()
+        //{
+        //    var form = _formRepository.GetForm("");
+        //    return View(form);
+        //}
 
         public ActionResult Example()
         {
@@ -37,20 +39,43 @@ namespace True.Kentico.Forms.Web.Controllers
         /// </summary>
         /// <returns>200 status, error in Json format or 500 status</returns>
         [HttpPost]
-        public ActionResult Save()
+        public ActionResult Save(IForm model)
         {
             try
             {
-                // _formRepository.Submit(form);
-                return new HttpStatusCodeResult(HttpStatusCode.OK);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return Json(ex.Message);
+                if (model.IsValid)
+                {
+                    _formRepository.Submit(model);
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                }
+                return Json(model.ValidationErrors);
             }
             catch
             {
                 return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Submit(ShortForm model)
+        {
+            try
+            {
+                if (model.IsValid)
+                {
+                    _formRepository.Submit(model);
+                    return new HttpStatusCodeResult(HttpStatusCode.OK);
+                }
+
+                HttpContext.Response.StatusCode = 400;
+                HttpContext.Response.StatusDescription = "Server validation failed";
+                return Json(model.ValidationErrors);
+            }
+            catch (Exception ex)
+            {
+                HttpContext.Response.StatusDescription = ex.Message;
+                HttpContext.Response.StatusCode = 500;
+                return Json(ex);
             }
         }
     }

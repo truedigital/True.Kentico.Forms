@@ -8,7 +8,7 @@ using True.Kentico.Forms.Web.Models;
 
 namespace True.Kentico.Forms.Web.Binders
 {
-    public class CustomFormModelBinder : IModelBinder
+    public class ShortFormModelBinder : IModelBinder
     {
         public object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {

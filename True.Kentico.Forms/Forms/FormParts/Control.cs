@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
+using System.Web.Mvc;
 
 namespace True.Kentico.Forms.Forms.FormParts
 {
@@ -11,6 +12,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         {
             Validation = new List<IControlValidation>();
             DefaultValues = new Dictionary<string, bool>();
+            ValidationErrors = new List<string>();
         }
 
         public string Name { get; set; }
@@ -26,16 +28,24 @@ namespace True.Kentico.Forms.Forms.FormParts
         public string Tooltip { get; set; }
         public bool HasMultipleDefaultValues { get; set; }
         public IDictionary<string, bool> DefaultValues { get; set; }
+        public IList<string> ValidationErrors { get; set; }
 
         public bool IsValid()
         {
             if (IsRequired && string.IsNullOrWhiteSpace(SubmittedValue))
+            {
+                ValidationErrors.Add($"{Label} is required");
                 return false;
+            }
 
             var isValid = true;
 
             foreach (var validation in Validation)
             {
+                if (!validation.Validate(SubmittedValue))
+                {
+                    ValidationErrors.Add($"{Label} was not validated: {validation.ValidationErrorMessage}");
+                }
                 isValid &= validation.Validate(SubmittedValue);
             }
 

@@ -159,7 +159,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Binders\CustomFormModelBinder.cs" />
+    <Compile Include="Binders\ShortFormModelBinder.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KenticoFormController.cs" />
     <Compile Include="Global.asax.cs">

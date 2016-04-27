@@ -36,39 +36,13 @@ namespace True.Kentico.Forms.Forms
 
         public void Submit(IForm form)
         {
-            var isValid = true;
-            var errors = new StringBuilder();
             try
             {
                 var formInfo = BizFormInfoProvider.GetBizFormInfo(form.Name, SiteContext.CurrentSiteID);
                 var dataClassInfo = DataClassInfoProvider.GetDataClassInfo(formInfo.FormClassID);
-
                 var item = new BizFormItem(dataClassInfo.ClassName);
 
-                foreach (var control in form.Controls)
-                {
-                    if (control.IsValid())
-                    {
-                        if (control is IFileControl)
-                        {
-                            HandleFileControl(control, item);
-                        }
-                        else
-                        {
-                            item.SetValue(control.Name, control.SubmittedValue);
-                        }
-                    }
-                    else
-                    {
-                        isValid = false;
-                        errors.AppendLine($"{control.Name} has validation errors. Please review.");
-                    }
-                }
-
-                if (!isValid)
-                {
-                    throw new InvalidOperationException(errors.ToString());
-                }
+                SetFormValues(form, item);
 
                 item.SetValue("FormInserted", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                 item.SetValue("FormUpdated", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -78,11 +52,25 @@ namespace True.Kentico.Forms.Forms
             }
             catch (Exception ex)
             {
-
-                throw new InvalidOperationException("An unknown error occured while saving the form. Please contact our support team.");
+                throw new Exception("An unknown error occured while saving the form. Please contact our support team.");
             }
         }
-        
+
+        private void SetFormValues(IForm form, BizFormItem item)
+        {
+            foreach (var control in form.Controls)
+            {
+                if (control is IFileControl)
+                {
+                    HandleFileControl(control, item);
+                }
+                else
+                {
+                    item.SetValue(control.Name, control.SubmittedValue);
+                }
+            }
+        }
+
         private void HandleFileControl(IControl control, BizFormItem item)
         {
             var fileControl = control as IFileControl;

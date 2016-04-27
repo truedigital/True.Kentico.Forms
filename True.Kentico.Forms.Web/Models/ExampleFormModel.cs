@@ -15,6 +15,9 @@ namespace True.Kentico.Forms.Web.Models
         public IAutoresponder Autoresponder { get; set; }
         public INotification Notification { get; set; }
         public ISubmissionOptions SubmissionOptions { get; set; }
+        public bool IsValid => Controls.All(x => x.IsValid());
+        public IList<string> ValidationErrors => Controls.SelectMany(ctrl => ctrl.ValidationErrors).ToList();
+
         public IControl Find(string name)
         {
             return Controls.FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -143,6 +146,9 @@ namespace True.Kentico.Forms.Web.Models
         public IAutoresponder Autoresponder { get; set; }
         public INotification Notification { get; set; }
         public ISubmissionOptions SubmissionOptions { get; set; }
+        public bool IsValid => Controls.All(x => x.IsValid());
+        public IList<string> ValidationErrors => Controls.SelectMany(ctrl => ctrl.ValidationErrors).ToList();
+
         public IControl Find(string name)
         {
             return Controls.FirstOrDefault(x => x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -173,10 +179,10 @@ namespace True.Kentico.Forms.Web.Models
                         new EmailControlValidation { HasValue = true, ValidationRule = "email", ValidationErrorMessage = "not valid email"}
                     }
                 },
-                new Control
-                {
-                    IsRequired = true, Label = "Pick a date", Type = ControlType.Calendar, Name = "DatePick"
-                },
+                //new Control
+                //{
+                //    IsRequired = true, Label = "Pick a date", Type = ControlType.Calendar, Name = "DatePick"
+                //},
                 new Control
                 {
                     IsRequired = true, Label = "Enter a Uk Postcode", Type = ControlType.TextBox, Name = "UkPostcode",

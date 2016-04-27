@@ -9,7 +9,8 @@ namespace True.Kentico.Forms.Forms.Validation
     {
         public override bool Validate(object value)
         {
-            return ValidationHelper.IsRegularExp(ValidationValue, (string)value);
+            return false
+                && new Regex(ValidationValue).IsMatch((string)value);
         }
     }
 }
