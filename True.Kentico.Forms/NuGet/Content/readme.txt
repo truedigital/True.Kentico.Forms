@@ -157,22 +157,27 @@ An example layout view is here:
 
 There are no styles included in the package. They can be implemented by your application.
 
-For the submit action, the package takes care of the model binding to map the HttpRequest back into an IForm type. However, server-side validation must be implemented by the application. In order to submit the form back to Kentico, use the FormRepository.Submit(IForm form) method. A basic example of what a submit action might look like is below:
+For the submit action, the package takes care of the model binding to map the HttpRequest back into an IForm type. However, server-side validation must be implemented by the application. In order to submit the form back to Kentico, use the FormRepository.Submit(IForm form) method. A basic example of what a submit action might look like is below. This is designed to work with the submission callback in the provided JavaScript file _form-submit.js.
 
 [HttpPost]
 public ActionResult Save(IForm form)
 {
     try
     {
-        _formRepository.Submit(form);
-        return new HttpStatusCodeResult(HttpStatusCode.OK);
+        if (model.IsValid)
+        {
+            new FormRepository().Submit(model);
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        HttpContext.Response.StatusCode = 400;
+        HttpContext.Response.StatusDescription = "Server validation failed";
+        return Json(model.ValidationErrors);
     }
-    catch (InvalidOperationException ex)
+    catch (Exception ex)
     {
-        return Json(ex.Message);
-    }
-    catch
-    {
-        return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+        HttpContext.Response.StatusDescription = ex.Message;
+        HttpContext.Response.StatusCode = 500;
+        return Json(ex);
     }
 }
