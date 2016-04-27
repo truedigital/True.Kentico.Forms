@@ -44,7 +44,7 @@ namespace True.Kentico.Forms.Forms.FormParts
             {
                 if (!validation.Validate(SubmittedValue))
                 {
-                    ValidationErrors.Add($"{Label} was not validated: {validation.ValidationErrorMessage}");
+                    ValidationErrors.Add($"{Label} is not valid: {validation.ValidationErrorMessage}");
                 }
                 isValid &= validation.Validate(SubmittedValue);
             }
