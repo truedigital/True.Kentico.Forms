@@ -50,9 +50,9 @@ namespace True.Kentico.Forms.Forms
                 BizFormItemProvider.SetItem(item);
                 BizFormInfoProvider.RefreshDataCount(formInfo.FormName, formInfo.FormSiteID);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception("An unknown error occured while saving the form. Please contact our support team.");
+                throw new Exception("There was a problem saving the form. Please contact our support team.");
             }
         }
 
