@@ -213,6 +213,7 @@
     <Content Include="packages.config" />
     <Content Include="Assets\scss\_forms.scss" />
     <None Include="Project_Readme.html" />
+    <Content Include="Views\KenticoForm\Example.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\True.Kentico.Forms\True.Kentico.Forms.csproj">

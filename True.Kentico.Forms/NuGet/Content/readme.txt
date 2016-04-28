@@ -12,20 +12,21 @@ Introduction
 
 The package is designed to work inside an MVC web application project (minimum MVC v4), so ensure you install it into the correct project type. The project is compatible with .NET 4.5 upwards.
 
-The package provides you with a single library that provides: 
-1. mapping of form fields from Kentico into a poco that implements IForm
-2. html helpers to render the form fields, including
+The package provides you with a single library that provides:
+1. A class that represents the BizForm object
+2. Html helpers to render the form fields, including
 	a. validation as configured in the form in Kentico
 	b. tool tips and help text as configured in Kentico; and
 	c. note that custom renderers can be registered and used in place of the default ones
-3. a repository to load the form from, and save the submitted data back to, Kentico
-4. an assets folder, containing basic styles and jQuery validation plugin and logic
+3. A repository to load the form from, and save the submitted data back to, Kentico
+4. A custom model binder to convert the request data into an IForm type
+5. An assets folder, containing basic styles and the necessary JavaScript files
 
-The package is dependent on several Kentico libraries, which are included in the package as well as jQuery and jQuery validate, which are also included in the package.
+The package is dependent on several Kentico libraries, which are included in the package. Also included are dependent JavaScript libraries: jQuery, jQuery validate and pikaday, which is a date picker plugin.
 
 Getting Started
 
-The parts your application will need are outlined below. First, you will need at least a controller and a view. The controller should have an action to render the form; this can use the FormRepository.GetForm method. An appropriate route or routing convention should be in place to ensure the controller action can be hit by the application. For the model you can either use the package's type Form, or make your own custom model that implements IForm.
+The parts your application will need are outlined below. First, you will need at least a controller and a view. The controller should have an action to render the form; this can use the FormRepository.GetForm method to retrieve the form from Kentico by form name. An appropriate route or routing convention should be in place to ensure the controller action can be hit by the application. For the model you can either use the package's type Form, or make your own custom model that implements IForm.
 
 Controller:
 
@@ -39,11 +40,13 @@ namespace $rootnamespace$.Web.Controllers
 {
     public class KenticoFormController : Controller
     {
-		public ActionResult Example()
+		public ActionResult Index()
 		{
 		    var form = new FormRepository().GetForm("myform");
-		    return View("~/Views/KenticoForm/Index.cshtml", form);
+		    return View(form);
 		}
+
+		// save action is shown later
 	}
 }
 
@@ -63,11 +66,11 @@ View:
 
 @Html.KenticoForm().EndForm()
 
-<div data-submit-message></div>
+<label data-submit-message class="is-invalid"></label>
 
-The controller is a standard MVC controller. This example constructs a new FormRepository and makes a call to retrieve the form details. GetForm uses Kentico's BizFormInfoProvider to retrieve the form data and maps it into an IForm. So, your application should be hooked up to Kentico and be targeting an existing Kentico form object. IForm exposes the necessary form fields (named 'Controls' in the interface), submission options, notification options and autoresponder options that are consistent with Kentico's form builder interface.
+The controller is a standard MVC controller. This example constructs a new FormRepository and makes a call to retrieve the form details. GetForm uses Kentico's BizFormInfoProvider to retrieve the form data and maps it into a type that implements IForm. So, your application should be hooked up to Kentico and be targeting an existing Kentico form object. IForm exposes the necessary form fields (named 'Controls' in the interface), submission options, notification options and autoresponder options that are consistent with Kentico's form builder interface.
 
-The Htmlhelper @Html.KenticoForm() provides html renderers that take data from the control and render the appropriate html. The example code uses the convenience method 'RenderFormControls', which iterates over all controls and renders each one complete with its own label. The helper also provides the individual renderers, for example, @Html.KenticoForm().TextBoxFor("FirstName"). To be clear, a 'control' is a custom class that represents a Kentico BizForm field. The html helper has overloads to allow you to render controls individually. 
+The Htmlhelper @Html.KenticoForm() provides html renderers that take data from the control and render the appropriate html. The example code above uses the convenience method 'RenderFormControls', which iterates over all controls and renders each one complete with its own label. Alternatively, there are overloads to allow rendering each control individually, by name:
 
 @Html.KenticoForm().LabelFor(Model, "FirstName") // render a label for the 'FirstName' field
 @Html.KenticoForm().TextBoxFor(Model, "FirstName") // render a text input for the 'FirstName' field
@@ -135,15 +138,15 @@ submitHandler: function(form) {
     formSubmit.submission(event, $(form));
 }
 
-In order to wire up the client validation, you'll need to include some scripts in your layout view. The basic set up is to load in jQuery in the head and the partials at the bottom of the page. They need to be at the bottom because they are looking for particular elements on the page, so if those elements aren't loaded yet, then the script doesn't do anything. In order to handle a date picker field, the package uses pikaday.js. 
-
-An example layout view is here:
+In order to wire up the client validation, you'll need to include some scripts in your layout view. The basic set up is to load in jQuery in the head and the partials at the bottom of the page. They need to be at the bottom because they are looking for particular elements on the page, so if those elements aren't loaded yet, then the script doesn't do anything. An example layout view is shown below, which shows  the basic styles and JavaScript needed:
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link href="@Url.Content("/Assets/css/pikaday.css")"/>
+    <link href="@Url.Content("/Assets/css/style.css")"/>
     <script src="@Url.Content("/Assets/js/vendor/jquery-1.11.2.js")"></script>
 </head>
 <body>
@@ -155,13 +158,25 @@ An example layout view is here:
 </body>
 </html>
 
-There are no styles included in the package. They can be implemented by your application.
+The styles provided are very basic and likely will need to be altered to suit your application's style sheet.
 
-For the submit action, the package takes care of the model binding to map the HttpRequest back into an IForm type. However, server-side validation must be implemented by the application. In order to submit the form back to Kentico, use the FormRepository.Submit(IForm form) method. A basic example of what a submit action might look like is below. This is designed to work with the submission callback in the provided JavaScript file _form-submit.js.
+IForm exposes an IsValid property that calls through to the form's control validators and performs server-side validation. Currently supported validations from Kentico are:
+
+1. DateFrom
+2. DateTo
+3. Email
+4. Maximum Length
+5. Minimum Length
+6. Maximum Value
+7. Minimum Value
+8. Regular Expression
+
+For the submit action, the package takes care of the model binding to map the HttpRequest back into an IForm type. In order to submit the form back to Kentico, use the FormRepository.Submit(IForm form) method. A basic example of what a submit action might look like is below. This is designed to work with the submission callback in the provided JavaScript file _form-submit.js.
 
 [HttpPost]
 public ActionResult Save(IForm form)
 {
+	// this is a try-catch because the repository's submit method throws an exception if it cannot save the form back to Kentico
     try
     {
         if (model.IsValid)
@@ -169,7 +184,8 @@ public ActionResult Save(IForm form)
             new FormRepository().Submit(model);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
-
+        // model has validation errors, return an error code
+        // this ensures it hits the $.ajax error callback
         HttpContext.Response.StatusCode = 400;
         HttpContext.Response.StatusDescription = "Server validation failed";
         return Json(model.ValidationErrors);

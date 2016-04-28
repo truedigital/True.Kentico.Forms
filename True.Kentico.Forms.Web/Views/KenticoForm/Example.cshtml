@@ -1,13 +1,18 @@
 ﻿@using True.Kentico.Forms.Html.Extensions
 @using True.Kentico.Forms.Infrastructure
 
-@model True.Kentico.Forms.Web.Models.ShortForm
+@model True.Kentico.Forms.Forms.FormParts.IForm
 
 @Html.KenticoForm().BeginForm("Submit", "KenticoForm", Model.Name, Model.SubmissionOptions)
 
 <div id="form-result">
 
     @Html.KenticoForm().RenderFormControls(Model.Controls)
+    
+    <div class="form-row">
+        @Html.KenticoForm().LabelFor(Model, "DateOfBirth")
+        @Html.KenticoForm().CalendarFor(Model, "DateOfBirth")
+    </div>
     
     @Html.KenticoForm().SubmitButton(Model.SubmitText)
     

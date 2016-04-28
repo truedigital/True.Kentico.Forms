@@ -31,6 +31,7 @@ namespace True.Kentico.Forms.Forms
                 var formInfo = _formFactory.Create(formObject);
                 return formInfo;
             }
+
             return null;
         }
 

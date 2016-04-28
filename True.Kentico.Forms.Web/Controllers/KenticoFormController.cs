@@ -22,38 +22,16 @@ namespace True.Kentico.Forms.Web.Controllers
             _formRepository = formRepository;
         }
 
-        //public ActionResult Index()
-        //{
-        //    var form = _formRepository.GetForm("");
-        //    return View(form);
-        //}
+        public ActionResult Index()
+        {
+            var form = _formRepository.GetForm("myform");
+            return View("~/Views/KenticoForm/Example.cshtml", form);
+        }
 
         public ActionResult Example()
         {
             //var form = _formRepository.GetForm("myform");
             return View("~/Views/KenticoForm/Index.cshtml", new ShortForm("dave"));
-        }
-
-        /// <summary>
-        /// The controller action that handles the form submission post event.
-        /// </summary>
-        /// <returns>200 status, error in Json format or 500 status</returns>
-        [HttpPost]
-        public ActionResult Save(IForm model)
-        {
-            try
-            {
-                if (model.IsValid)
-                {
-                    _formRepository.Submit(model);
-                    return new HttpStatusCodeResult(HttpStatusCode.OK);
-                }
-                return Json(model.ValidationErrors);
-            }
-            catch
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
-            }
         }
 
         [HttpPost]
