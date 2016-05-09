@@ -192,7 +192,7 @@
   <PropertyGroup>
     <PostBuildEvent>xcopy /s /q /y "$(SolutionDir)True.Kentico.Forms.Web\Assets" "$(ProjectDir)NuGet\Content\Assets"
 cd "$(ProjectDir)"
-nuget pack True.Kentico.Forms.csproj</PostBuildEvent>
+nuget pack True.Kentico.Forms.csproj -Prop Configuration=Release</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
