@@ -133,8 +133,7 @@ In the case where you would prefer to use your own set of custom renderers, you 
     	        BundleConfig.RegisterBundles(BundleTable.Bundles);
     
     			// this replaces the default label renderer
-    			ControlRendererRegistrar
-    			.RegisterCustomRenderer(ControlType.Label, new CustomLabelRenderer());
+    			ControlRendererRegistrar.RegisterCustomRenderer(ControlType.Label, new CustomLabelRenderer());
     	    }
     	}
     }
