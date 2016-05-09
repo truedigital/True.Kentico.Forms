@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(OutputType)' == 'Exe' Or '$(OutputType)' == 'WinExe' Or ( '$(OutputType)' == 'Library' And $(ProjectName.EndsWith('.Tests')) ) ">
+    <CmsDependenciesDestinationFolder>$(TargetDir)</CmsDependenciesDestinationFolder>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(OutputType)' == 'Library' And '$(WebProjectOutputDir)' != '' ">
+    <CmsDependenciesDestinationFolder>$(ProjectDir)</CmsDependenciesDestinationFolder>
+  </PropertyGroup>
+  <Target Name="EnsureCmsDependencies" BeforeTargets="Build" Condition=" '$(CmsDependenciesDestinationFolder)' != '' ">
+    <ItemGroup>
+      <CmsDependencies Include="$(MSBuildThisFileDirectory)CMSDependencies\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(CmsDependencies)" DestinationFolder="$(CmsDependenciesDestinationFolder)CMSDependencies\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      CollectCmsDependencies;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+      CollectCmsDependencies;
+      $(CopyAllFilesToSingleFolderForMsdeployDependsOn);
+    </CopyAllFilesToSingleFolderForMsdeployDependsOn>
+  </PropertyGroup>
+  <Target Name="CollectCmsDependencies">
+    <ItemGroup>
+      <_CmsDependencies Include="CMSDependencies\**\*" />
+      <FilesForPackagingFromProject Include="%(_CmsDependencies.Identity)">
+        <DestinationRelativePath>CMSDependencies\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+  </Target>
+</Project>

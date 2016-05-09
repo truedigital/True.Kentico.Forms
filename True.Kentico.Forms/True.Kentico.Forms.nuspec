@@ -10,6 +10,9 @@
     <releaseNotes>First release.</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>Kentico MVC C#</tags>
+    <dependencies>
+      <dependency id="Kentico.Libraries" version="9.0.0" />
+    </dependencies>
   </metadata>
   <files>
     <file src="bin\$configuration$\*.dll" target="lib\Net45" />
