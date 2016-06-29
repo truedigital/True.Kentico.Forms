@@ -29,7 +29,7 @@ namespace True.Kentico.Forms.Html.Extensions
                         result.AppendLine(string.Concat("<div class=\"form-row\">", model.LabelFor(control).ToHtmlString(), model.CalendarFor(control).ToHtmlString(), "</div>"));
                         break;
                     case ControlType.CheckBox:
-                        result.AppendLine(string.Concat("<div class=\"form-row\">", model.LabelFor(control).ToHtmlString(), model.CheckboxFor(control).ToHtmlString(), "</div>"));
+                        result.AppendLine(string.Concat("<div class=\"form-row\">", model.CheckboxFor(control).ToHtmlString(), "</div>"));
                         break;
                     case ControlType.DropDownList:
                         result.AppendLine(string.Concat("<div class=\"form-row\">", model.LabelFor(control).ToHtmlString(), model.DropDownListFor(control).ToHtmlString(), "</div>"));

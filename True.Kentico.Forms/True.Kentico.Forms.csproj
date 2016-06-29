@@ -147,7 +147,6 @@
     <Compile Include="Forms\FormParts\SubmissionOptions.cs" />
     <Compile Include="Forms\IFormFactory.cs" />
     <Compile Include="Forms\IFormRepository.cs" />
-    <Compile Include="Html\HtmlControlFactory\HtmlControlFactory.cs" />
     <Compile Include="Html\Extensions\BeginForm.cs" />
     <Compile Include="Html\Extensions\CalendarFor.cs" />
     <Compile Include="Html\Extensions\CheckboxFor.cs" />
@@ -163,7 +162,6 @@
     <Compile Include="Html\Extensions\RenderFormControls.cs" />
     <Compile Include="Html\Extensions\TextAreaFor.cs" />
     <Compile Include="Html\Extensions\TextBoxFor.cs" />
-    <Compile Include="Html\HtmlControlFactory\IHtmlControlFactory.cs" />
     <Compile Include="Infrastructure\KenticoForm.cs" />
     <Compile Include="Html\MultiLevelTag.cs" />
     <Compile Include="Html\Renderers\BaseControlRenderer.cs" />
@@ -190,9 +188,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /s /q /y "$(SolutionDir)True.Kentico.Forms.Web\Assets" "$(ProjectDir)NuGet\Content\Assets"
-cd "$(ProjectDir)"
-nuget pack True.Kentico.Forms.csproj -Prop Configuration=Release</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

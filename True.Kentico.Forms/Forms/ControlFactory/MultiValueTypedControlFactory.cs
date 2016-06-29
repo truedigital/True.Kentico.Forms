@@ -30,7 +30,7 @@ namespace True.Kentico.Forms.Forms.ControlFactory
                 IsRequired = !info.AllowEmpty,
                 HasMultipleDefaultValues = true,
                 ExplanationText = info.GetPropertyValue(FormFieldPropertyEnum.ExplanationText),
-                Tooltip = info.GetPropertyValue(FormFieldPropertyEnum.FieldCaption)
+                Tooltip = info.GetPropertyValue(FormFieldPropertyEnum.FieldDescription)
             };
 
             var defaultValues = info.GetPropertyValue(FormFieldPropertyEnum.DefaultValue)?

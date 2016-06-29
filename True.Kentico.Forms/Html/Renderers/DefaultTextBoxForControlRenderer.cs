@@ -17,6 +17,7 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("id", id);
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "text");
+            input.Attributes.Add("value", control.DefaultValue);
 
             IsRequired(control, input, displayName);
 

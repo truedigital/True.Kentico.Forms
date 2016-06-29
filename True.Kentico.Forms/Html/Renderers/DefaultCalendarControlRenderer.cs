@@ -1,4 +1,7 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System;
+using System.Web.Mvc;
+using CMS.Base;
+using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
@@ -18,8 +21,11 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "text");
             input.Attributes.Add("readonly", null);
-            input.AddCssClass("datepicker");
+            if (!String.IsNullOrEmpty(control.DefaultValue))
+                input.Attributes.Add("value", control.DefaultValue.ToDateTime(DateTime.Now, "en-GB").ToString("dd/MM/yyyy"));
 
+            input.AddCssClass("datepicker");
+            
             IsRequired(control, input, displayName);
 
             div.Add(input);

@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 using CMS.OnlineForms;
@@ -27,9 +29,32 @@ namespace True.Kentico.Forms.Infrastructure
                     fileControl.SubmittedValue = request.Files[control.Name]?.FileName;
                     fileControl.SubmittedData = request.Files[control.Name]?.InputStream;
                 }
+                else if (control.Type == ControlType.CheckBox)
+                {
+                    control.SubmittedValue = "true";
+                }
                 else
                 {
-                    control.SubmittedValue = request.Form.Get(control.Name);
+                    var submittedValue = request.Form.Get(control.Name);
+                    if (control.Type == ControlType.Calendar)
+                    {
+                        if (submittedValue == "")
+                            control.SubmittedValue = null;
+                        else
+                        {
+                            DateTime date;
+                            var enGB = new CultureInfo("en-GB");
+                            if (DateTime.TryParseExact(submittedValue, "dd/MM/yyyy", enGB, DateTimeStyles.None, out date))
+                            {
+                                control.SubmittedValue = date.ToString("yyyy-MM-dd HH:mm:ss");
+                            }
+                            
+                        }
+                    }
+                    else
+                    {
+                        control.SubmittedValue = submittedValue;
+                    }
                 }
             }
 

@@ -1,4 +1,5 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System.Web.Mvc;
+using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
@@ -16,6 +17,7 @@ namespace True.Kentico.Forms.Html.Renderers
             var textarea = new MultiLevelTag("textarea");
             textarea.Attributes.Add("id", id);
             textarea.Attributes.Add("name", id);
+            textarea.Attributes.Add("value", control.DefaultValue);
 
             IsRequired(control, textarea, displayName);
 

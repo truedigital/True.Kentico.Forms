@@ -32,10 +32,12 @@ namespace True.Kentico.Forms.Html.Renderers
                 input.Attributes.Add($"data-msg-{validation.ValidationRule}", validation.ValidationErrorMessage);
             }
 
-            // todo why does this have its own label?
+            var required = control.IsRequired ? " form-label--required" : string.Empty;
             var label = new MultiLevelTag("label");
             label.Attributes.Add("for", $"{id}");
-            label.SetInnerText(control.DefaultValue);
+            label.SetInnerText(displayName);
+            label.Attributes.Add("class", $"form-label{required}");
+
 
             div.Add(input);
             div.Add(label);

@@ -23,7 +23,8 @@ namespace True.Kentico.Forms.Infrastructure
                 {ControlType.TextArea, new DefaultTextAreaControlRenderer()},
                 {ControlType.TextBox, new DefaultTextBoxForControlRenderer()},
                 {ControlType.Label, new DefaultLabelControlRenderer()},
-                {ControlType.UploadFile, new DefaultUploadForControlRenderer()}
+                {ControlType.UploadFile, new DefaultUploadForControlRenderer()},
+                {ControlType.ListBox, new DefaultListBoxControlRenderer() },
             };
         }
 
