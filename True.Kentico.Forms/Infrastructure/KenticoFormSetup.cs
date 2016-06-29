@@ -12,7 +12,7 @@ namespace True.Kentico.Forms.Infrastructure
         public static void Setup()
         {
             ControlRendererRegistrar.InitialiseFormControls();
-            ModelBinders.Binders.Add(typeof(IForm), new FormModelBinder());
+            //ModelBinders.Binders.Add(typeof(IForm), new FormModelBinder());
         }
     }
 }
