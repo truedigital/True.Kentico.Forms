@@ -30,33 +30,47 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CMS.Base">
-      <HintPath>..\Libs\CMS.Base.dll</HintPath>
+    <Reference Include="CMS.Base, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\CMS.Base.dll</HintPath>
     </Reference>
-    <Reference Include="CMS.Core">
-      <HintPath>..\Libs\CMS.Core.dll</HintPath>
+    <Reference Include="CMS.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\CMS.Core.dll</HintPath>
     </Reference>
-    <Reference Include="CMS.DataEngine">
-      <HintPath>..\Libs\CMS.DataEngine.dll</HintPath>
+    <Reference Include="CMS.DataEngine, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\CMS.DataEngine.dll</HintPath>
     </Reference>
-    <Reference Include="CMS.FormEngine">
-      <HintPath>..\Libs\CMS.FormEngine.dll</HintPath>
+    <Reference Include="CMS.FileSystemStorage">
+      <HintPath>..\References\CMS.FileSystemStorage.dll</HintPath>
     </Reference>
-    <Reference Include="CMS.Helpers">
-      <HintPath>..\Libs\CMS.Helpers.dll</HintPath>
+    <Reference Include="CMS.FormEngine, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\CMS.FormEngine.dll</HintPath>
     </Reference>
-    <Reference Include="CMS.IO">
-      <HintPath>..\Libs\CMS.IO.dll</HintPath>
+    <Reference Include="CMS.Helpers, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\CMS.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.IO, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\CMS.IO.dll</HintPath>
     </Reference>
     <Reference Include="CMS.MacroEngine, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Libs\CMS.MacroEngine.dll</HintPath>
+      <HintPath>..\References\CMS.MacroEngine.dll</HintPath>
     </Reference>
-    <Reference Include="CMS.OnlineForms">
-      <HintPath>..\Libs\CMS.OnlineForms.dll</HintPath>
+    <Reference Include="CMS.OnlineForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\CMS.OnlineForms.dll</HintPath>
     </Reference>
-    <Reference Include="CMS.SiteProvider">
-      <HintPath>..\Libs\CMS.SiteProvider.dll</HintPath>
+    <Reference Include="CMS.SiteProvider, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\References\CMS.SiteProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.Tests">
+      <HintPath>..\References\CMS.Tests.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
