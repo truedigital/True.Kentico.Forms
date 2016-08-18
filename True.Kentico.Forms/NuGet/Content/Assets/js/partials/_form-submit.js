@@ -36,7 +36,7 @@ var formSubmit = (function ($) {
                 return false;
             },
             error: function (xhr, textStatus, error) {
-                $('[data-submit-message]').html('<p>' + xhr.responseJSON + '</p>');
+                $('[data-submit-message]').html('<p>' + xhr.response + '</p>');
             }
         });
     }

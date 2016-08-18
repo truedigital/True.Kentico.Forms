@@ -7,27 +7,33 @@ namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
+
         public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options)
         {
-            return BeginForm(html, action, controllerName, formName, options, "post", "block", true, false);
+            return BeginForm(html, action, controllerName, formName, "", options, "post", "block", true, false);
         }
 
-        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string dataLayout)
+        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, string classes, ISubmissionOptions options)
         {
-            return BeginForm(html, action, controllerName, formName, options, "post", dataLayout, true, false);
+            return BeginForm(html, action, controllerName, formName, classes, options, "post", "block", true, false);
         }
 
-        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string method, string dataLayout)
+        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, string classes, ISubmissionOptions options, string dataLayout)
         {
-            return BeginForm(html, action, controllerName, formName, options, method, dataLayout, true, false);
+            return BeginForm(html, action, controllerName, formName, classes, options, "post", dataLayout, true, false);
         }
 
-        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string method, string dataLayout, bool validate)
+        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, string classes, ISubmissionOptions options, string method, string dataLayout)
         {
-            return BeginForm(html, action, controllerName, formName, options, method, dataLayout, validate, false);
+            return BeginForm(html, action, controllerName, formName, classes, options, method, dataLayout, true, false);
         }
 
-        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options, string method, string dataLayout, bool validate, bool summary)
+        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, string classes, ISubmissionOptions options, string method, string dataLayout, bool validate)
+        {
+            return BeginForm(html, action, controllerName, formName, classes, options, method, dataLayout, validate, false);
+        }
+
+        public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, string classes, ISubmissionOptions options, string method, string dataLayout, bool validate, bool summary)
         {
             var submitData = "data-submit-";
             if (!string.IsNullOrEmpty(options.RedirectUrl)) submitData += $"url=\"{options.RedirectUrl}\" ";
@@ -37,7 +43,7 @@ namespace True.Kentico.Forms.Html.Extensions
             return MvcHtmlString.Create($"<form action=\"/{controllerName}/{action}\" " +
                                         "entype=\"multipart/form-data\" " +
                                         $"method=\"{method}\" " +
-                                        "class=\"form form--kentico\" " +
+                                        $"class=\"form form--kentico {classes}\" " +
                                         submitData +
                                         $"{(validate ? " data-validate" : string.Empty)}{(summary ? " " + "data-summary" : string.Empty)} " +
                                         $"data-layout=\"{dataLayout}\">" +

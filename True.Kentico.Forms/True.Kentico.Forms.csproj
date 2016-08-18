@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>True.Kentico.Forms</RootNamespace>
     <AssemblyName>True.Kentico.Forms</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +42,9 @@
     <Reference Include="CMS.DataEngine, Version=8.0.0.0, Culture=neutral, PublicKeyToken=834b12a258f213f9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\CMS.DataEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="CMS.EmailEngine">
+      <HintPath>..\References\CMS.EmailEngine.dll</HintPath>
     </Reference>
     <Reference Include="CMS.FileSystemStorage">
       <HintPath>..\References\CMS.FileSystemStorage.dll</HintPath>

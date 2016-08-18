@@ -21,7 +21,7 @@ namespace True.Kentico.Forms.Html.Extensions
 			return MvcHtmlString.Create(renderedControl);
 		}
 
-        public static IHtmlString CalendarFor(this KenticoForm html, IForm model, string controlName)
+        public static IHtmlString CalendarFor(this KenticoForm html, IForm model, string controlName, string classes)
         {
             var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
 

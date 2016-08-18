@@ -1,9 +1,11 @@
 using System;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Web;
 using CMS.Core;
 using CMS.DataEngine;
+using CMS.EmailEngine;
 using CMS.FormEngine;
 using CMS.IO;
 using CMS.OnlineForms;
@@ -50,6 +52,12 @@ namespace True.Kentico.Forms.Forms
 
                 BizFormItemProvider.SetItem(item);
                 BizFormInfoProvider.RefreshDataCount(formInfo.FormName, formInfo.FormSiteID);
+
+                if (form.Notification != null)
+                    SendNotificationEmail(formInfo, form, item);
+
+                if (!String.IsNullOrEmpty(form.Autoresponder.Sender))
+                    SendAcknowledgementEmail(formInfo, item);
             }
             catch (Exception ex)
             {
@@ -96,6 +104,54 @@ namespace True.Kentico.Forms.Forms
             DirectoryHelper.EnsureDiskPath(filePath, HttpRuntime.AppDomainAppPath);
 
             StorageHelper.SaveFileToDisk(filePath, new BinaryData(inputStream));
+        }
+
+        private void SendNotificationEmail(BizFormInfo formInfo, IForm form, BizFormItem item)
+        {
+            EmailMessage em = new EmailMessage();
+            em.EmailFormat = EmailFormatEnum.Html;
+            em.From = formInfo.FormSendFromEmail;
+            em.Recipients = formInfo.FormSendToEmail;
+            em.Subject = formInfo.FormEmailSubject;
+
+            string html = String.Empty;
+
+            foreach (var source in form.Controls.Where(t => t.Type == ControlType.UploadFile))
+            {
+                var fileControl = (source as IFileControl);
+                if (fileControl != null)
+                {
+                    var extension =
+                        fileControl.SubmittedValue.Substring(fileControl.SubmittedValue.LastIndexOf(".",
+                            StringComparison.Ordinal));
+
+                    em.Attachments.Add(new Attachment(fileControl.SubmittedData, fileControl.Name + extension));
+                }
+            }
+
+            foreach (FormFieldInfo fieldInfo in form.Controls)
+            {
+                html +=
+                    $"<tr><td>{fieldInfo.Caption}</td><td>{item.GetStringValue(fieldInfo.Name, String.Empty)}</td></tr>";
+            }
+
+            em.Body = "<table cellpadding=\"10\">" + html + "</table>";
+
+            EmailSender.SendEmail(em);
+        }
+
+        private void SendAcknowledgementEmail(BizFormInfo formInfo, BizFormItem item)
+        {
+            EmailMessage em = new EmailMessage
+            {
+                EmailFormat = EmailFormatEnum.Html,
+                From = formInfo.FormConfirmationSendFromEmail,
+                Recipients = item.GetStringValue(formInfo.FormConfirmationEmailField, String.Empty),
+                Subject = formInfo.FormConfirmationEmailSubject,
+                Body = formInfo.FormConfirmationTemplate
+            };
+
+            EmailSender.SendEmail(em);
         }
     }
 }
