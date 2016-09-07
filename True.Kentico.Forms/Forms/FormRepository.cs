@@ -129,10 +129,10 @@ namespace True.Kentico.Forms.Forms
                 }
             }
 
-            foreach (FormFieldInfo fieldInfo in form.Controls)
+            foreach (var fieldInfo in form.Controls)
             {
                 html +=
-                    $"<tr><td>{fieldInfo.Caption}</td><td>{item.GetStringValue(fieldInfo.Name, String.Empty)}</td></tr>";
+                    $"<tr><td>{fieldInfo.Label}</td><td>{fieldInfo.SubmittedValue}</td></tr>";
             }
 
             em.Body = "<table cellpadding=\"10\">" + html + "</table>";
