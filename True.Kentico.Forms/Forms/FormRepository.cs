@@ -7,6 +7,7 @@ using CMS.Core;
 using CMS.DataEngine;
 using CMS.EmailEngine;
 using CMS.FormEngine;
+using CMS.Helpers;
 using CMS.IO;
 using CMS.OnlineForms;
 using CMS.SiteProvider;
@@ -87,23 +88,55 @@ namespace True.Kentico.Forms.Forms
 
             var fileNameMask = Guid.NewGuid();
             var extension = fileControl.SubmittedValue.Substring(fileControl.SubmittedValue.LastIndexOf(".", StringComparison.Ordinal));
+
             item.SetValue(fileControl.Name, $"{fileNameMask}{extension}/{fileControl.SubmittedValue}");
 
-            SaveFile($"{fileNameMask}{extension}", fileControl.SubmittedData);
+            SaveFile(fileNameMask.ToString(), extension, fileControl.SubmittedData);
         }
 
-        private void SaveFile(string maskedFileName, Stream inputStream)
+        private void SaveFile(string fileName, string extension, Stream inputStream)
         {
             // Path to BizForm files in file system.
             var filesFolderPath = FormHelper.GetBizFormFilesFolderPath(SiteContext.CurrentSiteName);
 
             // Get file size and path
-            var filePath = filesFolderPath + maskedFileName;
+            var filePath = filesFolderPath + $"{fileName}{extension}";
 
             // Ensure disk path
             DirectoryHelper.EnsureDiskPath(filePath, HttpRuntime.AppDomainAppPath);
 
-            StorageHelper.SaveFileToDisk(filePath, new BinaryData(inputStream));
+            if (ImageHelper.IsImage(extension))
+            {
+                byte[] imageBinary = ReadFully(inputStream);
+
+                StorageHelper.SaveFileToDisk(filePath, imageBinary);
+            }
+            else
+            {
+                StreamWrapper stream = StreamWrapper.New(inputStream);
+                StorageHelper.SaveFileToDisk(filePath, stream, false);
+            }
+
+            // Check synchronization max. file size
+            if (WebFarmHelper.WebFarmEnabled)
+            {
+                StreamWrapper stream = StreamWrapper.New(inputStream);
+                WebFarmHelper.CreateIOTask(FormTaskType.UpdateBizFormFile, filePath, stream, "updatebizformfile", SiteContext.CurrentSiteName, fileName);
+            }
+        }
+
+        public static byte[] ReadFully(System.IO.Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
         }
 
         private void SendNotificationEmail(BizFormInfo formInfo, IForm form, BizFormItem item)
