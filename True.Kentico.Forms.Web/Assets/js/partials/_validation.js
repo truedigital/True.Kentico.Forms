@@ -54,9 +54,9 @@ var validation = (function ($) {
             unhighlight: function (element, errorClass, validClass) {
                 $(element).closest('.form-row').addBack().removeClass(errorClass).addClass(validClass);
             },
-            submitHandler: function (form) {
+            submitHandler: function (form, evt) {
                 $(form).find('[data-submit]').attr('disabled', true).addClass('is-disabled');
-                formSubmit.submission(event, $(form));
+                formSubmit.submission(evt, $(form));
             }
         });
 
