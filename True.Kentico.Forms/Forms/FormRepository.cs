@@ -152,7 +152,7 @@ namespace True.Kentico.Forms.Forms
             foreach (var source in form.Controls.Where(t => t.Type == ControlType.UploadFile))
             {
                 var fileControl = (source as IFileControl);
-                if (fileControl != null)
+                if (fileControl?.SubmittedValue != null)
                 {
                     var extension =
                         fileControl.SubmittedValue.Substring(fileControl.SubmittedValue.LastIndexOf(".",

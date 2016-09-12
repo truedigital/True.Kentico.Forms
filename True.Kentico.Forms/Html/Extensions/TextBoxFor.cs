@@ -29,7 +29,7 @@ namespace True.Kentico.Forms.Html.Extensions
             var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
 
             return control != null ?
-                CalendarFor(html, control, ControlRendererRegistrar.Resolve(ControlType.TextBox))
+                TextBoxFor(html, control, ControlRendererRegistrar.Resolve(ControlType.TextBox))
                 : MvcHtmlString.Create("");
         }
 

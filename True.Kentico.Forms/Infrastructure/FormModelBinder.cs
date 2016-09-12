@@ -29,9 +29,10 @@ namespace True.Kentico.Forms.Infrastructure
                     fileControl.SubmittedValue = request.Files[control.Name]?.FileName;
                     fileControl.SubmittedData = request.Files[control.Name]?.InputStream;
                 }
-                else if (control.Type == ControlType.CheckBox)
+                else if (control.Type == ControlType.CheckBox || control.Type == ControlType.RadioButton)
                 {
-                    control.SubmittedValue = "true";
+                    var value = request.Form.Get(control.Name); // post form values for these types returns either no value or the name, so a value implies true
+                    control.SubmittedValue = value?.Equals(control.Name, StringComparison.OrdinalIgnoreCase).ToString();
                 }
                 else
                 {
@@ -48,7 +49,7 @@ namespace True.Kentico.Forms.Infrastructure
                             {
                                 control.SubmittedValue = date.ToString("yyyy-MM-dd HH:mm:ss");
                             }
-                            
+
                         }
                     }
                     else
