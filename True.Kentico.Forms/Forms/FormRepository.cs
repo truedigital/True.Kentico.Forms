@@ -13,16 +13,20 @@ using CMS.OnlineForms;
 using CMS.SiteProvider;
 using True.Kentico.Forms.Forms.FormParts;
 using Stream = System.IO.Stream;
+using True.Kentico.Forms.Forms.Emailer;
+using System.Collections.Generic;
 
 namespace True.Kentico.Forms.Forms
 {
     public class FormRepository : IFormRepository
     {
         private readonly IFormFactory _formFactory;
+        private readonly IFormValueEmailParser _emailParser;
 
         public FormRepository()
         {
             _formFactory = new FormFactory(new ControlFactory.ControlFactory());
+            _emailParser = new FormValueEmailParser();
         }
 
         public IForm GetForm(string formName)
@@ -58,7 +62,7 @@ namespace True.Kentico.Forms.Forms
                     SendNotificationEmail(formInfo, form, item);
 
                 if (!String.IsNullOrEmpty(form.Autoresponder.Sender))
-                    SendAcknowledgementEmail(formInfo, item);
+                    SendAcknowledgementEmail(formInfo, item, form.Controls);
             }
             catch (Exception ex)
             {
@@ -173,15 +177,20 @@ namespace True.Kentico.Forms.Forms
             EmailSender.SendEmail(em);
         }
 
-        private void SendAcknowledgementEmail(BizFormInfo formInfo, BizFormItem item)
+        private void SendAcknowledgementEmail(BizFormInfo formInfo, BizFormItem item, IList<IControl> controls)
         {
+            // these special fields don't exist in the controls list, so add their values manually :'(
+            controls.Add(new Control { Name = "FormInserted", Label = "Form Submission Date", SubmittedValue = item.FormInserted.ToString("U") });
+            controls.Add(new Control { Name = "FormUpdated", Label = "Form Update Date", SubmittedValue = item.FormUpdated.ToString("U") });
+            controls.Add(new Control { Name = $"{formInfo.FormName}ID", Label = formInfo.FormDisplayName, SubmittedValue = formInfo.FormDisplayName });
+
             EmailMessage em = new EmailMessage
             {
                 EmailFormat = EmailFormatEnum.Html,
                 From = formInfo.FormConfirmationSendFromEmail,
                 Recipients = item.GetStringValue(formInfo.FormConfirmationEmailField, String.Empty),
                 Subject = formInfo.FormConfirmationEmailSubject,
-                Body = formInfo.FormConfirmationTemplate
+                Body = _emailParser.Parse(formInfo.FormConfirmationTemplate, controls)
             };
 
             EmailSender.SendEmail(em);

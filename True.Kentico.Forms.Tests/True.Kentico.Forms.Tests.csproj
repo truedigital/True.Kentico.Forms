@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>True.Kentico.Forms.Tests</RootNamespace>
     <AssemblyName>True.Kentico.Forms.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,27 +36,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CMS.Base">
-      <HintPath>..\Libs\CMS.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="CMS.Core">
-      <HintPath>..\Libs\CMS.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="CMS.DataEngine">
-      <HintPath>..\Libs\CMS.DataEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="CMS.FormEngine">
-      <HintPath>..\Libs\CMS.FormEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="CMS.Helpers">
-      <HintPath>..\Libs\CMS.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="CMS.OnlineForms">
-      <HintPath>..\Libs\CMS.OnlineForms.dll</HintPath>
-    </Reference>
-    <Reference Include="CMS.Tests">
-      <HintPath>..\Libs\CMS.Tests.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
   </ItemGroup>
@@ -76,9 +56,16 @@
   <ItemGroup>
     <Compile Include="MacroResolverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ControlValueParserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\True.Kentico.Forms\True.Kentico.Forms.csproj">
+      <Project>{70bb3bc5-a946-471a-b0fb-a9fc0de5fc3c}</Project>
+      <Name>True.Kentico.Forms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
