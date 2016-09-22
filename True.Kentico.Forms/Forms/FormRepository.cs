@@ -101,7 +101,8 @@ namespace True.Kentico.Forms.Forms
         private void SaveFile(string fileName, string extension, Stream inputStream)
         {
             // Path to BizForm files in file system.
-            var filesFolderPath = FormHelper.GetBizFormFilesFolderPath(SiteContext.CurrentSiteName);
+            var siteName = SiteContext.CurrentSiteName;
+            var filesFolderPath = FormHelper.GetBizFormFilesFolderPath(siteName);
 
             // Get file size and path
             var filePath = filesFolderPath + $"{fileName}{extension}";
@@ -125,7 +126,8 @@ namespace True.Kentico.Forms.Forms
             if (WebFarmHelper.WebFarmEnabled)
             {
                 StreamWrapper stream = StreamWrapper.New(inputStream);
-                WebFarmHelper.CreateIOTask(FormTaskType.UpdateBizFormFile, filePath, stream, "updatebizformfile", SiteContext.CurrentSiteName, fileName);
+                WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, "updatebizformfile", siteName + "|" + fileName, stream);
+                //WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, filePath, stream, "updatebizformfile", SiteContext.CurrentSiteName, fileName);
             }
         }
 
