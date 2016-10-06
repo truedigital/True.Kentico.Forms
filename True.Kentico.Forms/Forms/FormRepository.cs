@@ -123,12 +123,12 @@ namespace True.Kentico.Forms.Forms
             }
 
             // Check synchronization max. file size
-            if (WebFarmHelper.WebFarmEnabled)
-            {
-                StreamWrapper stream = StreamWrapper.New(inputStream);
-                WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, "updatebizformfile", siteName + "|" + fileName, stream);
-                //WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, filePath, stream, "updatebizformfile", SiteContext.CurrentSiteName, fileName);
-            }
+            //if (WebFarmHelper.WebFarmEnabled)
+            //{
+            //    StreamWrapper stream = StreamWrapper.New(inputStream);
+            //    WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, "updatebizformfile", siteName + "|" + fileName, stream);
+            //    //WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, filePath, stream, "updatebizformfile", SiteContext.CurrentSiteName, fileName);
+            //}
         }
 
         public static byte[] ReadFully(System.IO.Stream input)
@@ -163,6 +163,8 @@ namespace True.Kentico.Forms.Forms
                     var extension =
                         fileControl.SubmittedValue.Substring(fileControl.SubmittedValue.LastIndexOf(".",
                             StringComparison.Ordinal));
+
+                    fileControl.SubmittedData.Position = 0;
 
                     em.Attachments.Add(new Attachment(fileControl.SubmittedData, fileControl.Name + extension));
                 }
