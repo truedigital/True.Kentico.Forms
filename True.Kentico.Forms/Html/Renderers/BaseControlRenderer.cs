@@ -7,14 +7,18 @@ namespace True.Kentico.Forms.Html.Renderers
 {
     public abstract class BaseControlRenderer : IControlRenderer
     {
-        public virtual void CustomHtml(MultiLevelTag input, object htmlAttributes)
+        public virtual void CustomHtml(MultiLevelTag tag, object htmlAttributes)
         {
             if (htmlAttributes == null) return;
 
             var customAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
             if (customAttributes != null)
             {
-                customAttributes.ToList().ForEach(item => input.Attributes.Add(item.Key, item.Value.ToString()));
+                // customAttributes.ToList().ForEach(item => input.Attributes.Add(item.Key, item.Value.ToString()));
+                foreach (var item in customAttributes.Where(item => !tag.Attributes.ContainsKey(item.Key)))
+                {
+                    tag.Attributes.Add(item.Key, item.Value.ToString());
+                }
             }
         }
 

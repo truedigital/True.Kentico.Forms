@@ -7,11 +7,11 @@
 
 <div>
     @Html.KenticoForm().TextBoxFor(Model, "FirstName", new { @class = "first--name", @placeholder = "What yer mum calls ye" })
-    @Html.KenticoForm().EmailFor(Model, "EmailAddress")
+    @Html.KenticoForm().EmailFor(Model, "EmailAddress", new { @class = "email--input" })
     @Html.KenticoForm().TextBoxFor(Model, "UkPostcode")
 </div>
 <div>
-    @Html.KenticoForm().SubmitButton(Model.SubmitText)
+    @Html.KenticoForm().SubmitButton(Model.SubmitText, new { @class = "submit--buton", @data_submit_type = "" })
 </div>
 @Html.KenticoForm().EndForm()
 
