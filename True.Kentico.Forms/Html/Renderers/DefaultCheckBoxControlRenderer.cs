@@ -1,10 +1,11 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System;
+using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
     internal class DefaultCheckBoxControlRenderer : BaseControlRenderer
     {
-        public override string Render(IControl control)
+        public override string Render(IControl control, object htmlAttributes)
         {
             var id = control.Name;
 
@@ -18,6 +19,7 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "checkbox");
             input.Attributes.Add("value", $"{id}");
+            CustomHtml(input, htmlAttributes);
 
             if (control.DefaultValue == "True")
             {
@@ -46,6 +48,11 @@ namespace True.Kentico.Forms.Html.Renderers
             ToolTip(control, input);
 
             return div.ToString();
+        }
+
+        public override string Render(IControl control)
+        {
+            return Render(control, null);
         }
     }
 }

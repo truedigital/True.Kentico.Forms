@@ -10,6 +10,13 @@ namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
+        public static IHtmlString LabelFor(this KenticoForm html, IForm model, string controlName, object htmlAttributes)
+        {
+            var renderer = ControlRendererRegistrar.Resolve(ControlType.Label);
+            var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
+            return MvcHtmlString.Create(renderer.Render(control, htmlAttributes));
+        }
+
         public static IHtmlString LabelFor(this KenticoForm html, IControl control)
         {
             return LabelFor(html, control, ControlRendererRegistrar.Resolve(ControlType.Label));

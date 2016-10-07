@@ -1,16 +1,17 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
     internal class DefaultTextAreaControlRenderer : BaseControlRenderer
     {
-        public override string Render(IControl control)
+        public override string Render(IControl control, object htmlAttributes)
         {
             var id = control.Name;
 
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
-            
+
             var div = new MultiLevelTag("div");
             div.AddCssClass("form-inner");
 
@@ -18,6 +19,7 @@ namespace True.Kentico.Forms.Html.Renderers
             textarea.Attributes.Add("id", id);
             textarea.Attributes.Add("name", id);
             textarea.Attributes.Add("value", control.DefaultValue);
+            CustomHtml(textarea, htmlAttributes);
 
             IsRequired(control, textarea, displayName);
 
@@ -33,6 +35,11 @@ namespace True.Kentico.Forms.Html.Renderers
             ToolTip(control, textarea);
 
             return div.ToString();
+        }
+
+        public override string Render(IControl control)
+        {
+            return Render(control, null);
         }
     }
 }

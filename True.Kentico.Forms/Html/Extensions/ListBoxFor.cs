@@ -8,8 +8,15 @@ using True.Kentico.Forms.Infrastructure;
 
 namespace True.Kentico.Forms.Html.Extensions
 {
-	public static partial class KenticoFormHelperExtensions
+    public static partial class KenticoFormHelperExtensions
     {
+        public static IHtmlString ListBoxFor(this KenticoForm html, IForm model, string controlName, object htmlAttributes)
+        {
+            var renderer = ControlRendererRegistrar.Resolve(ControlType.ListBox);
+            var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
+            return MvcHtmlString.Create(renderer.Render(control, htmlAttributes));
+        }
+
         public static IHtmlString ListBoxFor<TControl>(this KenticoForm html, TControl control) where TControl : IControl
 
         {

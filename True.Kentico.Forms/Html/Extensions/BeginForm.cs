@@ -7,7 +7,6 @@ namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
-
         public static IHtmlString BeginForm(this KenticoForm html, string action, string controllerName, string formName, ISubmissionOptions options)
         {
             return BeginForm(html, action, controllerName, formName, "", options, "post", "block", true, false);

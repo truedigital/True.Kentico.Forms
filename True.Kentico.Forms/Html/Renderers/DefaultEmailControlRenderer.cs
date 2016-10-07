@@ -1,10 +1,11 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System;
+using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
     internal class DefaultEmailControlRenderer : BaseControlRenderer
     {
-        public override string Render(IControl control)
+        public override string Render(IControl control, object htmlAttributes)
         {
             var id = control.Name;
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
@@ -17,6 +18,8 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "email");
             input.Attributes.Add("value", control.DefaultValue);
+
+            CustomHtml(input, htmlAttributes);
 
             IsRequired(control, input, displayName);
 
@@ -32,6 +35,11 @@ namespace True.Kentico.Forms.Html.Renderers
             ToolTip(control, input);
 
             return div.ToString();
+        }
+
+        public override string Render(IControl control)
+        {
+            return Render(control, null);
         }
     }
 }

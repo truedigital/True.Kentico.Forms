@@ -4,7 +4,7 @@ namespace True.Kentico.Forms.Html.Renderers
 {
     internal class DefaultRadioButtonListControlRenderer : BaseControlRenderer
     {
-        public override string Render(IControl control)
+        public override string Render(IControl control, object htmlAttributes)
         {
             var id = control.Name;
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
@@ -27,6 +27,8 @@ namespace True.Kentico.Forms.Html.Renderers
                 if (count == 1 && control.IsRequired)
                     input.Attributes.Add("required", null);
 
+                CustomHtml(input, htmlAttributes);
+
                 var label = new MultiLevelTag("label");
                 label.Attributes.Add("for", $"{id}_{count}");
                 label.SetInnerText(innerItem.Key);
@@ -46,6 +48,11 @@ namespace True.Kentico.Forms.Html.Renderers
             ToolTip(control, div);
 
             return div.ToString();
+        }
+
+        public override string Render(IControl control)
+        {
+            return Render(control, null);
         }
     }
 }

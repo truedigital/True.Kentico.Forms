@@ -1,10 +1,11 @@
+using System;
 using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
     internal class DefaultMultipleChoiceControlRenderer : BaseControlRenderer
     {
-        public override string Render(IControl control)
+        public override string Render(IControl control, object htmlAttributes)
         {
             var id = control.Name;
             var displayName = !string.IsNullOrEmpty(control.Label) ? control.Label : control.Name;
@@ -30,6 +31,8 @@ namespace True.Kentico.Forms.Html.Renderers
                     input.Attributes.Add("minlength", "1");
                 }
 
+                CustomHtml(input, htmlAttributes);
+
                 var label = new MultiLevelTag("label");
                 label.Attributes.Add("for", $"{id}_{count}");
                 label.SetInnerText(innerItem.Key);
@@ -49,6 +52,11 @@ namespace True.Kentico.Forms.Html.Renderers
             ToolTip(control, div);
 
             return div.ToString();
+        }
+
+        public override string Render(IControl control)
+        {
+            return Render(control, null);
         }
     }
 }

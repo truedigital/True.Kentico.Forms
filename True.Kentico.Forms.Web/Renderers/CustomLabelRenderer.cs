@@ -1,4 +1,5 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System;
+using True.Kentico.Forms.Forms.FormParts;
 using True.Kentico.Forms.Html;
 using True.Kentico.Forms.Html.Renderers;
 
@@ -17,6 +18,11 @@ namespace True.Kentico.Forms.Web.Renderers
             tb.Attributes.Add("for", id);
             tb.Attributes.Add("class", $"form-label{required}");
             return tb.ToString();
+        }
+
+        public string Render(IControl control, object htmlAttributes)
+        {
+            throw new NotImplementedException();
         }
     }
 }

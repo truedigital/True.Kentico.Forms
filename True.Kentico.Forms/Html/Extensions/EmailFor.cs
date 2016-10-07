@@ -10,14 +10,19 @@ namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
+        public static IHtmlString EmailFor(this KenticoForm html, IForm model, string controlName, object htmlAttributes)
+        {
+            var renderer = ControlRendererRegistrar.Resolve(ControlType.Email);
+            var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
+            return MvcHtmlString.Create(renderer.Render(control, htmlAttributes));
+        }
+
         public static IHtmlString EmailFor<TControl>(this KenticoForm html, TControl control) where TControl : IControl
-            
         {
             return EmailFor<TControl>(html, control, ControlRendererRegistrar.Resolve(ControlType.Email));
         }
 
         public static IHtmlString EmailFor<TControl>(this KenticoForm html, TControl control, IControlRenderer renderer) where TControl : IControl
-            
         {
             var renderedControl = renderer.Render(control);
 

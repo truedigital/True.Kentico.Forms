@@ -10,6 +10,13 @@ namespace True.Kentico.Forms.Html.Extensions
 {
     public static partial class KenticoFormHelperExtensions
     {
+        public static IHtmlString DropDownListFor(this KenticoForm html, IForm model, string controlName, object htmlAttributes)
+        {
+            var renderer = ControlRendererRegistrar.Resolve(ControlType.DropDownList);
+            var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
+            return MvcHtmlString.Create(renderer.Render(control, htmlAttributes));
+        }
+
         public static IHtmlString DropDownListFor<TControl>(this KenticoForm html, TControl control) where TControl : IControl
 
         {

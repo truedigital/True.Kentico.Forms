@@ -8,6 +8,11 @@ namespace True.Kentico.Forms.Html.Renderers
     {
         public string Render(IControl control)
         {
+            return Render(control, null);
+        }
+
+        public string Render(IControl control, object htmlAttributes)
+        {
             if (String.IsNullOrWhiteSpace(control.Label))
             {
                 return "";

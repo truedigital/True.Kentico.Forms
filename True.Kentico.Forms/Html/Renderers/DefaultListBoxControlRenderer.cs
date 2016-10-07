@@ -9,7 +9,7 @@ namespace True.Kentico.Forms.Html.Renderers
 {
     public class DefaultListBoxControlRenderer : BaseControlRenderer
     {
-        public override string Render(IControl control)
+        public override string Render(IControl control, object htmlAttributes)
         {
             var id = control.Name;
 
@@ -22,6 +22,7 @@ namespace True.Kentico.Forms.Html.Renderers
             ddl.Attributes.Add("id", id);
             ddl.Attributes.Add("name", id);
             ddl.Attributes.Add("multiple", null);
+            CustomHtml(ddl, htmlAttributes);
 
             var items = control.DefaultValues;
 
@@ -30,7 +31,7 @@ namespace True.Kentico.Forms.Html.Renderers
                 ddl.Add(new MultiLevelTag("option")
                 {
                     InnerHtml = innerItem.Key,
-                    Attributes = {new KeyValuePair<string, string>("selected", innerItem.Value.ToString())}
+                    Attributes = { new KeyValuePair<string, string>("selected", innerItem.Value.ToString()) }
                 });
             }
 
@@ -42,8 +43,11 @@ namespace True.Kentico.Forms.Html.Renderers
             ToolTip(control, ddl);
 
             return div.ToString();
+        }
 
-
+        public override string Render(IControl control)
+        {
+            return Render(control, null);
         }
     }
 }

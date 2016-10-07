@@ -1,10 +1,11 @@
-﻿using True.Kentico.Forms.Forms.FormParts;
+﻿using System;
+using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
     internal class DefaultHtmlEditorControlRenderer : BaseControlRenderer
     {
-        public override string Render(IControl control)
+        public override string Render(IControl control, object htmlAttributes)
         {
             var id = control.Name;
 
@@ -18,6 +19,7 @@ namespace True.Kentico.Forms.Html.Renderers
             rte.Attributes.Add("name", id);
             rte.AddCssClass("rich-text-editor");
 
+            CustomHtml(rte, htmlAttributes);
 
             IsRequired(control, rte, displayName);
 
@@ -28,6 +30,11 @@ namespace True.Kentico.Forms.Html.Renderers
             ToolTip(control, rte);
 
             return div.ToString();
+        }
+
+        public override string Render(IControl control)
+        {
+            return Render(control, null);
         }
     }
 }

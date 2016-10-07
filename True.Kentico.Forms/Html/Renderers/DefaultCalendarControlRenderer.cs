@@ -7,7 +7,7 @@ namespace True.Kentico.Forms.Html.Renderers
 {
     internal class DefaultCalendarControlRenderer : BaseControlRenderer
     {
-        public override string Render(IControl control)
+        public override string Render(IControl control, object htmlAttributes)
         {
             var id = control.Name;
 
@@ -21,11 +21,13 @@ namespace True.Kentico.Forms.Html.Renderers
             input.Attributes.Add("name", id);
             input.Attributes.Add("type", "text");
             input.Attributes.Add("readonly", null);
+            CustomHtml(input, htmlAttributes);
+
             if (!String.IsNullOrEmpty(control.DefaultValue))
                 input.Attributes.Add("value", control.DefaultValue.ToDateTime(DateTime.Now, "en-GB").ToString("dd/MM/yyyy"));
 
             input.AddCssClass("datepicker");
-            
+
             IsRequired(control, input, displayName);
 
             div.Add(input);
@@ -34,6 +36,11 @@ namespace True.Kentico.Forms.Html.Renderers
             ToolTip(control, input);
 
             return div.ToString();
+        }
+
+        public override string Render(IControl control)
+        {
+            return Render(control, null);
         }
     }
 }

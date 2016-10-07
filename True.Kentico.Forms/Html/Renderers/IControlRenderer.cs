@@ -5,5 +5,6 @@ namespace True.Kentico.Forms.Html.Renderers
     public interface IControlRenderer
     {
         string Render(IControl control);
+        string Render(IControl control, object htmlAttributes);
     }
 }

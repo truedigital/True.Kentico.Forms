@@ -5,14 +5,14 @@
 
 @Html.KenticoForm().BeginForm("Submit", "KenticoForm", Model.Name, Model.SubmissionOptions)
 
-<div id="form-result">
-
-    @Html.KenticoForm().RenderFormControls(Model.Controls)
-    
-    @Html.KenticoForm().SubmitButton(Model.SubmitText)
-    
+<div>
+    @Html.KenticoForm().TextBoxFor(Model, "FirstName", new { @class = "first--name", @placeholder = "What yer mum calls ye" })
+    @Html.KenticoForm().EmailFor(Model, "EmailAddress")
+    @Html.KenticoForm().TextBoxFor(Model, "UkPostcode")
 </div>
-
+<div>
+    @Html.KenticoForm().SubmitButton(Model.SubmitText)
+</div>
 @Html.KenticoForm().EndForm()
 
 <hr />

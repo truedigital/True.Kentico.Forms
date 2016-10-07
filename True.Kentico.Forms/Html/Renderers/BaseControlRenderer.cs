@@ -1,9 +1,23 @@
+using System;
+using System.Linq;
+using System.Web.Mvc;
 using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Html.Renderers
 {
     public abstract class BaseControlRenderer : IControlRenderer
     {
+        public virtual void CustomHtml(MultiLevelTag input, object htmlAttributes)
+        {
+            if (htmlAttributes == null) return;
+
+            var customAttributes = HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes);
+            if (customAttributes != null)
+            {
+                customAttributes.ToList().ForEach(item => input.Attributes.Add(item.Key, item.Value.ToString()));
+            }
+        }
+
         public virtual void IsRequired(IControl control, MultiLevelTag controlTag, string displayName)
         {
             if (!control.IsRequired) return;
@@ -28,5 +42,6 @@ namespace True.Kentico.Forms.Html.Renderers
         }
 
         public abstract string Render(IControl control);
+        public abstract string Render(IControl control, object htmlAttributes);
     }
 }
