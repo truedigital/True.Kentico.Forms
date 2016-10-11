@@ -126,6 +126,7 @@
     <Compile Include="Forms\ControlValidationFactory\CompareToControlValidationFactory.cs" />
     <Compile Include="Forms\ControlValidationFactory\DateFromControlValidationFactory.cs" />
     <Compile Include="Forms\ControlValidationFactory\DateToControlValidationFactory.cs" />
+    <Compile Include="Forms\Data\FormEntry.cs" />
     <Compile Include="Forms\Emailer\FormValueEmailParser.cs" />
     <Compile Include="Forms\Emailer\IFormValueEmailParser.cs" />
     <Compile Include="Forms\Validation\CompareToControlValidation.cs" />

@@ -7,7 +7,7 @@
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First release.</releaseNotes>
+    <releaseNotes>Added bug fix to deal with email notification not being available</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>Kentico MVC C#</tags>
   </metadata>

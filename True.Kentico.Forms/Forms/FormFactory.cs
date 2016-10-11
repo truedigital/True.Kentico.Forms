@@ -1,4 +1,5 @@
-﻿using CMS.Base;
+﻿using System;
+using CMS.Base;
 using CMS.OnlineForms;
 using True.Kentico.Forms.Forms.ControlFactory;
 using True.Kentico.Forms.Forms.FormParts;
@@ -28,7 +29,7 @@ namespace True.Kentico.Forms.Forms
                 Subject = info.FormConfirmationEmailSubject,
                 Template = info.FormConfirmationTemplate
             };
-
+            
             var notification = new Notification
             {
                 Sender = info.FormSendFromEmail,
@@ -45,12 +46,15 @@ namespace True.Kentico.Forms.Forms
                 RedirectUrl = info.FormRedirectToUrl
             };
 
+            var hasAutoResponder = !String.IsNullOrWhiteSpace(autoresponder.Sender);
+            var hasNotificationEmail = !String.IsNullOrWhiteSpace(notification.Sender) && !String.IsNullOrWhiteSpace(notification.Recipients);
+
             var form = new Form
             {
                 Name = info.FormName,
                 SubmitText = !string.IsNullOrEmpty(info.FormSubmitButtonText) ? info.FormSubmitButtonText : "Save",
-                Autoresponder = autoresponder,
-                Notification = notification,
+                Autoresponder = hasAutoResponder ? autoresponder : null,
+                Notification = hasNotificationEmail ? notification : null,
                 SubmissionOptions = submissionOptions
             };
 

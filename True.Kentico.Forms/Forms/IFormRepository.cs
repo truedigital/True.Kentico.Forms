@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using True.Kentico.Forms.Forms.Data;
 using True.Kentico.Forms.Forms.FormParts;
 
 namespace True.Kentico.Forms.Forms
@@ -6,5 +8,6 @@ namespace True.Kentico.Forms.Forms
     {
         void Submit(IForm form);
         IForm GetForm(string formName);
+        List<FormEntry> GetFormEntries(string formName);
     }
 }

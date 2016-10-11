@@ -15,6 +15,7 @@ using True.Kentico.Forms.Forms.FormParts;
 using Stream = System.IO.Stream;
 using True.Kentico.Forms.Forms.Emailer;
 using System.Collections.Generic;
+using True.Kentico.Forms.Forms.Data;
 
 namespace True.Kentico.Forms.Forms
 {
@@ -42,7 +43,38 @@ namespace True.Kentico.Forms.Forms
             return null;
         }
 
-        public void Submit(IForm form)
+        public List<FormEntry> GetFormEntries(string formName)
+        {
+            List<FormEntry> entries = new List<FormEntry>();
+            BizFormInfo formObject = BizFormInfoProvider.GetBizFormInfo(formName, SiteContext.CurrentSiteID);
+            // Gets the class name of the 'ContactUs' form
+            DataClassInfo formClass = DataClassInfoProvider.GetDataClassInfo(formObject.FormClassID);
+            string className = formClass.ClassName;
+
+            // Loads the form's data
+            ObjectQuery<BizFormItem> data = BizFormItemProvider.GetItems(className);
+
+            // Checks whether the form contains any records
+            if (!DataHelper.DataSourceIsEmpty(data))
+            {
+                // Loops through the form's data records
+                foreach (BizFormItem item in data)
+                {
+                    FormEntry entry = new FormEntry();
+                    entry.ID = item.ItemID;
+
+                    foreach (var columnName in item.ColumnNames)
+                    {
+                        entry.FormValues.Add(columnName.ToLower(), item.GetStringValue(columnName, ""));
+                    }
+                    entries.Add(entry);
+                }
+            }
+            return entries;
+        }
+
+        public
+            void Submit(IForm form)
         {
             try
             {
@@ -61,7 +93,7 @@ namespace True.Kentico.Forms.Forms
                 if (form.Notification != null)
                     SendNotificationEmail(formInfo, form, item);
 
-                if (!String.IsNullOrEmpty(form.Autoresponder.Sender))
+                if (!String.IsNullOrEmpty(form.Autoresponder?.Sender))
                     SendAcknowledgementEmail(formInfo, item, form.Controls);
             }
             catch (Exception ex)
@@ -123,12 +155,12 @@ namespace True.Kentico.Forms.Forms
             }
 
             // Check synchronization max. file size
-            //if (WebFarmHelper.WebFarmEnabled)
-            //{
-            //    StreamWrapper stream = StreamWrapper.New(inputStream);
-            //    WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, "updatebizformfile", siteName + "|" + fileName, stream);
-            //    //WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, filePath, stream, "updatebizformfile", SiteContext.CurrentSiteName, fileName);
-            //}
+            if (WebFarmHelper.WebFarmEnabled)
+            {
+                StreamWrapper stream = StreamWrapper.New(inputStream);
+                WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, "updatebizformfile", siteName + "|" + fileName, stream);
+                //WebFarmHelper.CreateTask(FormTaskType.UpdateBizFormFile, filePath, stream.ToString(), "updatebizformfile", SiteContext.CurrentSiteName, fileName);
+            }
         }
 
         public static byte[] ReadFully(System.IO.Stream input)
