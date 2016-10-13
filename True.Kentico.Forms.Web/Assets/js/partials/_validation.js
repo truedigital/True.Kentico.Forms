@@ -23,7 +23,6 @@ var validation = (function ($) {
             cache: true
         })
         .done(function () {
-            console.log('loaded pikaday');
             var picker = new Pikaday({ field: document.querySelector('.datepicker') });
             // picker.show();
         });
@@ -39,6 +38,7 @@ var validation = (function ($) {
             errorClass: 'is-invalid',
             validClass: 'is-valid',
             ignoreTitle: true,
+            focusInvalid: false,
             showErrors: function (errorMap, errorList) {
                 this.defaultShowErrors();
                 if ($(this.currentForm).is('[data-summary]')) {
@@ -54,9 +54,16 @@ var validation = (function ($) {
             unhighlight: function (element, errorClass, validClass) {
                 $(element).closest('.form-row').addBack().removeClass(errorClass).addClass(validClass);
             },
-            submitHandler: function (form, evt) {
+            submitHandler: function (form, event) {
                 $(form).find('[data-submit]').attr('disabled', true).addClass('is-disabled');
-                formSubmit.submission(evt, $(form));
+                formSubmit.submission(event, $(form));
+            },
+            invalidHandler: function(form, validator) {
+                var windowWidth = $(window).width();
+                if (validator.numberOfInvalids() && windowWidth < 500){
+                    var offsetAmount = $(validator.errorList[0].element).offset().top;
+                    $('html, body').animate({ scrollTop: offsetAmount - 40 }, 150);
+                }
             }
         });
 
