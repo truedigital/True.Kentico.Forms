@@ -17,7 +17,6 @@ namespace True.Kentico.Forms.Html.Extensions
             var tag = new MultiLevelTag("button");
             tag.Attributes.Add("type", "submit");
             tag.Attributes.Add("data-submit", null);
-            tag.AddCssClass("button");
             tag.SetInnerText(submitText);
 
             if (htmlAttributes != null)
@@ -31,6 +30,8 @@ namespace True.Kentico.Forms.Html.Extensions
                     }
                 }
             }
+
+            tag.AddCssClass("button");
 
             return MvcHtmlString.Create(tag.ToString());
         }

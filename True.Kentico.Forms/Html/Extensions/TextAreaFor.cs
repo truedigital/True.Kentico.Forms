@@ -29,8 +29,15 @@ namespace True.Kentico.Forms.Html.Extensions
             var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
 
             return control != null ?
-                CalendarFor(html, control, ControlRendererRegistrar.Resolve(ControlType.TextArea))
+                TextAreaFor(html, control, ControlRendererRegistrar.Resolve(ControlType.TextArea))
                 : MvcHtmlString.Create("");
+        }
+
+        public static IHtmlString TextAreaFor(this KenticoForm html, IForm model, string controlName, object htmlAttributes)
+        {        
+            var renderer = ControlRendererRegistrar.Resolve(ControlType.TextArea);
+            var control = model.Controls.FirstOrDefault(ctrl => ctrl.Name.Equals(controlName, StringComparison.OrdinalIgnoreCase));
+            return MvcHtmlString.Create(renderer.Render(control, htmlAttributes));
         }
 
         public static IHtmlString TextAreaFor(this KenticoForm html, IForm model, string controlName, IControlRenderer customRenderer)
