@@ -49,6 +49,8 @@ namespace True.Kentico.Forms.Html.Renderers
                 textarea.Attributes.Add(item.Key.ToLower(), item.Value);
             if (item.Key.Equals("size", StringComparison.OrdinalIgnoreCase))
                 textarea.Attributes.Add("maxlength", item.Value);
+            if (item.Key.Equals("wrap", StringComparison.OrdinalIgnoreCase))
+                textarea.Attributes.Add(item.Key.ToLower(), item.Value.Equals("true", StringComparison.OrdinalIgnoreCase) ? "hard" : "soft");
         }
 
         public override string Render(IControl control)
