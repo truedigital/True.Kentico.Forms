@@ -13,7 +13,7 @@ namespace True.Kentico.Forms.Forms.ControlFactory
             {"countryControl", new TypedControlFactory<CountryControl>()},
             {"CheckBoxControl", new TypedControlFactory<CheckBoxControl>()},
             {"TextBoxControl", new TypedControlFactory<TextBoxControl>()},
-            {"TextAreaControl", new TypedControlFactory<TextAreaControl>()},
+            {"TextAreaControl", new TextAreaControlFactory<TextAreaControl>()},
             {"HtmlAreaControl", new TypedControlFactory<HtmlAreaControl>()},
             {"emailinput", new TypedControlFactory<EmailControl>()},
             {"UploadControl", new TypedControlFactory<UploadFileControl>()},

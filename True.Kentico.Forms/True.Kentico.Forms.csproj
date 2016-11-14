@@ -118,6 +118,7 @@
   <ItemGroup>
     <Compile Include="Forms\ControlFactory\ControlFactory.cs" />
     <Compile Include="Forms\ControlFactory\IControlFactory.cs" />
+    <Compile Include="Forms\ControlFactory\TextAreaControlFactory - Copy.cs" />
     <Compile Include="Forms\ControlFactory\MultiValueTypedControlFactory.cs" />
     <Compile Include="Forms\ControlFactory\TypedControlFactory.cs" />
     <Compile Include="Forms\ControlValidationFactory\ControlValidationFactory.cs" />

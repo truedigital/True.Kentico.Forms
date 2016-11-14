@@ -12,6 +12,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         {
             Validation = new List<IControlValidation>();
             DefaultValues = new Dictionary<string, bool>();
+            Settings = new Dictionary<string, string>();
             ValidationErrors = new List<string>();
         }
 
@@ -28,6 +29,7 @@ namespace True.Kentico.Forms.Forms.FormParts
         public string Tooltip { get; set; }
         public bool HasMultipleDefaultValues { get; set; }
         public IDictionary<string, bool> DefaultValues { get; set; }
+        public IDictionary<string, string> Settings { get; set; }
         public IList<string> ValidationErrors { get; set; }
 
         public bool IsValid()

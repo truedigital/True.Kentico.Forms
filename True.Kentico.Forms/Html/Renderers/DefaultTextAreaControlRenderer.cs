@@ -19,8 +19,8 @@ namespace True.Kentico.Forms.Html.Renderers
             textarea.Attributes.Add("id", id);
             textarea.Attributes.Add("name", id);
             textarea.Attributes.Add("value", control.DefaultValue);
-            CustomHtml(textarea, htmlAttributes);
 
+            CustomHtml(textarea, htmlAttributes);
             IsRequired(control, textarea, displayName);
 
             foreach (var validation in control.Validation)
@@ -29,12 +29,26 @@ namespace True.Kentico.Forms.Html.Renderers
                 textarea.Attributes.Add($"data-msg-{validation.ValidationRule}", validation.ValidationErrorMessage);
             }
 
+            foreach (var item in control.Settings)
+            {
+                AddSettingsHtml(textarea, item);
+            }
+
             div.Add(textarea);
 
             ExplanationText(control, div);
             ToolTip(control, textarea);
 
             return div.ToString();
+        }
+
+        private void AddSettingsHtml(MultiLevelTag textarea, System.Collections.Generic.KeyValuePair<string, string> item)
+        {
+            if (item.Key.Equals("rows", StringComparison.OrdinalIgnoreCase) ||
+                item.Key.Equals("cols", StringComparison.OrdinalIgnoreCase))
+                textarea.Attributes.Add(item.Key.ToLower(), item.Value);
+            if (item.Key.Equals("size", StringComparison.OrdinalIgnoreCase))
+                textarea.Attributes.Add("maxlength", item.Value);
         }
 
         public override string Render(IControl control)
