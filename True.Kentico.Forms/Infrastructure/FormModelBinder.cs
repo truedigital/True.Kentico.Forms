@@ -29,7 +29,8 @@ namespace True.Kentico.Forms.Infrastructure
                     fileControl.SubmittedValue = request.Files[control.Name]?.FileName;
                     fileControl.SubmittedData = request.Files[control.Name]?.InputStream;
                 }
-                else if (control.Type == ControlType.CheckBox || control.Type == ControlType.RadioButton)
+                // this (naively) assumes that a checkbox is a single item
+                else if (control.Type == ControlType.CheckBox/* || control.Type == ControlType.RadioButton*/)
                 {
                     var value = request.Form.Get(control.Name); // post form values for these types returns either no value or the name, so a value implies true
                     control.SubmittedValue = value?.Equals(control.Name, StringComparison.OrdinalIgnoreCase).ToString();

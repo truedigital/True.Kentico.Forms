@@ -173,7 +173,7 @@ namespace True.Kentico.Forms.Forms
             foreach (var fieldInfo in form.Controls)
             {
                 html +=
-                    $"<tr><td>{fieldInfo.Label}</td><td>{fieldInfo.SubmittedValue}</td></tr>";
+                    $"<tr><td>{fieldInfo.Label}</td><td>{fieldInfo.SubmittedValue?.Replace("\r\n", "<br />")}</td></tr>";
             }
 
             em.Body = "<table cellpadding=\"10\">" + html + "</table>";
