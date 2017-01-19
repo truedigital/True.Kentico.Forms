@@ -25,9 +25,8 @@ namespace True.Kentico.Forms.Html.Renderers
         public virtual void IsRequired(IControl control, MultiLevelTag controlTag, string displayName)
         {
             if (!control.IsRequired) return;
-
-            controlTag.Attributes.Add("required", null);
-            controlTag.Attributes.Add("data-msg-required", $"{displayName} is required");
+            if (!controlTag.Attributes.ContainsKey("required")) controlTag.Attributes.Add("required", null);
+            if (!controlTag.Attributes.ContainsKey("data-msg-required")) controlTag.Attributes.Add("data-msg-required", $"{displayName} is required");
         }
 
         public virtual void ExplanationText(IControl control, MultiLevelTag parentTag)
