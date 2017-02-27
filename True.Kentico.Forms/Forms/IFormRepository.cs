@@ -9,5 +9,7 @@ namespace True.Kentico.Forms.Forms
         void Submit(IForm form);
         IForm GetForm(string formName);
         List<FormEntry> GetFormEntries(string formName);
+        void InsertFormEntry(string formName, FormEntry entry);
+        void UpdateFormEntry(string formName, int itemID, string fieldToUpdate, object newValue);
     }
 }

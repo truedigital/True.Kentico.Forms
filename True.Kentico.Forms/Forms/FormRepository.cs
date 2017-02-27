@@ -47,7 +47,9 @@ namespace True.Kentico.Forms.Forms
         {
             List<FormEntry> entries = new List<FormEntry>();
             BizFormInfo formObject = BizFormInfoProvider.GetBizFormInfo(formName, SiteContext.CurrentSiteID);
-            // Gets the class name of the 'ContactUs' form
+            if (formObject == null)
+                throw new InvalidOperationException("The requested checkin form does not exist.");
+            // Gets the class name of the form
             DataClassInfo formClass = DataClassInfoProvider.GetDataClassInfo(formObject.FormClassID);
             string className = formClass.ClassName;
 
@@ -73,12 +75,47 @@ namespace True.Kentico.Forms.Forms
             return entries;
         }
 
-        public
-            void Submit(IForm form)
+        public void InsertFormEntry(string formName, FormEntry entry)
+        {
+            BizFormInfo formObject = BizFormInfoProvider.GetBizFormInfo(formName, SiteContext.CurrentSiteID);
+            if (formObject == null)
+                throw new InvalidOperationException("The requested checkin form does not exist.");
+            // Gets the class name of the 'ContactUs' form
+            DataClassInfo formClass = DataClassInfoProvider.GetDataClassInfo(formObject.FormClassID);
+            string className = formClass.ClassName;
+
+            BizFormItem item = BizFormItem.New(className);
+
+            foreach (var formValue in entry.FormValues)
+            {
+                item.SetValue(item.ColumnNames.Find(t => t.ToLower() == formValue.Key), formValue.Value);
+            }
+
+           item.Insert();
+        }
+
+        public void UpdateFormEntry(string formName, int itemID, string fieldToUpdate, object newValue)
+        {
+            BizFormInfo formObject = BizFormInfoProvider.GetBizFormInfo(formName, SiteContext.CurrentSiteID);
+            if (formObject == null)
+                throw new InvalidOperationException("The requested checkin form does not exist.");
+            // Gets the class name of the form
+            DataClassInfo formClass = DataClassInfoProvider.GetDataClassInfo(formObject.FormClassID);
+            string className = formClass.ClassName;
+
+            BizFormItem item = BizFormItemProvider.GetItem(itemID, className);
+
+            item.SetValue(item.ColumnNames.Find(t => t.ToLower() == fieldToUpdate), newValue);
+            item.SubmitChanges(false);
+        }
+
+        public void Submit(IForm form)
         {
             try
             {
                 var formInfo = BizFormInfoProvider.GetBizFormInfo(form.Name, SiteContext.CurrentSiteID);
+                if (formInfo == null)
+                    throw new InvalidOperationException("The requested checkin form does not exist.");
                 var dataClassInfo = DataClassInfoProvider.GetDataClassInfo(formInfo.FormClassID);
                 var item = new BizFormItem(dataClassInfo.ClassName);
 
