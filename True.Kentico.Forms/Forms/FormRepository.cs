@@ -238,14 +238,8 @@ namespace True.Kentico.Forms.Forms
                     em.Attachments.Add(new Attachment(fileControl.SubmittedData, fileControl.Name + extension));
                 }
             }
-
-            foreach (var fieldInfo in form.Controls)
-            {
-                html +=
-                    $"<tr><td>{fieldInfo.Label}</td><td>{fieldInfo.SubmittedValue?.Replace("\r\n", "<br />")}</td></tr>";
-            }
-
-            em.Body = "<table cellpadding=\"10\">" + html + "</table>";
+            
+            em.Body = _emailParser.Parse(form.Notification?.Template, form.Controls);
 
             EmailSender.SendEmail(em);
         }
