@@ -91,7 +91,7 @@ namespace True.Kentico.Forms.Forms
                 item.SetValue(item.ColumnNames.Find(t => t.ToLower() == formValue.Key), formValue.Value);
             }
 
-           item.Insert();
+            item.Insert();
         }
 
         public void UpdateFormEntry(string formName, int itemID, string fieldToUpdate, object newValue)
@@ -216,6 +216,8 @@ namespace True.Kentico.Forms.Forms
 
         private void SendNotificationEmail(BizFormInfo formInfo, IForm form, BizFormItem item)
         {
+            AddSpecialFormControls(formInfo, item, form.Controls);
+
             EmailMessage em = new EmailMessage();
             em.EmailFormat = EmailFormatEnum.Html;
             em.From = formInfo.FormSendFromEmail;
@@ -238,7 +240,7 @@ namespace True.Kentico.Forms.Forms
                     em.Attachments.Add(new Attachment(fileControl.SubmittedData, fileControl.Name + extension));
                 }
             }
-            
+
             em.Body = _emailParser.Parse(form.Notification?.Template, form.Controls);
 
             EmailSender.SendEmail(em);
@@ -246,10 +248,7 @@ namespace True.Kentico.Forms.Forms
 
         private void SendAcknowledgementEmail(BizFormInfo formInfo, BizFormItem item, IList<IControl> controls)
         {
-            // these special fields don't exist in the controls list, so add their values manually :'(
-            controls.Add(new Control { Name = "FormInserted", Label = "Form Submission Date", SubmittedValue = item.FormInserted.ToString("U") });
-            controls.Add(new Control { Name = "FormUpdated", Label = "Form Update Date", SubmittedValue = item.FormUpdated.ToString("U") });
-            controls.Add(new Control { Name = $"{formInfo.FormName}ID", Label = formInfo.FormDisplayName, SubmittedValue = formInfo.FormDisplayName });
+            AddSpecialFormControls(formInfo, item, controls);
 
             EmailMessage em = new EmailMessage
             {
@@ -261,6 +260,17 @@ namespace True.Kentico.Forms.Forms
             };
 
             EmailSender.SendEmail(em);
+        }
+
+        private void AddSpecialFormControls(BizFormInfo formInfo, BizFormItem item, IList<IControl> controls)
+        {
+            // these special fields may not be in the controls list, so add their values manually, check first though
+            if (controls.FirstOrDefault(ctrl => ctrl.Name == "FormInserted") == null)
+                controls.Add(new Control { Name = "FormInserted", Label = "Form Submission Date", SubmittedValue = item.FormInserted.ToString("U") });
+            if (controls.FirstOrDefault(ctrl => ctrl.Name == "FormUpdated") == null)
+                controls.Add(new Control { Name = "FormUpdated", Label = "Form Update Date", SubmittedValue = item.FormUpdated.ToString("U") });
+            if (controls.FirstOrDefault(ctrl => ctrl.Name == $"{formInfo.FormName}ID") == null)
+                controls.Add(new Control { Name = $"{formInfo.FormName}ID", Label = formInfo.FormDisplayName, SubmittedValue = formInfo.FormDisplayName });
         }
     }
 }
