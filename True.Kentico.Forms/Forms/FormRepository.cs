@@ -224,8 +224,6 @@ namespace True.Kentico.Forms.Forms
             em.Recipients = formInfo.FormSendToEmail;
             em.Subject = formInfo.FormEmailSubject;
 
-            string html = String.Empty;
-
             foreach (var source in form.Controls.Where(t => t.Type == ControlType.UploadFile))
             {
                 var fileControl = (source as IFileControl);
@@ -241,7 +239,20 @@ namespace True.Kentico.Forms.Forms
                 }
             }
 
-            em.Body = _emailParser.Parse(form.Notification?.Template, form.Controls);
+            if (string.IsNullOrWhiteSpace(form?.Notification?.Template))
+            {
+                string html = String.Empty;
+                foreach (FormFieldInfo fieldInfo in form.Controls)
+                {
+                    html +=
+                        $"<tr><td>{fieldInfo.Caption}</td><td>{item.GetStringValue(fieldInfo.Name, String.Empty)}</td></tr>";
+                }
+                em.Body = html;
+            }
+            else
+            {
+                em.Body = _emailParser.Parse(form.Notification?.Template, form.Controls);
+            }
 
             EmailSender.SendEmail(em);
         }

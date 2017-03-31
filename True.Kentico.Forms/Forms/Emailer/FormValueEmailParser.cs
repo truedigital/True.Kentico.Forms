@@ -12,6 +12,8 @@ namespace True.Kentico.Forms.Forms.Emailer
     {
         public string Parse(string input, IEnumerable<IControl> controls)
         {
+            if (string.IsNullOrWhiteSpace(input)) return input;
+
             var inputParts = input.Split(new[] { '\r', '\n', '\t' });
 
             var pattern = new Regex(@"\$\$\w+:\w+\$\$", RegexOptions.IgnoreCase); // matches e.g. $$label:JobID$$
