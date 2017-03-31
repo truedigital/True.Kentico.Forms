@@ -241,13 +241,12 @@ namespace True.Kentico.Forms.Forms
 
             if (string.IsNullOrWhiteSpace(form?.Notification?.Template))
             {
-                string html = String.Empty;
-                foreach (FormFieldInfo fieldInfo in form.Controls)
+                var html = "";
+                foreach (var fieldInfo in form.Controls)
                 {
-                    html +=
-                        $"<tr><td>{fieldInfo.Caption}</td><td>{item.GetStringValue(fieldInfo.Name, String.Empty)}</td></tr>";
+                    html += $"<tr><td>{fieldInfo.Label}</td><td>{fieldInfo.SubmittedValue?.Replace("\r\n", "<br />")}</td></tr>";
                 }
-                em.Body = html;
+                em.Body = "<table cellpadding=\"10\">" + html + "</table>";
             }
             else
             {
